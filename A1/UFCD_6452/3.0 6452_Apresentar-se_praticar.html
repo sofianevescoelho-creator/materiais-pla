@@ -77,12 +77,13 @@
 
   .balao-linha{display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap;}
   .balao-linha .quem{flex:0 0 auto;font-weight:700;font-size:.92rem;color:var(--ink);width:100%;margin-bottom:2px;}
-  .balao-linha .balao{display:inline-block;max-width:78%;border-radius:14px;padding:9px 14px;font-size:.98rem;}
+  .balao-linha .balao{display:inline-block;max-width:78%;border-radius:14px;padding:9px 14px;font-size:1rem;}
   .balao-linha.a .balao{background:var(--paper);border:1px solid var(--border);}
   .balao-linha.b .balao{background:var(--balao-b-bg);border:1px solid var(--balao-b-border);}
   .balao-linha .btn-som{flex:0 0 auto;}
 
-  .btn-som{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--paper);cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;}
+  .btn-som{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--paper);cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;position:relative;}
+  .btn-som::before{content:'';position:absolute;top:50%;left:50%;width:44px;height:44px;transform:translate(-50%,-50%);}
   .btn-som:hover{background:var(--bank-bg);}
 
   /* Aba Praticar — falas em branco */
@@ -91,6 +92,7 @@
     font-family:inherit;
     font-size:.98rem;
     padding:9px 14px;
+    min-height:44px;
     width:78%;
     max-width:320px;
     border-radius:14px;
@@ -115,7 +117,7 @@
   .caixa-alfabeto .rotulo-caixa{font-weight:700;color:var(--accent-dark);font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;margin:0 0 10px;text-align:center;}
   .caixa-alfabeto .alfabeto-linha{font-size:1.1rem;letter-spacing:2px;font-weight:700;word-break:break-all;margin:4px 0;text-align:center;}
   .caixa-alfabeto .alfabeto-linha .vogal{background:#fde68a;color:var(--ink);font-weight:800;border-radius:3px;padding:0 2px;}
-  .caixa-alfabeto .btn-som-alfabeto{display:inline-flex;align-items:center;gap:6px;background:var(--paper);border:1px solid var(--accent);color:var(--accent-dark);font-family:inherit;font-size:.85rem;font-weight:700;border-radius:8px;padding:7px 12px;margin:10px 4px 0 0;cursor:pointer;}
+  .caixa-alfabeto .btn-som-alfabeto{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--paper);border:1px solid var(--accent);color:var(--accent-dark);font-family:inherit;font-size:.85rem;font-weight:700;border-radius:8px;padding:7px 12px;min-height:44px;margin:10px 4px 0 0;cursor:pointer;}
   .caixa-alfabeto .btn-som-alfabeto:hover{background:var(--accent);color:#fff;}
   .caixa-alfabeto .botoes-alfabeto{display:flex;flex-wrap:wrap;justify-content:center;}
   @media (max-width:480px){
