@@ -78,9 +78,9 @@
   .tabela-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:8px;}
 
   .forma-som{display:inline-flex;align-items:center;gap:10px;font-weight:700;}
-  .btn-som{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--paper);cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;}
+  .btn-som{flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--paper);cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;}
   .btn-som:hover{background:var(--bank-bg);}
-  .btn-som.mini{width:24px;height:24px;font-size:.72rem;}
+  .btn-som.mini{width:36px;height:36px;font-size:.95rem;}
 
   .exemplos{list-style:none;margin:0;padding:0;}
   .exemplos li{display:flex;align-items:center;justify-content:flex-start;gap:10px;padding:10px 2px;border-bottom:1px solid var(--border);}
@@ -97,7 +97,7 @@
   .prep-bloco{padding-top:16px;margin-top:16px;border-top:1px solid var(--border);}
   .prep-bloco:first-of-type{padding-top:0;margin-top:0;border-top:none;}
   .prep-bloco .subtitulo-prep{margin-top:0;}
-  .prep-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;font-style:normal;margin-right:8px;vertical-align:middle;}
+  .prep-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:.85rem;font-weight:700;font-style:normal;margin-right:8px;vertical-align:middle;}
 
   .regra-em-inline{display:block;width:200px;height:200px;object-fit:contain;border-radius:10px;margin:16px auto 4px;}
 
@@ -133,7 +133,8 @@
     text-align:center;
     border:2px solid var(--border);
     border-radius:6px;
-    padding:3px 6px;
+    padding:8px 6px;
+    min-height:44px;
     width:84px;
     background:#fff;
     color:var(--ink);
@@ -146,7 +147,7 @@
   input.resp:disabled{opacity:1;cursor:default;}
 
   .botoes{margin-top:6px;display:flex;gap:10px;flex-wrap:wrap;}
-  .botoes button{font-family:inherit;font-size:.95rem;padding:9px 16px;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;}
+  .botoes button{font-family:inherit;font-size:.95rem;padding:9px 16px;min-height:44px;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;}
   .botoes button.secundario{background:transparent;color:var(--accent-dark);}
   .botoes button:hover{opacity:.9;}
   .botoes button:disabled{opacity:.45;cursor:not-allowed;}
@@ -188,7 +189,7 @@
 
   .banco-opcoes{margin:22px 0 0;padding:0;}
   .opcoes{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-  .opcao{font-family:inherit;font-size:.95rem;padding:8px 16px;border-radius:18px;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);cursor:pointer;}
+  .opcao{font-family:inherit;font-size:.95rem;padding:8px 16px;min-height:44px;border-radius:18px;border:2px solid var(--accent);background:#fff;color:var(--accent-dark);cursor:pointer;}
   .opcao:hover{background:var(--bank-bg);}
   .opcao:disabled{cursor:default;opacity:.5;}
 
@@ -205,7 +206,8 @@
     text-align-last:center;
     border:2px solid var(--border);
     border-radius:6px;
-    padding:3px 8px;
+    padding:8px 8px;
+    min-height:44px;
     background:#fff;
     color:var(--ink);
     margin:0 2px;
@@ -216,7 +218,7 @@
   .regra-em-img{position:absolute;top:16px;right:18px;width:210px;height:210px;border-radius:10px;object-fit:contain;}
 
   @media (max-width:480px){
-    .regra-em-img{width:145px;height:145px;top:12px;right:12px;}
+    .regra-em-img{position:static;display:block;width:160px;height:160px;margin:0 auto 14px;}
   }
   select.resp-select:focus{outline:none;border-color:var(--accent);}
   select.resp-select.correta{border-color:var(--ok);background:var(--ok-bg);color:var(--ok);font-weight:700;}
@@ -231,7 +233,7 @@
 
   .frase-arrastar{margin-top:14px;}
   .slots{display:flex;flex-wrap:wrap;gap:8px;min-height:48px;padding:10px;border:2px dashed var(--border);border-radius:8px;background:var(--bg);margin-bottom:10px;}
-  .slot{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:38px;border-bottom:2px solid var(--muted);border-radius:4px;padding:0 2px;}
+  .slot{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-bottom:2px solid var(--muted);border-radius:4px;padding:0 2px;}
   .slot.hover-alvo{background:rgba(56,53,130,.12);border-color:var(--accent);}
   .slot .palavra{margin:0;}
   .slot.correta{border-color:var(--ok);}
@@ -243,16 +245,18 @@
 
   .palavra{
     display:inline-flex;align-items:center;justify-content:center;
-    padding:6px 14px;border:2px solid var(--accent);border-radius:18px;
+    padding:6px 14px;min-height:44px;border:2px solid var(--accent);border-radius:22px;
     background:#fff;color:var(--accent-dark);font-weight:700;font-size:.95rem;
     cursor:grab;user-select:none;touch-action:none;white-space:nowrap;
   }
   .palavra.arrastando-origem{opacity:.3;}
   .palavra.a-seguir-ponteiro{position:fixed;z-index:999;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.25);}
   .palavra.bloqueada{cursor:default;}
+  .palavra.selecionada{outline:3px solid var(--accent-dark);outline-offset:2px;background:var(--bank-bg);}
+  .slot:empty{cursor:pointer;}
 
   @media (max-width:480px){
-    .slot{min-width:38px;height:34px;}
+    .slot{min-width:40px;}
     .palavra{padding:5px 10px;font-size:.9rem;}
   }
   /* ===== Exercício 5 — frase completa (duas imagens + escrever) ===== */
@@ -583,7 +587,7 @@
   <div class="tab-panel" id="painel-ex4">
   <section class="exercicio-arrastar">
 
-    <p class="instrucao">Arrastar as palavras para o lugar certo.<span class="ic">👆</span></p>
+    <p class="instrucao">Arrastar as palavras para o lugar correto (ou clicar na palavra e depois no espaço).<span class="ic">👆</span></p>
 
     <div class="lista-cartoes">
 
@@ -1003,9 +1007,11 @@ function montarFraseEx4(item, palavras){
     var slot = document.createElement('div');
     slot.className = 'slot';
     slot.dataset.pos = idx;
+    slot.addEventListener('click', function(ev){ if(ev.target.closest('.palavra')) return; colocarSelecionadaEx4(slot); });
     slotsDiv.appendChild(slot);
   });
 
+  bancoDiv.onclick = function(ev){ if(ev.target === bancoDiv) colocarSelecionadaEx4(bancoDiv); };
   var ordemEmbaralhada = embaralharArray(palavras.map(function(p, idx){ return {texto: p, origem: idx}; }));
   // garantir que não sai por acaso na ordem correta
   var tentativas = 0;
@@ -1053,6 +1059,8 @@ function ativarArrastoEx4(chip){
       origemPai: chip.parentElement,
       origemNext: chip.nextSibling,
       ghost: ghost,
+      x0: ev.clientX,
+      y0: ev.clientY,
       offsetX: ev.clientX - rect.left,
       offsetY: ev.clientY - rect.top
     };
@@ -1097,6 +1105,19 @@ function largarArrastoEx4(ev){
   var cartao = chip.closest('.cartao-frase');
   cartao.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('hover-alvo'); });
 
+  var foiToque = Math.abs(ev.clientX - ex4Arrasto.x0) < 8 && Math.abs(ev.clientY - ex4Arrasto.y0) < 8;
+  if(foiToque){
+    // toque simples: seleciona (ou desseleciona) a palavra, sem a mover
+    var jaSelecionada = chip.classList.contains('selecionada');
+    cartao.querySelectorAll('.palavra.selecionada').forEach(function(c){ c.classList.remove('selecionada'); });
+    if(!jaSelecionada) chip.classList.add('selecionada');
+    chip.classList.remove('arrastando-origem');
+    ex4Arrasto.ghost.remove();
+    ex4Arrasto = null;
+    return;
+  }
+  cartao.querySelectorAll('.palavra.selecionada').forEach(function(c){ c.classList.remove('selecionada'); });
+
   var alvo = alvoSobPonteiro(ev.clientX, ev.clientY, cartao);
 
   if(alvo && alvo.classList.contains('slot')){
@@ -1121,6 +1142,23 @@ function largarArrastoEx4(ev){
   chip.classList.remove('correta','errada');
   ex4Arrasto.ghost.remove();
   ex4Arrasto = null;
+}
+
+function colocarSelecionadaEx4(alvo){
+  var cartao = alvo.closest('.cartao-frase');
+  var chip = cartao.querySelector('.palavra.selecionada');
+  if(!chip || chip.classList.contains('bloqueada')) return;
+  if(alvo.classList.contains('slot')){
+    if(alvo.firstChild === chip) { chip.classList.remove('selecionada'); return; }
+    if(alvo.firstChild){
+      cartao.querySelector('.banco-palavras').appendChild(alvo.firstChild);
+    }
+    alvo.appendChild(chip);
+  } else {
+    alvo.appendChild(chip);
+  }
+  chip.classList.remove('selecionada','correta','errada');
+  cartao.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('correta','errada'); });
 }
 
 function verificarEx4(){
