@@ -50,6 +50,10 @@
     font-family:inherit;
     font-size:0.95rem;
     padding:10px 18px;
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     border-radius:8px;
     border:1px solid var(--accent);
     background:#fff;
@@ -120,6 +124,7 @@
   .chip.certo{ border-color:var(--certo); background:var(--certo-bg); color:var(--certo); }
   .chip.errado{ border-color:var(--erro); background:var(--erro-bg); color:var(--erro); }
   .chip .mini-som{ opacity:0.6; font-size:0.85rem; }
+  .chip.btn-som{ opacity:1; }
 
   .grupos-zonas{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:18px; }
   .grupo-zona{ background:#fff; border:2px solid var(--border); border-radius:10px; padding:10px; min-height:120px; }
@@ -130,7 +135,7 @@
   .zona-drop{ display:flex; flex-wrap:wrap; gap:6px; min-height:60px; }
 
   .botoes{ display:flex; gap:10px; flex-wrap:wrap; margin:18px 0; }
-  .botoes button{ font-family:inherit; font-size:1rem; padding:10px 18px; border-radius:8px; border:1px solid var(--accent); cursor:pointer; background:var(--accent); color:#fff; }
+  .botoes button{ font-family:inherit; font-size:1rem; padding:10px 18px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; border:1px solid var(--accent); cursor:pointer; background:var(--accent); color:#fff; }
   .botoes button.secundario{ background:transparent; color:var(--accent-dark); }
   .botoes button:hover{ opacity:0.9; }
   .botoes button:disabled{ opacity:0.5; cursor:not-allowed; }
@@ -141,6 +146,7 @@
   @media (max-width:480px){
     header h1{ font-size:1.25rem; }
     .alfabeto-linha{ font-size:1.1rem; letter-spacing:1.5px; }
+    table.ref .lista-exemplos .exemplo{ display:inline; white-space:normal; }
   }
 </style>
 </head>
@@ -498,7 +504,7 @@
   <section class="tab-panel" id="tab-praticar">
 
     <h2>1. Classificar o som do X</h2>
-    <p class="instrucao">✋➡️ / 👆👆</p>
+    <p class="instrucao">Arrastar as palavras para o grupo correto (ou clicar na palavra e depois no grupo).<span class="ic">👆</span></p>
 
     <div class="banco" id="banco"></div>
 
