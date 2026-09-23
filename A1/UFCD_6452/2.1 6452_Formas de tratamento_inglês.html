@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<meta name="author" content="Sofia Coelho">
+<title>Formas de tratamento</title>
+<style>
+  :root{
+    --bg:#f6f4ef;
+    --paper:#ffffff;
+    --ink:#2c2a26;
+    --muted:#6b6558;
+    --accent:#383582;
+    --accent-dark:#292760;
+    --border:#cdcde0;
+    --bank-bg:#ededf4;
+    --inf:#b5731a;  --inf-bg:#fbf3e3;
+    --semi:#5c6b7a; --semi-bg:#eef1f4;
+    --for:#383582;  --for-bg:#ebeaf6;
+    --grupo:#9b5a1f; --grupo-bg:#f7ecdf;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    padding:16px 12px 64px;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Calibri","Segoe UI",Arial,sans-serif;
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+
+  header{background:var(--accent);color:#fff;padding:20px 20px 18px;border-radius:10px;margin-bottom:16px;}
+  header h1{margin:0 0 2px;font-size:1.45rem;font-weight:700;letter-spacing:.2px;line-height:1.25;}
+  header .gloss{margin:0 0 10px;font-size:1rem;font-style:italic;opacity:.9;}
+  header p.ufcd{margin:0;font-size:.92rem;opacity:.9;}
+
+  /* atalhos para cada secção */
+  nav.saltos{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+  nav.saltos a{
+    flex:1 1 30%;text-align:center;text-decoration:none;white-space:nowrap;
+    font-weight:700;font-size:.95rem;padding:9px 12px;border-radius:999px;
+    border:2px solid;background:var(--paper);
+    -webkit-tap-highlight-color:transparent;
+  }
+  nav.saltos a.inf{color:var(--inf);border-color:var(--inf);}
+  nav.saltos a.semi{color:var(--semi);border-color:var(--semi);}
+  nav.saltos a.for{color:var(--for);border-color:var(--for);}
+  nav.saltos a.grupo{color:var(--grupo);border-color:var(--grupo);}
+
+  /* cartão de cada forma de tratamento */
+  section.forma{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-left:8px solid var(--border);
+    border-radius:10px;
+    padding:18px 16px 20px;
+    margin-bottom:18px;
+    scroll-margin-top:12px;
+  }
+  section.forma.inf{border-left-color:var(--inf);}
+  section.forma.semi{border-left-color:var(--semi);}
+  section.forma.for{border-left-color:var(--for);}
+  section.forma.grupo{border-left-color:var(--grupo);}
+
+  .topo{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:0 0 6px;}
+  .topo h2{margin:0;font-size:1.5rem;line-height:1.2;font-weight:700;}
+  .inf .topo h2{color:var(--inf);}
+  .semi .topo h2{color:var(--semi);}
+  .for .topo h2{color:var(--for);}
+  .grupo .topo h2{color:var(--grupo);}
+  .registo{display:inline-block;font-size:.85rem;font-weight:700;padding:3px 12px;border-radius:999px;color:#fff;letter-spacing:.2px;}
+  .inf .registo{background:var(--inf);}
+  .semi .registo{background:var(--semi);}
+  .for .registo{background:var(--for);}
+  .grupo .registo{background:var(--grupo);}
+
+  .pessoa{margin:0 0 12px;font-size:.92rem;font-style:italic;color:var(--muted);}
+  p.explica{margin:0 0 14px;}
+  p.explica:last-child{margin-bottom:0;}
+
+  /* caixa de exemplo */
+  .exemplo{
+    background:var(--bank-bg);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px 14px;
+    margin:0 0 12px;
+  }
+  .exemplo:last-child{margin-bottom:0;}
+  .exemplo .rotulo{display:block;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:4px;}
+  .exemplo .pt{display:block;font-size:1.25rem;font-weight:700;line-height:1.35;}
+  .inf .exemplo .pt{color:var(--inf);}
+  .semi .exemplo .pt{color:var(--semi);}
+  .for .exemplo .pt{color:var(--for);}
+  .grupo .exemplo .pt{color:var(--grupo);}
+  .exemplo .en{display:block;font-size:.95rem;font-style:italic;color:var(--muted);margin-top:2px;}
+  .exemplo .contexto{display:block;font-size:.88rem;color:var(--muted);margin-top:4px;}
+  .exemplo .ou{display:inline-block;margin:0 8px 0 0;font-size:1rem;font-weight:400;color:var(--muted);}
+  u.verbo{text-decoration:none;border-bottom:3px solid currentColor;padding-bottom:1px;}
+
+  .nota{margin:10px 0 0;font-size:.9rem;font-style:italic;color:var(--muted);}
+
+  /* escada de formalidade (secção 3) */
+  .escada{display:flex;flex-direction:column;gap:10px;margin:14px 0 0;}
+  .degrau{
+    border:2px solid var(--for);
+    border-radius:12px;
+    padding:12px 14px 14px;
+    background:var(--paper);
+  }
+  .degrau.n2{background:#f5f4fb;}
+  .degrau.n3{background:#ebeaf6;}
+  .degrau.n4{background:#dedcf0;}
+  .degrau .cabeca{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .degrau .num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--for);color:#fff;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:center;}
+  .degrau .nivel{font-size:.9rem;font-weight:700;color:var(--for);}
+  .degrau .nivel small{display:block;font-weight:400;font-style:italic;color:var(--muted);font-size:.85rem;}
+  .degrau .como{margin:0 0 8px;font-size:1.05rem;}
+  .degrau .como strong{color:var(--for);}
+  .degrau ul.lista{margin:0 0 10px;padding-left:1.2em;}
+  .degrau ul.lista li{margin:0 0 2px;}
+  .degrau .exemplo{margin:0;background:rgba(255,255,255,.75);}
+  .degrau .exemplo .pt{font-size:1.15rem;}
+
+  /* títulos (Doutor, Dona…) */
+  h3{font-size:1.1rem;margin:22px 0 10px;color:var(--for);}
+  .titulos{display:flex;flex-direction:column;gap:10px;margin:0;}
+  .titulo{border:1px solid var(--border);border-radius:10px;padding:10px 14px;background:var(--paper);}
+  .titulo .nome{display:block;font-weight:700;font-size:1.08rem;color:var(--for);margin-bottom:2px;}
+  .titulo .ex{display:inline-block;background:var(--for-bg);border:1px solid var(--border);border-radius:999px;padding:2px 12px;font-weight:700;font-size:.95rem;color:var(--for);margin:4px 0 6px;}
+  .titulo p{margin:0;font-size:.98rem;}
+
+  /* chips de alternativa (os senhores / as senhoras) */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;}
+  .chip{display:inline-block;padding:6px 14px;border-radius:999px;border:2px solid var(--grupo);background:var(--grupo-bg);color:var(--grupo);font-weight:700;font-size:1.02rem;}
+
+  p.explica.destaque{margin-top:12px;font-weight:700;color:var(--semi);}
+
+  /* qual? */
+  .regras{display:flex;flex-direction:column;gap:10px;}
+  .regra{display:flex;flex-direction:column;gap:4px;border:2px solid;border-radius:12px;padding:10px 14px;}
+  .regra .alvo{display:flex;align-items:baseline;gap:8px;}
+  .regra.inf{border-color:var(--inf);background:var(--inf-bg);}
+  .regra.for{border-color:var(--for);background:var(--for-bg);}
+  .regra .seta{color:var(--muted);font-size:1.2rem;}
+  .regra .forma-alvo{font-weight:700;font-size:1.15rem;}
+  .regra.inf .forma-alvo{color:var(--inf);}
+  .regra.for .forma-alvo{color:var(--for);}
+  .regra .forma-alvo small{font-weight:400;font-size:.9rem;color:var(--muted);}
+
+  /* estar */
+  table.tabela{width:100%;border-collapse:collapse;font-size:1.05rem;}
+  table.tabela th, table.tabela td{border:1px solid var(--border);padding:9px 10px;text-align:left;vertical-align:top;}
+  table.tabela th{background:var(--for);color:#fff;font-weight:700;font-style:italic;}
+  table.tabela td:first-child{font-weight:700;}
+  table.tabela td:nth-child(2){font-weight:700;} table.tabela td:nth-child(3){font-weight:400;white-space:nowrap;}
+  @media (max-width:360px){ table.tabela th, table.tabela td{padding:8px 6px;} table.tabela{font-size:1rem;} }
+  table.tabela tr.l-inf td{background:var(--inf-bg);} table.tabela tr.l-inf td{color:var(--inf);}
+  table.tabela tr.l-for td{background:var(--for-bg);color:var(--for);}
+  table.tabela tr.l-grupo td{background:var(--grupo-bg);color:var(--grupo);}
+  table.tabela .igual{display:block;font-weight:400;font-size:.9rem;color:var(--muted);}
+
+  @media (min-width:600px){
+    body{padding:24px 16px 64px;}
+    header{padding:22px 24px;}
+    section.forma{padding:22px 24px 24px;}
+    nav.saltos a{flex:0 1 auto;padding:9px 22px;}
+    .escada{gap:12px;}
+    .degrau .cabeca{gap:12px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Formas de tratamento</h1>
+    <p class="gloss" lang="en">How to address someone</p>
+    <p class="ufcd">UFCD 6452 — Eu e a minha rotina diária · Formadora: Sofia Coelho</p>
+  </header>
+
+  <nav class="saltos" aria-label="Secções">
+    <a class="inf" href="#tu">1. Tu</a>
+    <a class="semi" href="#voce">2. Você</a>
+    <a class="for" href="#terceira">3. 3.ª pessoa</a>
+    <a class="grupo" href="#voces">4. Vocês</a>
+    <a class="grupo" href="#vos">5. Vós</a>
+  </nav>
+
+  <!-- 1. TU -->
+  <section class="forma inf" id="tu">
+    <div class="topo">
+      <h2>1. Tu</h2>
+      <span class="registo" lang="en">informal</span>
+    </div>
+    <p class="pessoa" lang="en">verb — 2nd person singular</p>
+    <p class="explica" lang="en">Used with friends, family, children, young people, colleagues, people you are close to in general.</p>
+    <div class="exemplo">
+      <span class="rotulo">Exemplo</span>
+      <span class="pt">Tu és português?</span>
+      <span class="pt"><span class="ou">/</span><u class="verbo">És</u> português?<sup>*</sup></span>
+      <span class="en" lang="en">Are you Portuguese?</span>
+    </div>
+    <div class="exemplo">
+      <span class="pt">Tu falas inglês?</span>
+      <span class="pt"><span class="ou">/</span><u class="verbo">Falas</u> inglês?</span>
+      <span class="en" lang="en">Do you speak English?</span>
+    </div>
+    <p class="nota" lang="en"><sup>*</sup>It is very common in Portuguese to drop the pronoun in a sentence.</p>
+  </section>
+
+  <!-- 2. VOCÊ -->
+  <section class="forma semi" id="voce">
+    <div class="topo">
+      <h2>2. Você</h2>
+      <span class="registo" lang="en">semiformal</span>
+    </div>
+    <p class="pessoa" lang="en">verb — 3rd person singular</p>
+    <p class="explica" lang="en">You wouldn't use it with a boss, someone in a position of power. Some people find it disrespectful and rude. Its usage is changing.</p>
+    <div class="exemplo">
+      <span class="rotulo">Exemplo</span>
+      <span class="pt">Você gosta de brócolos?</span>
+      <span class="en" lang="en">Do you like broccoli?</span>
+    </div>
+    <p class="explica destaque" lang="en">For now: avoid it. Use option 3 (3.ª pessoa).</p>
+  </section>
+
+  <!-- 3. 3.ª PESSOA -->
+  <section class="forma for" id="terceira">
+    <div class="topo">
+      <h2>3. 3.ª pessoa</h2>
+      <span class="registo" lang="en">formal</span>
+    </div>
+    <p class="pessoa" lang="en">verb — 3rd person singular</p>
+    <p class="explica" lang="en">When speaking to a neighbour / elder / boss / stranger, anyone you want to show respect to.</p>
+    <p class="explica" lang="en">Options: (1) simply omit the pronoun «você»; (2) call the person by their name; (3) say «o senhor» or «a senhora»; (4) call the person by their title.</p>
+
+    <div class="escada">
+
+      <div class="degrau n1">
+        <div class="cabeca">
+          <span class="num">1</span>
+          <span class="nivel" lang="en">The most common way</span>
+        </div>
+        <p class="como" lang="en">Simply omit the pronoun «você» <em>(null subject)</em></p>
+        <div class="exemplo">
+          <span class="pt">É de Lisboa?</span>
+          <span class="en" lang="en">Are you from Lisbon?</span>
+        </div>
+        <div class="exemplo">
+          <span class="pt">Trabalha aqui?</span>
+          <span class="en" lang="en">Do you work here?</span>
+        </div>
+      </div>
+
+      <div class="degrau n2">
+        <div class="cabeca">
+          <span class="num">2</span>
+          <span class="nivel" lang="en">Less formal <small>(polite but friendly)</small></span>
+        </div>
+        <p class="como"><strong>O / A</strong> <em lang="en">+ name</em></p>
+        <div class="exemplo">
+          <span class="pt">A Ana é portuguesa?</span>
+          <span class="en" lang="en">Are you Portuguese?</span>
+          <span class="contexto" lang="en">(addressing a person named Ana)</span>
+        </div>
+      </div>
+
+      <div class="degrau n3">
+        <div class="cabeca">
+          <span class="num">3</span>
+          <span class="nivel" lang="en">More formal</span>
+        </div>
+        <p class="como"><strong>O senhor / A senhora</strong> <em lang="en">(often used to address people middle-aged and over)</em></p>
+        <div class="exemplo">
+          <span class="pt">O senhor é o diretor dos Recursos Humanos?</span>
+          <span class="en" lang="en">Are you the Director of Human Resources?</span>
+          <span class="contexto" lang="en">(addressing an HR director)</span>
+        </div>
+        <div class="exemplo">
+          <span class="pt">A senhora mora aqui?</span>
+          <span class="en" lang="en">Do you live here?</span>
+          <span class="contexto" lang="en">(addressing a neighbour)</span>
+        </div>
+        <div class="exemplo">
+          <span class="pt">O senhor é o gerente?</span>
+          <span class="en" lang="en">Are you the manager?</span>
+          <span class="contexto" lang="en">(addressing the manager of a restaurant)</span>
+        </div>
+        <div class="exemplo">
+          <span class="pt">A senhora tem o passaporte?</span>
+          <span class="en" lang="en">Do you have your passport?</span>
+          <span class="contexto" lang="en">(a clerk at the Junta de Freguesia, addressing you)</span>
+        </div>
+      </div>
+
+      <div class="degrau n4">
+        <div class="cabeca">
+          <span class="num">4</span>
+          <span class="nivel" lang="en">Even more formal</span>
+        </div>
+        <ul class="lista">
+          <li><strong>O senhor diretor / A senhora diretora</strong></li>
+          <li><strong>O senhor presidente / A senhora presidente</strong></li>
+          <li><strong>O senhor doutor</strong> (Sr. Dr.) <strong>/ A senhora doutora</strong> (Sr.ª Dr.ª)</li>
+          <li><strong>O senhor engenheiro / A senhora engenheira</strong></li>
+          <li><strong>O senhor professor / A senhora professora</strong></li>
+        </ul>
+        <div class="exemplo">
+          <span class="pt">O senhor diretor é de Lisboa?</span>
+          <span class="en" lang="en">Are you from Lisbon?</span>
+          <span class="contexto" lang="en">(addressing a director)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>Títulos</h3>
+    <div class="titulos">
+      <div class="titulo">
+        <span class="nome">«Doutor» / «doutora»</span>
+        <span class="ex">Até logo, Dr. João Silva.</span>
+        <p lang="en">Usually abbreviated to «Dr.» / «Dr.ª». It typically refers to anyone who is assumed to have any kind of post-secondary education.</p>
+      </div>
+      <div class="titulo">
+        <span class="nome">«Professor Doutor» / «Professora Doutora»</span>
+        <p lang="en">To address a professor (PhD) in an academic situation.</p>
+      </div>
+      <div class="titulo">
+        <span class="nome">«Dona» + first name <em lang="en">or</em> first name and surname</span>
+        <span class="ex">D. Ana</span> <span class="ex">D. Ana Silva</span>
+        <p lang="en">Used before a woman's first name to address her, or refer to her, respectfully, especially when she's older.</p>
+      </div>
+      <div class="titulo">
+        <span class="nome">«Senhor» + first name</span>
+        <span class="ex">Sr. António</span>
+        <p lang="en">Used before a man's first name to address him, or refer to him, respectfully (the male equivalent of «Dona»). With first name and surname [«Sr. António Silva»] it is more formal.</p>
+      </div>
+      <div class="titulo">
+        <span class="nome">«Senhora» + first name <u class="verbo">and</u> surname</span>
+        <span class="ex">Sra. Ana Silva</span>
+        <p lang="en">More formal than «Dona».</p>
+      </div>
+      <div class="titulo">
+        <span class="nome">«Senhora Dona» + first name and surname</span>
+        <span class="ex">Sra. D. Ana Silva</span>
+        <p lang="en">More formal than «Senhora»; used in formal invitations or official documents.</p>
+      </div>
+    </div>
+    <p class="nota" lang="en">You already know two examples from «Cumprimentar e despedir-se»: Sr. António and D. Helena.</p>
+  </section>
+
+  <!-- 4. VOCÊS -->
+  <section class="forma grupo" id="voces">
+    <div class="topo">
+      <h2>4. Vocês</h2>
+      <span class="registo" lang="en">speaking to more than one person</span>
+    </div>
+    <p class="pessoa" lang="en">verb — 3rd person plural</p>
+    <div class="exemplo">
+      <span class="rotulo">Exemplo</span>
+      <span class="pt">Vocês moram aqui?</span>
+      <span class="en" lang="en">Do you live here?</span>
+    </div>
+    <div class="exemplo">
+      <span class="pt">Vocês trabalham aqui?</span>
+      <span class="en" lang="en">Do you work here?</span>
+    </div>
+    <div class="exemplo">
+      <span class="pt">Vocês são de onde?</span>
+      <span class="en" lang="en">Where are you from?</span>
+      <span class="contexto" lang="en">(a teacher, addressing the class)</span>
+    </div>
+    <p class="explica" lang="en" style="margin-top:12px;">If you'd like to be formal, you may use:</p>
+    <div class="chips">
+      <span class="chip">os senhores</span>
+      <span class="chip">as senhoras</span>
+    </div>
+  </section>
+
+  <!-- 5. VÓS -->
+  <section class="forma grupo" id="vos">
+    <div class="topo">
+      <h2>5. Vós</h2>
+      <span class="registo" lang="en">speaking to more than one person</span>
+    </div>
+    <p class="pessoa" lang="en">verb — 2nd person plural</p>
+    <p class="explica" lang="en">It has almost fallen into disuse, except in the North of Portugal.</p>
+    <div class="exemplo">
+      <span class="rotulo">Exemplo</span>
+      <span class="pt">Vós morais aqui?</span>
+      <span class="en" lang="en">Do you live here?</span>
+    </div>
+  </section>
+
+  <!-- QUAL? -->
+  <section class="forma for" id="qual">
+    <div class="topo">
+      <h2 lang="en">Which one do I use?</h2>
+    </div>
+    <div class="regras">
+      <div class="regra inf"><span class="quando" lang="en">friend, colleague of the same age, child</span><span class="alvo"><span class="seta">→</span><span class="forma-alvo">tu</span></span></div>
+      <div class="regra for"><span class="quando" lang="en">older person, stranger, boss, client</span><span class="alvo"><span class="seta">→</span><span class="forma-alvo">3.ª pessoa <small lang="en">(<em lang="pt-PT">o senhor / a senhora</em>, or no pronoun)</small></span></span></div>
+      <div class="regra for"><span class="quando" lang="en">not sure?</span><span class="alvo"><span class="seta">→</span><span class="forma-alvo">3.ª pessoa<small lang="en">, no pronoun</small></span></span></div>
+    </div>
+  </section>
+
+  <!-- ESTAR -->
+  <section class="forma for" id="verbo">
+    <div class="topo">
+      <h2>Estar</h2>
+    </div>
+    <table class="tabela">
+      <thead><tr><th></th><th>estar</th><th></th></tr></thead>
+      <tbody>
+        <tr class="l-inf"><td>tu</td><td>estás</td><td>Como estás?</td></tr>
+        <tr class="l-for"><td>o senhor / a senhora <span class="igual">(= você)</span></td><td>está</td><td>Como está?</td></tr>
+        <tr class="l-grupo"><td>vocês</td><td>estão</td><td>Como estão?</td></tr>
+        <tr class="l-grupo"><td>vós</td><td>estais</td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+</body>
+</html>
