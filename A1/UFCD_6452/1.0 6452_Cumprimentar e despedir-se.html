@@ -356,6 +356,7 @@
   }
   section.exercicio{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:22px 24px 26px;margin-bottom:26px;}
   section.exercicio h2{font-size:1.1rem;margin:0 0 16px;color:var(--accent-dark);text-align:left;}
+  section.exercicio h2.ex-t{display:inline-block;margin:0 0 10px;padding:3px 16px;border-radius:999px;background:var(--accent);border:1px solid var(--accent);color:#fff;font-size:1.05rem;font-weight:700;line-height:1.5;}
   section.exercicio h3{font-size:1rem;margin:22px 0 8px;color:var(--accent-dark);font-style:italic;}
   section.exercicio h3:first-of-type{margin-top:4px;}
   section.exercicio .texto p{margin:0 0 14px;}
@@ -455,11 +456,11 @@
   <nav class="tabs">
     <button class="tab-btn active" id="tab-dialogos" onclick="mostrarPainel('dialogos')">Diálogos</button>
     <button class="tab-btn" id="tab-sintese" onclick="mostrarPainel('sintese')">Cumprimentar e despedir-se</button>
-    <button class="tab-btn" id="tab-ex1" onclick="mostrarPainel('ex1')">Exercício 1</button>
-    <button class="tab-btn" id="tab-ex2" onclick="mostrarPainel('ex2')">Exercício 2</button>
-    <button class="tab-btn" id="tab-ex3" onclick="mostrarPainel('ex3')">Exercício 3</button>
-    <button class="tab-btn" id="tab-ex4" onclick="mostrarPainel('ex4')">Exercício 4</button>
-    <button class="tab-btn" id="tab-ex5" onclick="mostrarPainel('ex5')">Exercício 5</button>
+    <button class="tab-btn" id="tab-ex1" onclick="mostrarPainel('ex1')">Praticar 1</button>
+    <button class="tab-btn" id="tab-ex2" onclick="mostrarPainel('ex2')">Praticar 2</button>
+    <button class="tab-btn" id="tab-ex3" onclick="mostrarPainel('ex3')">Praticar 3</button>
+    <button class="tab-btn" id="tab-ex4" onclick="mostrarPainel('ex4')">Praticar 4</button>
+    <button class="tab-btn" id="tab-ex5" onclick="mostrarPainel('ex5')">Praticar 5</button>
   </nav>
 
   <!-- DIÁLOGOS MODELO -->
@@ -781,7 +782,7 @@
 
   <div class="tab-panel praticar" id="painel-ex1">
     <section class="exercicio" id="ex1">
-      <h2>1. Cumprimentar ou despedir-se?</h2>
+      <h2 class="ex-t">Exercício 1</h2>
       <p class="instrucao">Selecionar a opção correta: <span class="btn-op-exemplo">Cumprimentar</span> ou <span class="btn-op-exemplo">Despedir-se</span>.</p>
       <div class="texto" id="lista-em"></div>
       <div class="botoes">
@@ -795,7 +796,7 @@
 
   <div class="tab-panel praticar" id="painel-ex2">
     <section class="exercicio" id="ex2">
-      <h2>2. Cumprimentar ou despedir-se?</h2>
+      <h2 class="ex-t">Exercício 2</h2>
       <p class="instrucao">Tocar duas vezes: na resposta e depois no espaço.<span class="ic">👆👆</span></p>
       <div id="lista-corr"></div>
       <div class="botoes">
@@ -809,7 +810,7 @@
 
   <div class="tab-panel praticar" id="painel-ex3">
     <section class="exercicio" id="ex3">
-      <h2>3. Cumprimentar ou despedir-se?</h2>
+      <h2 class="ex-t">Exercício 3</h2>
       <p class="instrucao">Tocar na fala à esquerda e depois na resposta certa à direita.<span class="ic">👆👆</span></p>
       <div class="duas-colunas">
         <div class="coluna-lista" id="coluna-esq"></div>
@@ -826,7 +827,7 @@
 
   <div class="tab-panel praticar" id="painel-ex4">
     <section class="exercicio" id="ex4">
-      <h2>4. Cumprimentar ou despedir-se?</h2>
+      <h2 class="ex-t">Exercício 4</h2>
       <p class="instrucao">Tocar duas vezes: na resposta e depois no espaço.<span class="ic">👆👆</span></p>
       <div id="lista-dial1"></div>
       <div class="botoes">
@@ -840,7 +841,7 @@
 
   <div class="tab-panel praticar" id="painel-ex5">
     <section class="exercicio" id="ex5">
-      <h2>5. Cumprimentar ou despedir-se?</h2>
+      <h2 class="ex-t">Exercício 5</h2>
       <p class="instrucao">Tocar duas vezes: na resposta e depois no espaço.<span class="ic">👆👆</span></p>
       <div id="lista-dial2"></div>
       <div class="botoes">
