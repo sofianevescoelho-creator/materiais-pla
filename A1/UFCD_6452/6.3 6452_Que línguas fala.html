@@ -792,7 +792,7 @@ window.CLIPS_VOZ = {"Olá, Pablo! Tudo bem?": "data:audio/mpeg;base64,SUQzBAAAAA
       bloqueado = true; sec.classList.add('bloqueado');
       chips.forEach(function (c) { c.disabled = true; });
       bV.disabled = true; bM.disabled = true;
-      elRes.textContent = ''; elRes.className = 'resultado';
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado';
       atualizar();
     });
     bL.addEventListener('click', function () {
@@ -878,7 +878,7 @@ window.CLIPS_VOZ = {"Olá, Pablo! Tudo bem?": "data:audio/mpeg;base64,SUQzBAAAAA
         });
       });
       bloqueado = true; bV.disabled = true; bM.disabled = true;
-      esconderResultado(); atualizar();
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado'; atualizar();
     });
     bL.addEventListener('click', function () {
       itens.forEach(function (it) {
@@ -991,6 +991,7 @@ window.CLIPS_VOZ = {"Olá, Pablo! Tudo bem?": "data:audio/mpeg;base64,SUQzBAAAAA
       limparMarcas();
       campos.forEach(function (c) { c.value = c.getAttribute('data-r'); c.classList.add('certa'); c.disabled = true; if (c.tagName === 'TEXTAREA') autoAltura(c); });
       bloqueado = true; bV.disabled = true; bM.disabled = true;
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado';
       atualizar();
     });
     bL.addEventListener('click', function () {

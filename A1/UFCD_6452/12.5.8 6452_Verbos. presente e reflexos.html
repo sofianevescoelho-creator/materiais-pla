@@ -405,6 +405,7 @@ window.CONJ = {"pessoas": ["Eu", "Tu", "(Você) / ele / ela", "Nós", "Vocês 
       limparMarcas();
       campos().forEach(function (c) { c.value = c.getAttribute('data-r'); c.classList.add('certa'); c.disabled = true; });
       bloqueado = true; bV.disabled = true; bM.disabled = true;
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado';
       atualizar();
     });
     bL.addEventListener('click', function () {
@@ -481,7 +482,7 @@ window.CONJ = {"pessoas": ["Eu", "Tu", "(Você) / ele / ela", "Nós", "Vocês 
         });
       });
       bloqueado = true; bV.disabled = true; bM.disabled = true;
-      esconderResultado(); atualizar();
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado'; atualizar();
     });
     bL.addEventListener('click', function () {
       itens.forEach(function (it) {
