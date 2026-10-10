@@ -929,7 +929,7 @@
       bloqueado = true; sec.classList.add('bloqueado');
       chips.forEach(function (c) { c.disabled = true; });
       bV.disabled = true; bM.disabled = true;
-      elRes.textContent = ''; elRes.className = 'resultado';
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado';
       atualizar();
     });
     bL.addEventListener('click', function () {
@@ -1011,7 +1011,8 @@
         });
       });
       bloqueado = true; bV.disabled = true; bM.disabled = true;
-      esconderResultado(); atualizar();
+      atualizar();
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado';
     });
     bL.addEventListener('click', function () {
       itens.forEach(function (it) {
@@ -1109,6 +1110,7 @@
       campos.forEach(function (c) { c.value = c.getAttribute('data-r'); c.classList.add('certa'); c.disabled = true; if (c.tagName === 'TEXTAREA') autoAltura(c); });
       bloqueado = true; bV.disabled = true; bM.disabled = true;
       atualizar();
+      elRes.textContent = 'Soluções mostradas.'; elRes.className = 'resultado';
     });
     bL.addEventListener('click', function () {
       campos.forEach(function (c) { c.value = ''; c.disabled = false; if (c.tagName === 'TEXTAREA') autoAltura(c); });
