@@ -19,7 +19,7 @@
     --muted:#6b6558;
     --accent:#383582;
     --accent-dark:#292760;
-    --ok:#3f7d4f;
+    --ok:#387648;
     --ok-bg:#e8f3ea;
     --bad:#b3453f;
     --bad-bg:#fbeceb;
@@ -37,15 +37,6 @@
     line-height:1.7;
   }
   .wrap{max-width:900px;margin:0 auto;}
-  header{
-    background:var(--accent);
-    color:#fff;
-    padding:22px 24px;
-    border-radius:10px;
-    margin-bottom:22px;
-  }
-  header h1{margin:0 0 6px;font-size:1.4rem;font-weight:700;letter-spacing:.2px;}
-  header p{margin:0;font-size:1rem;opacity:.92;}
 
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
   .tab-btn{
@@ -127,9 +118,6 @@
   *{box-sizing:border-box;}
   body{margin:0;padding:24px 16px 64px;background:var(--bg);color:var(--ink);font-family:"Carlito","Calibri","Segoe UI",Arial,sans-serif;font-size:1rem;line-height:1.6;}
   .wrap{max-width:900px;margin:0 auto;}
-  header{background:var(--accent);color:#fff;padding:22px 24px;border-radius:10px;margin-bottom:22px;}
-  header h1{margin:0 0 6px;font-size:1.4rem;}
-  header p{margin:0;opacity:.92;}
   section.bloco{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:22px 24px 26px;margin-bottom:26px;}
   section.bloco h2{font-size:1.5rem;margin:0 0 24px;color:var(--accent-dark);text-align:center;}
   .intro{text-align:center;color:var(--muted);margin:0 0 22px;font-size:.98rem;}
@@ -162,9 +150,6 @@
   *{box-sizing:border-box;}
   body{margin:0;padding:24px 16px 64px;background:var(--bg);color:var(--ink);font-family:"Carlito","Calibri","Segoe UI",Arial,sans-serif;font-size:1rem;line-height:1.6;}
   .wrap{max-width:900px;margin:0 auto;}
-  header{background:var(--accent);color:#fff;padding:22px 24px;border-radius:10px;margin-bottom:22px;}
-  header h1{margin:0 0 6px;font-size:1.4rem;}
-  header p{margin:0;opacity:.92;}
   section.bloco{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:22px 24px 30px;margin-bottom:26px;}
   section.bloco h2{font-size:clamp(1.05rem,5.6vw,1.5rem);margin:0 0 26px;color:var(--accent-dark);text-align:center;}
 
@@ -205,9 +190,6 @@
   *{box-sizing:border-box;}
   body{margin:0;padding:24px 16px 64px;background:var(--bg);color:var(--ink);font-family:"Carlito","Calibri","Segoe UI",Arial,sans-serif;font-size:1rem;line-height:1.6;}
   .wrap{max-width:900px;margin:0 auto;}
-  header{background:var(--accent);color:#fff;padding:22px 24px;border-radius:10px;margin-bottom:22px;}
-  header h1{margin:0 0 6px;font-size:1.4rem;}
-  header p{margin:0;opacity:.92;}
   section.bloco{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:22px 24px 26px;margin-bottom:26px;}
   section.bloco h2{font-size:1.5rem;margin:0 0 16px;color:var(--accent-dark);text-align:center;}
 
@@ -268,9 +250,6 @@
   *{box-sizing:border-box;}
   body{margin:0;padding:24px 16px 64px;background:var(--bg);color:var(--ink);font-family:"Carlito","Calibri","Segoe UI",Arial,sans-serif;font-size:1rem;line-height:1.6;}
   .wrap{max-width:900px;margin:0 auto;}
-  header{background:var(--accent);color:#fff;padding:22px 24px;border-radius:10px;margin-bottom:22px;}
-  header h1{margin:0 0 6px;font-size:1.4rem;}
-  header p{margin:0;opacity:.92;}
   section.bloco{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:22px 24px 26px;margin-bottom:26px;}
   section.bloco h2{font-size:1.5rem;margin:0 0 18px;color:var(--accent-dark);text-align:center;}
 
@@ -443,14 +422,26 @@
   }
   .legenda-icones-em{display:flex;gap:18px;margin:0 0 16px;font-size:.92rem;color:var(--muted);flex-wrap:wrap;}
   .legenda-icones-em span{display:inline-flex;align-items:center;gap:6px;}
+
+  /* Cabeçalho único e baixo (norma de 7 out. 2026) */
+  header{background:var(--accent);color:#fff;padding:14px 16px 13px;border-radius:10px;margin-bottom:12px;}
+  header h1{margin:0 0 2px;font-size:1.4rem;font-weight:700;letter-spacing:.2px;line-height:1.3;}
+  header p{margin:0;font-size:1rem;opacity:.92;line-height:1.4;}
+  @media (max-width:520px){header p .hs{display:none;}header p .ha,header p .hb{display:block;}}
+  @media (max-width:360px){header{padding-left:12px;padding-right:12px;}}
+  @media (min-width:600px){header{padding:18px 24px;margin-bottom:16px;}}
+  header h1 .nb{white-space:nowrap;}
+
+  /* «Ainda faltam respostas.»: Verificar com tudo em branco */
+  .resultado.nivel-vazio{background:#f8f0dd;border-color:#a8791f;color:#7a5610;}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <h1>Cumprimentar e despedir-se</h1>
-    <p>UFCD 6452 — Eu e a minha rotina diária · Formadora: Sofia Coelho</p>
+    <h1>Cumprimentar e <span class="nb">despedir-se</span></h1>
+    <p><span class="ha">UFCD 6452 — Eu e a minha rotina diária</span><span class="hs"> · </span><span class="hb">Formadora: Sofia Coelho</span></p>
   </header>
 
   <nav class="tabs">
@@ -811,7 +802,7 @@
   <div class="tab-panel praticar" id="painel-ex3">
     <section class="exercicio" id="ex3">
       <h2 class="ex-t">Exercício 3</h2>
-      <p class="instrucao">Tocar na fala à esquerda e depois na resposta certa à direita.<span class="ic">👆👆</span></p>
+      <p class="instrucao">Tocar na fala à esquerda e depois na resposta correta à direita.<span class="ic">👆👆</span></p>
       <div class="duas-colunas">
         <div class="coluna-lista" id="coluna-esq"></div>
         <div class="coluna-lista" id="coluna-dir"></div>
@@ -893,7 +884,14 @@ function normalizar(txt){
 function respostasValidas(raw){
   return raw.split('|').map(normalizar);
 }
-function aplicarResultado(exId, corretas, total, sufixo){
+function aplicarResultado(exId, corretas, total, sufixo, semResp){
+  if(semResp){
+    const e0 = document.getElementById('res-' + exId);
+    e0.textContent = 'Ainda faltam respostas.';
+    e0.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
+    e0.classList.add('nivel-vazio');
+    return;
+  }
   const pct = total > 0 ? Math.round((corretas / total) * 100) : 0;
   let nivel, msg;
   if(pct === 100){ nivel = 'nivel-alto'; msg = '🎉 Perfeito! Muito bem!'; }
@@ -901,9 +899,14 @@ function aplicarResultado(exId, corretas, total, sufixo){
   else if(pct >= 40){ nivel = 'nivel-medio'; msg = '💪 Continue a praticar!'; }
   else{ nivel = 'nivel-baixo'; msg = '📚 Tente novamente — vai conseguir!'; }
   const el = document.getElementById('res-' + exId);
-  el.textContent = corretas + ' de ' + total + ' respostas corretas (' + pct + '%). ' + msg + (sufixo || '');
-  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+  el.textContent = corretas + ' de ' + total + ' pontos (' + pct + '%). ' + msg + (sufixo || '');
+  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   el.classList.add(nivel);
+}
+function aplicarSolucoesSemResp(exId){
+  const el = document.getElementById('res-' + exId);
+  el.textContent = 'Soluções mostradas.';
+  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
 }
 function minusc(s){
   return s.charAt(0).toLowerCase() + s.slice(1);
@@ -969,7 +972,7 @@ function verificar(exId){
       else if(b.textContent === escolha) b.classList.add('errada');
     });
   });
-  aplicarResultado(exId, corretas, itensEM.length, '');
+  aplicarResultado(exId, corretas, itensEM.length, '', Object.keys(respostasEM).length === 0);
 }
 function mostrarSolucoes(exId){
   const secao = document.getElementById(exId);
@@ -987,7 +990,8 @@ function mostrarSolucoes(exId){
       b.disabled = true;
     });
   });
-  aplicarResultado(exId, corretas, itensEM.length, ' Soluções apresentadas.');
+  if(Object.keys(respostasEM).length === 0) aplicarSolucoesSemResp(exId);
+  else aplicarResultado(exId, corretas, itensEM.length, ' Soluções mostradas.');
   desativarBotoes(exId, true);
 }
 function desativarBotoes(exId, desativar){
@@ -1005,7 +1009,7 @@ function limpar(exId){
   montarEM();
   const el = document.getElementById('res-' + exId);
   el.textContent = '';
-  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   desativarBotoes(exId, false);
 }
 
@@ -1096,12 +1100,13 @@ function verificarDnd(exId){
       zona.classList.add('errada');
     }
   });
-  aplicarResultado(exId, corretas, zonas.length, '');
+  aplicarResultado(exId, corretas, zonas.length, '', secao.querySelectorAll('.dropzone.preenchida').length === 0);
 }
 function mostrarSolucoesDnd(exId){
   const secao = document.getElementById(exId);
   const zonas = secao.querySelectorAll('.dropzone');
   let corretas = 0;
+  const semResp = secao.querySelectorAll('.dropzone.preenchida').length === 0;
   zonas.forEach(zona => {
     if(!zona.classList.contains('preenchida')) return;
     const resposta = normalizar(zona.textContent);
@@ -1115,7 +1120,8 @@ function mostrarSolucoesDnd(exId){
     zona.classList.remove('vazia','vazia-verif','errada');
     zona.classList.add('preenchida','correta');
   });
-  aplicarResultado(exId, corretas, zonas.length, ' Soluções apresentadas.');
+  if(semResp) aplicarSolucoesSemResp(exId);
+  else aplicarResultado(exId, corretas, zonas.length, ' Soluções mostradas.');
   desativarDnd(exId, true);
 }
 function desativarDnd(exId, desativar){
@@ -1161,7 +1167,7 @@ function limparCorr(){
   montarCorr();
   const el = document.getElementById('res-ex2');
   el.textContent = '';
-  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   desativarDnd('ex2', false);
 }
 
@@ -1264,10 +1270,11 @@ function verificarEx3(){
     if(rIdx === i){ elEsq.classList.add('correta'); elDir.classList.add('correta'); totalCorretas++; }
     else { elEsq.classList.add('errada'); elDir.classList.add('errada'); }
   });
-  aplicarResultado('ex3', totalCorretas, totalItens, '');
+  aplicarResultado('ex3', totalCorretas, totalItens, '', Object.keys(ligacoesEx3).length === 0);
 }
 function mostrarSolucoesEx3(){
   var corretas = 0;
+  var semResp = Object.keys(ligacoesEx3).length === 0;
   paresClicar.forEach(function(p, i){
     if(ligacoesEx3[i] === i) corretas++;
   });
@@ -1281,7 +1288,8 @@ function mostrarSolucoesEx3(){
     elEsq.classList.remove('errada','vazia-verif'); elEsq.classList.add('correta');
     elDir.classList.remove('errada'); elDir.classList.add('correta');
   });
-  aplicarResultado('ex3', corretas, paresClicar.length, ' Soluções apresentadas.');
+  if(semResp) aplicarSolucoesSemResp('ex3');
+  else aplicarResultado('ex3', corretas, paresClicar.length, ' Soluções mostradas.');
   desativarEx3(true);
 }
 function desativarEx3(desativar){
@@ -1300,7 +1308,7 @@ function limparEx3(){
   montarColunas();
   var el = document.getElementById('res-ex3');
   el.textContent = '';
-  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   desativarEx3(false);
 }
 
@@ -1373,7 +1381,7 @@ function limparDial1(){
   montarDial1();
   const el = document.getElementById('res-ex4');
   el.textContent = '';
-  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   desativarDnd('ex4', false);
 }
 
@@ -1417,7 +1425,7 @@ function limparDial2(){
   montarDial2();
   const el = document.getElementById('res-ex5');
   el.textContent = '';
-  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+  el.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   desativarDnd('ex5', false);
 }
 </script>

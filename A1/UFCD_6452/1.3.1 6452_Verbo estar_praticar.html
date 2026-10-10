@@ -19,7 +19,7 @@
     --muted:#6b6558;
     --accent:#383582;
     --accent-dark:#292760;
-    --ok:#3f7d4f;
+    --ok:#387648;
     --ok-bg:#e8f3ea;
     --bad:#b3453f;
     --bad-bg:#fbeceb;
@@ -39,15 +39,6 @@
     line-height:1.7;
   }
   .wrap{max-width:900px;margin:0 auto;}
-  header{
-    background:var(--accent);
-    color:#fff;
-    padding:22px 24px;
-    border-radius:10px;
-    margin-bottom:22px;
-  }
-  header h1{margin:0 0 6px;font-size:1.4rem;font-weight:700;letter-spacing:.2px;}
-  header p{margin:0;font-size:1rem;opacity:.92;}
 
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
   .tab-btn{
@@ -281,6 +272,18 @@
     .duas-imagens .imagem-frase{width:min(78vw,260px);height:min(78vw,260px);max-width:260px;}
   }
   .tab-panel h2.ex-t{display:inline-block;margin:0 0 10px;padding:3px 16px;border-radius:999px;background:var(--accent);border:1px solid var(--accent);color:#fff;font-size:1.05rem;font-weight:700;line-height:1.5;text-align:left;}
+
+  /* Cabeçalho único e baixo (norma de 7 out. 2026) */
+  header{background:var(--accent);color:#fff;padding:14px 16px 13px;border-radius:10px;margin-bottom:12px;}
+  header h1{margin:0 0 2px;font-size:1.4rem;font-weight:700;letter-spacing:.2px;line-height:1.3;}
+  header p{margin:0;font-size:1rem;opacity:.92;line-height:1.4;}
+  @media (max-width:520px){header p .hs{display:none;}header p .ha,header p .hb{display:block;}}
+  @media (max-width:360px){header{padding-left:12px;padding-right:12px;}}
+  @media (min-width:600px){header{padding:18px 24px;margin-bottom:16px;}}
+  header h1 .nb{white-space:nowrap;}
+
+  /* «Ainda faltam respostas.»: Verificar com tudo em branco */
+  .resultado.nivel-vazio{background:#f8f0dd;border-color:#a8791f;color:#7a5610;}
 </style>
 </head>
 <body>
@@ -288,7 +291,7 @@
 
   <header>
     <h1>Verbo <em>estar</em></h1>
-    <p>UFCD 6452 — Eu e a minha rotina diária · Formadora: Sofia Coelho</p>
+    <p><span class="ha">UFCD 6452 — Eu e a minha rotina diária</span><span class="hs"> · </span><span class="hb">Formadora: Sofia Coelho</span></p>
   </header>
 
   <nav class="tabs">
@@ -788,6 +791,10 @@ function lerTexto(btn){
   }
 }
 
+function avisoSemRespostas(div){
+  div.textContent = 'Ainda faltam respostas.';
+  div.className = 'resultado nivel-vazio';
+}
 function normalizarResp(s){
   return (s || '').trim().toLowerCase();
 }
@@ -812,19 +819,20 @@ function verificarEx1(){
 }
 function mostrarResultadoEx1(certas, total){
   var div = document.getElementById('resultado-ex1');
+  if(document.querySelectorAll('#painel-ex1 .vazia-verif').length === total){ avisoSemRespostas(div); return; }
   var pct = Math.round((certas / total) * 100);
   var msg, nivel;
   if(pct === 100){
-    msg = '🎉 Perfeito! ' + certas + ' de ' + total + ' pontos (100%)';
+    msg = certas + ' de ' + total + ' pontos (100%). 🎉 Perfeito! Muito bem!';
     nivel = 'nivel-alto';
   } else if(pct >= 70){
-    msg = '👍 Muito bom! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 👍 Muito bom! Está no bom caminho.';
     nivel = 'nivel-alto';
   } else if(pct >= 40){
-    msg = '💪 Continue a praticar! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 💪 Continue a praticar!';
     nivel = 'nivel-medio';
   } else {
-    msg = '📚 Tente novamente. ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 📚 Tente novamente — vai conseguir!';
     nivel = 'nivel-baixo';
   }
   div.textContent = msg;
@@ -879,19 +887,20 @@ function verificarEx2(){
 }
 function mostrarResultadoEx2(certas, total){
   var div = document.getElementById('resultado-ex2');
+  if(document.querySelectorAll('#painel-ex2 .vazia-verif').length === total){ avisoSemRespostas(div); return; }
   var pct = Math.round((certas / total) * 100);
   var msg, nivel;
   if(pct === 100){
-    msg = '🎉 Perfeito! ' + certas + ' de ' + total + ' pontos (100%)';
+    msg = certas + ' de ' + total + ' pontos (100%). 🎉 Perfeito! Muito bem!';
     nivel = 'nivel-alto';
   } else if(pct >= 70){
-    msg = '👍 Muito bom! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 👍 Muito bom! Está no bom caminho.';
     nivel = 'nivel-alto';
   } else if(pct >= 40){
-    msg = '💪 Continue a praticar! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 💪 Continue a praticar!';
     nivel = 'nivel-medio';
   } else {
-    msg = '📚 Tente novamente. ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 📚 Tente novamente — vai conseguir!';
     nivel = 'nivel-baixo';
   }
   div.textContent = msg;
@@ -946,19 +955,20 @@ function verificarEx3(){
 }
 function mostrarResultadoEx3(certas, total){
   var div = document.getElementById('resultado-ex3');
+  if(document.querySelectorAll('#painel-ex3 .vazia-verif').length === total){ avisoSemRespostas(div); return; }
   var pct = Math.round((certas / total) * 100);
   var msg, nivel;
   if(pct === 100){
-    msg = '🎉 Perfeito! ' + certas + ' de ' + total + ' pontos (100%)';
+    msg = certas + ' de ' + total + ' pontos (100%). 🎉 Perfeito! Muito bem!';
     nivel = 'nivel-alto';
   } else if(pct >= 70){
-    msg = '👍 Muito bom! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 👍 Muito bom! Está no bom caminho.';
     nivel = 'nivel-alto';
   } else if(pct >= 40){
-    msg = '💪 Continue a praticar! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 💪 Continue a praticar!';
     nivel = 'nivel-medio';
   } else {
-    msg = '📚 Tente novamente. ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 📚 Tente novamente — vai conseguir!';
     nivel = 'nivel-baixo';
   }
   div.textContent = msg;
@@ -1180,6 +1190,7 @@ function colocarSelecionadaEx4(alvo){
 }
 
 function verificarEx4(){
+  if(!document.querySelector('#painel-ex4 .slot .palavra')){ avisoSemRespostas(document.getElementById('resultado-ex4')); return; }
   var total = EX5_FRASES.length;
   var certas = 0;
   EX5_FRASES.forEach(function(f){
@@ -1212,16 +1223,16 @@ function mostrarResultadoEx4(certas, total){
   var pct = Math.round((certas / total) * 100);
   var msg, nivel;
   if(pct === 100){
-    msg = '🎉 Perfeito! ' + certas + ' de ' + total + ' frases (100%)';
+    msg = certas + ' de ' + total + ' pontos (100%). 🎉 Perfeito! Muito bem!';
     nivel = 'nivel-alto';
   } else if(pct >= 70){
-    msg = '👍 Muito bom! ' + certas + ' de ' + total + ' frases (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 👍 Muito bom! Está no bom caminho.';
     nivel = 'nivel-alto';
   } else if(pct >= 40){
-    msg = '💪 Continue a praticar! ' + certas + ' de ' + total + ' frases (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 💪 Continue a praticar!';
     nivel = 'nivel-medio';
   } else {
-    msg = '📚 Tente novamente. ' + certas + ' de ' + total + ' frases (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 📚 Tente novamente — vai conseguir!';
     nivel = 'nivel-baixo';
   }
   div.textContent = msg;
@@ -1302,19 +1313,20 @@ function verificarEx5(){
 }
 function mostrarResultadoEx5(certas, total){
   var div = document.getElementById('resultado-ex5');
+  if(document.querySelectorAll('#painel-ex5 .vazia-verif').length === total){ avisoSemRespostas(div); return; }
   var pct = Math.round((certas / total) * 100);
   var msg, nivel;
   if(pct === 100){
-    msg = '🎉 Perfeito! ' + certas + ' de ' + total + ' pontos (100%)';
+    msg = certas + ' de ' + total + ' pontos (100%). 🎉 Perfeito! Muito bem!';
     nivel = 'nivel-alto';
   } else if(pct >= 70){
-    msg = '👍 Muito bom! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 👍 Muito bom! Está no bom caminho.';
     nivel = 'nivel-alto';
   } else if(pct >= 40){
-    msg = '💪 Continue a praticar! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 💪 Continue a praticar!';
     nivel = 'nivel-medio';
   } else {
-    msg = '📚 Tente novamente. ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
+    msg = certas + ' de ' + total + ' pontos (' + pct + '%). 📚 Tente novamente — vai conseguir!';
     nivel = 'nivel-baixo';
   }
   div.textContent = msg;
