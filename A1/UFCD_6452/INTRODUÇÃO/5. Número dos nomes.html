@@ -20,7 +20,7 @@
     --accent-dark:#333a41;
     --border:#c7cbcf;
     --destaque:#fde68a;
-    --ok:#3f7d4f;
+    --ok:#387648;
     --ok-bg:#e8f3ea;
     --bad:#b3453f;
     --bad-bg:#fbeceb;
@@ -37,15 +37,6 @@
   }
   .wrap{max-width:900px;margin:0 auto;}
 
-  header{
-    background:var(--accent);
-    color:#fff;
-    padding:22px 24px;
-    border-radius:10px;
-    margin-bottom:24px;
-  }
-  header h1{margin:0 0 6px;font-size:1.4rem;font-weight:700;letter-spacing:.2px;}
-  header .sub{margin:0;font-size:.95rem;opacity:.92;}
 
   nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
   nav.tabs button{
@@ -160,7 +151,6 @@
   }
 
   @media (max-width:480px){
-    header h1{font-size:1.25rem;}
     .par{font-size:1.05rem;}
     .chip{font-size:.92rem;padding:4px 10px;}
   }
@@ -283,6 +273,22 @@
   .resultado-exercicio.nivel-alto{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);}
   .resultado-exercicio.nivel-medio{background:#fbeedb;border-color:var(--accent);color:var(--accent-dark);}
   .resultado-exercicio.nivel-baixo{background:var(--bad-bg);border-color:var(--bad);color:var(--bad);}
+  .tab-panel h2.ex-t{display:inline-block;margin:0 0 10px;padding:3px 16px;border-radius:999px;background:var(--accent);border:1px solid var(--accent);color:#fff;font-size:1.05rem;font-weight:700;line-height:1.5;text-align:left;}
+
+  /* Cabeçalho único e baixo (norma de 7 out. 2026) */
+  header{background:var(--accent);color:#fff;padding:14px 16px 13px;border-radius:10px;margin-bottom:12px;}
+  header h1{margin:0 0 2px;font-size:1.4rem;font-weight:700;letter-spacing:.2px;line-height:1.3;}
+  header p{margin:0;font-size:1rem;opacity:.92;line-height:1.4;}
+  @media (max-width:520px){header p .hs{display:none;}header p .ha,header p .hb{display:block;}}
+  @media (max-width:360px){header{padding-left:12px;padding-right:12px;}}
+  @media (min-width:600px){header{padding:18px 24px;margin-bottom:16px;}}
+  header h1 .nb{white-space:nowrap;}
+
+  /* Alvos de toque de 44 px nos botões de som e nos chips (decisão de 7 out. 2026) */
+  button.btn-som{min-height:44px;min-width:44px;}
+
+  /* «Ainda faltam respostas.»: Verificar com tudo em branco */
+  .resultado-exercicio.nivel-vazio{background:#f8f0dd;border-color:#a8791f;color:#7a5610;}
 </style>
 </head>
 <body>
@@ -290,13 +296,13 @@
 
   <header>
     <h1>Número dos nomes</h1>
-    <p class="sub">INTRODUÇÃO · Formadora: Sofia Coelho</p>
+    <p><span class="ha">INTRODUÇÃO</span><span class="hs"> · </span><span class="hb">Formadora: Sofia Coelho</span></p>
   </header>
 
   <nav class="tabs">
     <button class="active" id="tab-explicacao" onclick="mostrarPainel('explicacao')">Explicação</button>
-    <button id="tab-regra-ex" onclick="mostrarPainel('regra-ex')">Exercício 1</button>
-    <button id="tab-casos-ex" onclick="mostrarPainel('casos-ex')">Exercício 2</button>
+    <button id="tab-regra-ex" onclick="mostrarPainel('regra-ex')">Praticar 1</button>
+    <button id="tab-casos-ex" onclick="mostrarPainel('casos-ex')">Praticar 2</button>
   </nav>
 
   <div class="tab-panel ativo" id="painel-explicacao">
@@ -393,6 +399,7 @@
   </div>
 
   <div class="tab-panel" id="painel-regra-ex">
+    <h2 class="ex-t">Exercício 1</h2>
     <p class="exercicio-intro">Escrever o plural da palavra.</p>
     <div class="grelha-exercicio">
       <div class="item-exercicio" data-resposta="os copos" data-lenient="false">
@@ -450,6 +457,7 @@
   </div>
 
   <div class="tab-panel" id="painel-casos-ex">
+    <h2 class="ex-t">Exercício 2</h2>
     <p class="exercicio-intro">Ouvir e escrever o plural.</p>
     <div class="grelha-exercicio">
       <div class="item-exercicio" data-resposta="os cães" data-lenient="false">
@@ -593,7 +601,7 @@ function aplicarResultadoExercicio(painelId, corretos, total){
     nivel = 'nivel-baixo';
   }
   resultado.textContent = corretos + ' de ' + total + ' respostas corretas (' + pct + '%). ' + msg;
-  resultado.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+  resultado.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   resultado.classList.add(nivel);
 }
 function definirEstadoBotoes(painelId, desativar){
@@ -607,6 +615,21 @@ function definirEstadoBotoes(painelId, desativar){
 function verificarExercicio(painelId){
   var painel = document.getElementById(painelId);
   var itens = painel.querySelectorAll('.item-exercicio');
+  var respondidos = 0;
+  itens.forEach(function(item){
+    var inp = item.querySelector('.resposta-input');
+    if(inp ? inp.value.trim() !== '' : item.querySelector('.opcao-artigo.selecionado')) respondidos++;
+  });
+  if(respondidos === 0){
+    painel.querySelectorAll('.resposta-input, .opcao-artigo').forEach(function(el){ el.classList.remove('correto','incorreto'); });
+    var res0 = painel.querySelector('.resultado-exercicio');
+    if(res0){
+      res0.textContent = 'Ainda faltam respostas.';
+      res0.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
+      res0.classList.add('nivel-vazio');
+    }
+    return;
+  }
   var corretos = 0;
   itens.forEach(function(item){
     var input = item.querySelector('.resposta-input');
@@ -630,7 +653,7 @@ function mostrarSolucoesExercicio(painelId){
   var resultado = painel.querySelector('.resultado-exercicio');
   if(resultado){
     resultado.textContent = 'Soluções mostradas.';
-    resultado.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+    resultado.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   }
   definirEstadoBotoes(painelId, true);
 }
@@ -645,7 +668,7 @@ function limparExercicio(painelId){
   var resultado = painel.querySelector('.resultado-exercicio');
   if(resultado){
     resultado.textContent = '';
-    resultado.classList.remove('nivel-alto','nivel-medio','nivel-baixo');
+    resultado.classList.remove('nivel-alto','nivel-medio','nivel-baixo','nivel-vazio');
   }
   definirEstadoBotoes(painelId, false);
 }
