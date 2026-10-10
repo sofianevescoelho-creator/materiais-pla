@@ -90,6 +90,31 @@
     font-size: 1.5rem;
     line-height: 1;
   }
+  .busca-campo {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 1.6rem;
+    padding: 0.8rem 1.1rem;
+    font: inherit;
+    font-size: 1.15rem;
+    color: var(--text);
+    background: #fff;
+    border: 2px solid var(--card-border);
+    border-radius: 8px;
+  }
+  .busca-campo::placeholder { color: #8a7f68; }
+  .busca-campo:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-color: var(--accent);
+  }
+  li.escondido, section.secao.escondida { display: none; }
+  .vazio {
+    display: none;
+    margin: 1.5rem 0;
+    font-size: 1.15rem;
+  }
   a.voltar {
     display: inline-block;
     margin-top: 2rem;
@@ -102,71 +127,76 @@
 
 <h1>UFCD 6452</h1>
 
+<input type="search" id="busca" class="busca-campo" placeholder="Procurar um exercício…" aria-label="Procurar um exercício" autocomplete="off" autocapitalize="off" spellcheck="false" dir="auto">
+<p class="vazio" id="semResultados">Nenhum exercício encontrado.</p>
+
+<div id="secoes">
+
 <section class="secao">
   <h2 class="secao-titulo">Introdução</h2>
   <ul>
-    <li><a class="exercicio" href="INTRODU%C3%87%C3%83O/2.%20Alfabeto.html"><span class="label">Alfabeto</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="INTRODU%C3%87%C3%83O/5.%20N%C3%BAmero%20dos%20nomes.html"><span class="label">Número dos nomes</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="INTRODU%C3%87%C3%83O/6.%20G%C3%A9nero%20dos%20nomes.html"><span class="label">Género dos nomes</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="alphabet alfabeto alphabet алфавіт алфавит বর্ণমালা حروف تہجی वर्णमाला alfabe Alphabet 字母 bảng chữ cái الأبجدية"><a class="exercicio" href="INTRODU%C3%87%C3%83O/2.%20Alfabeto.html"><span class="label">Alfabeto</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="number of nouns singular plural número de los nombres singular plural nombre singulier pluriel число іменників однина множина число существительных единственное множественное বচন একবচন বহুবচন اسم کی جمع واحد संज्ञा वचन एकवचन बहुवचन isim tekil çoğul Numerus Singular Plural 名词单复数 số ít số nhiều danh từ المفرد والجمع nome"><a class="exercicio" href="INTRODU%C3%87%C3%83O/5.%20N%C3%BAmero%20dos%20nomes.html"><span class="label">Número dos nomes</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="gender of nouns masculine feminine género de los nombres masculino femenino genre des noms masculin féminin рід іменників чоловічий жіночий род существительных мужской женский লিঙ্গ পুংলিঙ্গ স্ত্রীলিঙ্গ جنس مذکر مؤنث लिंग पुल्लिंग स्त्रीलिंग isim cinsiyeti eril dişil Genus männlich weiblich 名词性别阳性阴性 giống đực giống cái danh từ الجنس المذكر المؤنث nome"><a class="exercicio" href="INTRODU%C3%87%C3%83O/6.%20G%C3%A9nero%20dos%20nomes.html"><span class="label">Género dos nomes</span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
 <section class="secao">
   <h2 class="secao-titulo">Cumprimentar e tratar as pessoas</h2>
   <ul>
-    <li><a class="exercicio" href="1.0%206452_Cumprimentar%20e%20despedir-se.html"><span class="label">Cumprimentar e despedir-se</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="2.1%206452_Formas%20de%20tratamento_ingles.html"><span class="label">Formas de tratamento</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="1.3.1%206452_Verbo%20estar_praticar.html"><span class="label">Verbo «estar»</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="greet say goodbye hello greetings saludar despedirse saluer dire au revoir вітати прощатися здороваться прощаться অভিবাদন বিদায় سلام الوداع नमस्ते अलविदा बिदा selamlaşmak vedalaşmak grüßen sich verabschieden 问候 告别 chào hỏi tạm biệt"><a class="exercicio" href="1.0%206452_Cumprimentar%20e%20despedir-se.html"><span class="label">Cumprimentar e despedir-se</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="forms of address titles mr mrs formas de tratamiento formules de politesse форми звертання формы обращения সম্বোধনের রূপ طریقہ خطاب संबोधन के रूप सम्बोधनका रूप hitap şekilleri Anredeformen 称呼方式 cách xưng hô"><a class="exercicio" href="2.1%206452_Formas%20de%20tratamento_ingles.html"><span class="label">Formas de tratamento</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="verb to be estar temporary verbo estar verbe être дієслово бути тимчасовий глагол быть временный ক্রিয়া হওয়া অস্থায়ী فعل عارضی क्रिया होना अस्थायी estar fiili geçici Verb estar vorübergehend 动词estar 暂时 động từ estar tạm thời"><a class="exercicio" href="1.3.1%206452_Verbo%20estar_praticar.html"><span class="label">Verbo «estar»</span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
 <section class="secao">
   <h2 class="secao-titulo">Apresentar-se e apresentar pessoas</h2>
   <ul>
-    <li><a class="exercicio" href="3.0%206452_Apresentar-se_praticar.html"><span class="label">Apresentar-se</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="3.2%206452_Verbo%20ser_praticar.html"><span class="label">Verbo «ser»</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="3.3%206452_Verbos%20ser%20e%20estar.html"><span class="label">Verbos «ser» e «estar»</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="4.%206452_Apresentar_pessoas_este_esse_aquele.html"><span class="label"><span class="frase">Apresentar pessoas.</span> <span class="frase">Este, esse, aquele</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="introduce yourself presentarse se présenter представитися представиться নিজের পরিচয় দেওয়া اپنا تعارف کرانا अपना परिचय देना आफूलाई चिनाउनु kendini tanıtmak sich vorstellen 自我介绍 tự giới thiệu التعريف عن النفس"><a class="exercicio" href="3.0%206452_Apresentar-se_praticar.html"><span class="label">Apresentar-se</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="verb to be ser permanent verbo ser verbe être permanent дієслово бути постійний глагол быть постоянный ক্রিয়া হওয়া স্থায়ী فعل مستقل क्रिया होना स्थायी ser fiili kalıcı Verb ser dauerhaft 动词ser 永久 động từ ser vĩnh viễn"><a class="exercicio" href="3.2%206452_Verbo%20ser_praticar.html"><span class="label">Verbo «ser»</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="verbs to be ser estar verbos ser et être дієслова бути глаголы быть ক্রিয়া হওয়া افعال ہونا क्रिया होना ser ve estar fiilleri Verben ser und estar 动词ser和estar động từ ser và estar"><a class="exercicio" href="3.3%206452_Verbos%20ser%20e%20estar.html"><span class="label">Verbos «ser» e «estar»</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="introduce people this that those demonstratives presentar personas este ese aquel présenter des personnes celui-ci celui-là представляти людей цей той представлять людей этот тот মানুষদের পরিচয় করানো এই ওই لوگوں کا تعارف کرانا یہ وہ लोगों का परिचय कराना यह वह मानिसहरूलाई चिनाउनु यो त्यो insanları tanıtmak bu şu o Personen vorstellen dieser jener 介绍别人 这个 那个 giới thiệu người cái này cái kia تقديم الأشخاص هذا ذلك pessoa"><a class="exercicio" href="4.%206452_Apresentar_pessoas_este_esse_aquele.html"><span class="label"><span class="frase">Apresentar pessoas.</span> <span class="frase">Este, esse, aquele</span></span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
 <section class="secao">
   <h2 class="secao-titulo">Dizer a idade e o número de telefone</h2>
   <ul>
-    <li><a class="exercicio" href="4.2_6452_Dizer_a_idade_verbo_ter.html"><span class="label"><span class="frase">Dizer e perguntar a idade.</span> <span class="frase">Verbo «ter»</span></span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="4.3_6452_Telefone_e_numeros.html"><span class="label"><span class="frase">Pedir e dar o número de telefone.</span> <span class="frase">Os números</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="age how old verb to have ter edad verbo tener âge verbe avoir вік дієслово мати возраст глагол иметь বয়স ক্রিয়া থাকা عمر فعل رکھنا उम्र क्रिया रखना उमेर yaş sahip olmak fiili Alter Verb haben 年龄 动词有 tuổi động từ có العمر فعل"><a class="exercicio" href="4.2_6452_Dizer_a_idade_verbo_ter.html"><span class="label"><span class="frase">Dizer e perguntar a idade.</span> <span class="frase">Verbo «ter»</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="phone number numbers telephone número de teléfono números numéro de téléphone nombres номер телефону числа номер телефона числа ফোন নম্বর সংখ্যা فون نمبر اعداد फ़ोन नंबर संख्या फोन नम्बर अंक telefon numarası sayılar Telefonnummer Zahlen 电话号码 数字 số điện thoại số رقم الهاتف الأرقام"><a class="exercicio" href="4.3_6452_Telefone_e_numeros.html"><span class="label"><span class="frase">Pedir e dar o número de telefone.</span> <span class="frase">Os números</span></span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
 <section class="secao">
   <h2 class="secao-titulo">Falar sobre a família</h2>
   <ul>
-    <li><a class="exercicio" href="5.2_6452_Apresentar_a_familia.html"><span class="label"><span class="frase">Apresentar a família (1).</span> <span class="frase">Meu, minha...</span></span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="5.2_6452_Apresentar_a_familia_2.html"><span class="label">Apresentar a família (2)</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="family my mine possessives familia mi mío famille mon ma сім&#x27;я мій моя семья мой моя পরিবার আমার خاندان میرا परिवार मेरा परिवार मेरो aile Familie mein 家庭 我的 gia đình của tôi عائلة"><a class="exercicio" href="5.2_6452_Apresentar_a_familia.html"><span class="label"><span class="frase">Apresentar a família (1).</span> <span class="frase">Meu, minha...</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="family familia famille сім&#x27;я семья পরিবার خاندان परिवार aile Familie 家庭 gia đình عائلة"><a class="exercicio" href="5.2_6452_Apresentar_a_familia_2.html"><span class="label">Apresentar a família (2)</span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
 <section class="secao">
   <h2 class="secao-titulo">Falar sobre a origem, a nacionalidade e as línguas</h2>
   <ul>
-    <li><a class="exercicio" href="6.%206452_Falar%20sobre%20a%20origem%20e%20a%20nacionalidade.html"><span class="label">Falar sobre a origem e a nacionalidade</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="6.3%206452_Que%20l%C3%ADnguas%20fala.html"><span class="label"><span class="frase">Que línguas fala?</span> <span class="frase">Verbo «falar»</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="origin nationality where are you from country origen nacionalidad origine nationalité походження національність происхождение национальность উৎপত্তি জাতীয়তা اصلیت قومیت मूल राष्ट्रीयता उत्पत्ति राष्ट्रियता köken milliyet Herkunft Nationalität 出身 国籍 nguồn gốc quốc tịch الأصل الجنسية"><a class="exercicio" href="6.%206452_Falar%20sobre%20a%20origem%20e%20a%20nacionalidade.html"><span class="label">Falar sobre a origem e a nacionalidade</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="languages verb to speak what languages do you speak idiomas verbo hablar langues verbe parler мови дієслово говорити языки глагол говорить ভাষা ক্রিয়া বলা زبانیں فعل بولنا भाषाएँ क्रिया बोलना भाषा बोल्नु diller konuşmak fiili Sprachen sprechen 语言 说 ngôn ngữ nói اللغات التحدث língua"><a class="exercicio" href="6.3%206452_Que%20l%C3%ADnguas%20fala.html"><span class="label"><span class="frase">Que línguas fala?</span> <span class="frase">Verbo «falar»</span></span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
 <section class="secao">
   <h2 class="secao-titulo">Falar sobre a vida pessoal e profissional</h2>
   <ul>
-    <li><a class="exercicio" href="7.%206452_Informa%C3%A7%C3%B5es%20pessoais%20e%20profissionais.html"><span class="label">Dar e pedir informações pessoais e profissionais</span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="7.1%206452_Os%20meus%20dados.html"><span class="label"><span class="frase">Os meus dados.</span> <span class="frase">Morada, contactos e documentos</span></span><span class="chev">&rsaquo;</span></a></li>
-    <li><a class="exercicio" href="7.2%206452_Nos%20servi%C3%A7os_dar%20os%20meus%20dados.html"><span class="label"><span class="frase">Nos serviços.</span> <span class="frase">Dar os meus dados</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="personal information profession job work NIF información personal profesión trabajo informations personnelles profession travail особисті дані професія робота личные данные профессия работа ব্যক্তিগত তথ্য পেশা কাজ ذاتی معلومات پیشہ کام व्यक्तिगत जानकारी पेशा काम व्यक्तिगत जानकारी पेशा काम kişisel bilgiler meslek iş persönliche Daten Beruf Arbeit 个人信息 职业 工作 thông tin cá nhân nghề nghiệp công việc معلومات شخصية المهنة العمل informação pessoal profissional"><a class="exercicio" href="7.%206452_Informa%C3%A7%C3%B5es%20pessoais%20e%20profissionais.html"><span class="label">Dar e pedir informações pessoais e profissionais</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="my details address contacts phone e-mail documents passport mis datos dirección contactos teléfono documentos pasaporte mes données adresse contacts téléphone documents passeport мої дані адреса контакти телефон документи паспорт мои данные адрес контакты телефон документы паспорт আমার তথ্য ঠিকানা যোগাযোগ ফোন নথি পাসপোর্ট میری تفصیلات پتہ رابطہ فون دستاویزات پاسپورٹ मेरी जानकारी पता संपर्क फ़ोन दस्तावेज़ पासपोर्ट मेरो विवरण ठेगाना सम्पर्क फोन कागजात राहदानी bilgilerim adres iletişim telefon belgeler pasaport meine Daten Adresse Kontakt Telefon Dokumente Reisepass 我的信息 地址 联系方式 电话 证件 护照 thông tin của tôi địa chỉ liên lạc điện thoại giấy tờ hộ chiếu بياناتي العنوان جهات الاتصال الهاتف الوثائق جواز السفر dado"><a class="exercicio" href="7.1%206452_Os%20meus%20dados.html"><span class="label"><span class="frase">Os meus dados.</span> <span class="frase">Morada, contactos e documentos</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="at the services bank health centre form give my details en los servicios banco centro de salud formulario dar mis datos dans les services banque centre de santé formulaire donner mes données у службах банк медичний центр анкета надати дані в учреждениях банк поликлиника анкета сообщить данные সেবা কেন্দ্র ব্যাংক স্বাস্থ্যকেন্দ্র ফর্ম তথ্য দেওয়া خدمات بینک ہیلتھ سینٹر فارم تفصیلات دینا सेवाएँ बैंक स्वास्थ्य केंद्र फ़ॉर्म जानकारी देना सेवा बैंक स्वास्थ्य केन्द्र फारम विवरण दिनु hizmetler banka sağlık merkezi form bilgi vermek bei Ämtern Bank Gesundheitszentrum Formular Daten angeben 服务 银行 医疗中心 表格 提供信息 dịch vụ ngân hàng trung tâm y tế biểu mẫu cung cấp thông tin الخدمات البنك المركز الصحي استمارة إعطاء بياناتي serviço dado"><a class="exercicio" href="7.2%206452_Nos%20servi%C3%A7os_dar%20os%20meus%20dados.html"><span class="label"><span class="frase">Nos serviços.</span> <span class="frase">Dar os meus dados</span></span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
 <section class="secao">
   <h2 class="secao-titulo">Falar sobre a rotina diária</h2>
   <ul>
-    <li><a class="exercicio" href="12.5.8%206452_Verbos.%20presente%20e%20reflexos.html"><span class="label">Verbos: presente e reflexos</span><span class="chev">&rsaquo;</span></a></li>
+    <li data-alt="verbs present tense reflexive verbs daily routine verbos presente verbos reflexivos rutina diaria verbes présent verbes pronominaux routine quotidienne дієслова теперішній час зворотні дієслова розпорядок дня глаголы настоящее время возвратные глаголы распорядок дня ক্রিয়া বর্তমান কাল দৈনন্দিন রুটিন فعل حال روزمرہ کا معمول क्रिया वर्तमान काल दैनिक दिनचर्या क्रिया वर्तमान काल दैनिक दिनचर्या fiiller şimdiki zaman dönüşlü fiiller günlük rutin Verben Präsens reflexive Verben Tagesablauf 动词 现在时 反身动词 日常生活 động từ thì hiện tại động từ phản thân thói quen hằng ngày الأفعال المضارع الأفعال الانعكاسية الروتين اليومي reflexo"><a class="exercicio" href="12.5.8%206452_Verbos.%20presente%20e%20reflexos.html"><span class="label">Verbos: presente e reflexos</span><span class="chev">&rsaquo;</span></a></li>
   </ul>
 </section>
 
@@ -177,7 +207,41 @@
   </ul>
 </section>
 
+</div>
+
 <a class="voltar" href="../">&larr; voltar à página principal</a>
+
+<script>
+(function () {
+  var campo = document.getElementById('busca');
+  var secoes = Array.prototype.slice.call(document.querySelectorAll('#secoes .secao'));
+  var aviso = document.getElementById('semResultados');
+
+  function normalizar(txt) {
+    return txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function filtrar() {
+    var consulta = normalizar(campo.value.trim());
+    var total = 0;
+    secoes.forEach(function (secao) {
+      var visiveis = 0;
+      Array.prototype.slice.call(secao.querySelectorAll('li')).forEach(function (li) {
+        var texto = normalizar(li.querySelector('.label').textContent + ' ' + (li.getAttribute('data-alt') || ''));
+        var corresponde = consulta === '' || texto.indexOf(consulta) !== -1;
+        li.classList.toggle('escondido', !corresponde);
+        if (corresponde) visiveis++;
+      });
+      secao.classList.toggle('escondida', visiveis === 0);
+      total += visiveis;
+    });
+    aviso.style.display = total === 0 ? 'block' : 'none';
+  }
+
+  campo.addEventListener('input', filtrar);
+  campo.addEventListener('search', filtrar);
+})();
+</script>
 
 </body>
 </html>
