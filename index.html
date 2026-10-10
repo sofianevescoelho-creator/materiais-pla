@@ -5,45 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UFCD 6452 — exercícios</title>
 <style>
-  :root { font-size: 16px; }
+  :root {
+    font-size: 16px;
+    --bg: #faf8f3;
+    --card: #f4f0e6;
+    --card-border: #ddd3ba;
+    --card-hover: #ece4cf;
+    --text: #2b2b2b;
+    --accent: #7a5c22;
+  }
   body {
     font-family: Calibri, Arial, sans-serif;
     max-width: 40rem;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-    color: #2b2b2b;
-    line-height: 1.6;
+    margin: 2rem auto;
+    padding: 0 1.25rem 2rem;
+    color: var(--text);
+    line-height: 1.5;
+    background: var(--bg);
   }
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 600;
+    margin: 0 0 1.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--card-border);
+  }
+  section.secao {
+    margin-top: 2rem;
+  }
+  section.secao:first-of-type {
+    margin-top: 0;
+  }
+  h2.secao-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--card-border);
+    text-wrap: balance;
   }
   ul {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
   li {
-    margin: 0.6rem 0;
+    margin: 0.65rem 0;
   }
   a.exercicio {
-    display: block;
-    padding: 0.9rem 1.2rem;
-    background: #f4f0e6;
-    border: 1px solid #ddd3ba;
-    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 3.4rem;
+    box-sizing: border-box;
+    padding: 0.8rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
     text-decoration: none;
-    color: #3a3a3a;
-    font-size: 1.1rem;
-    transition: background 0.15s ease;
+    color: var(--text);
+    font-size: 1.15rem;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
   }
-  a.exercicio:hover {
-    background: #ece4cf;
+  a.exercicio:hover, a.exercicio:active {
+    background: var(--card-hover);
+    box-shadow: 0 2px 6px rgba(122, 92, 34, 0.15);
+  }
+  a.exercicio:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .label {
+    flex: 1 1 auto;
+    text-wrap: balance;
+  }
+  .frase {
+    display: inline-block;
+  }
+  .chev {
+    flex: 0 0 auto;
+    color: var(--accent);
+    font-size: 1.5rem;
+    line-height: 1;
   }
   a.voltar {
     display: inline-block;
     margin-top: 2rem;
     font-size: 1rem;
-    color: #7a5c22;
+    color: var(--accent);
   }
 </style>
 </head>
@@ -51,21 +102,80 @@
 
 <h1>UFCD 6452</h1>
 
-<ul>
-  <li><a class="exercicio" href="INTRODU%C3%87%C3%83O/index.html">Introdução (3 fichas)</a></li>
-  <li><a class="exercicio" href="1.0%206452_Cumprimentar%20e%20despedir-se.html">Cumprimentar e despedir-se</a></li>
-  <li><a class="exercicio" href="2.1%206452_Formas%20de%20tratamento_ingl%C3%AAs.html">Formas de tratamento</a></li>
-  <li><a class="exercicio" href="1.3.1%206452_Verbo%20estar_praticar.html">Verbo «estar»</a></li>
-  <li><a class="exercicio" href="3.0%206452_Apresentar-se_praticar.html">Apresentar-se</a></li>
-  <li><a class="exercicio" href="3.2%206452_Verbo%20ser_praticar.html">Verbo «ser»</a></li>
-  <li><a class="exercicio" href="3.3%206452_Verbos%20ser%20e%20estar.html">Verbos «ser» e «estar»</a></li>
-  <li><a class="exercicio" href="4.%206452_Apresentar_pessoas_este_esse_aquele.html">Apresentar pessoas. Este, esse, aquele</a></li>
-  <li><a class="exercicio" href="4.2_6452_Dizer_a_idade_verbo_ter.html">Dizer e perguntar a idade. Verbo «ter»</a></li>
-  <li><a class="exercicio" href="4.3_6452_Telefone_e_numeros.html">Pedir e dar o número de telefone. Os números</a></li>
-  <li><a class="exercicio" href="5.2_6452_Apresentar_a_familia.html">Apresentar a família (1). Meu, minha...</a></li>
-  <li><a class="exercicio" href="5.2_6452_Apresentar_a_familia_2.html">Apresentar a família (2)</a></li>
-  <li><a class="exercicio" href="6.%206452_Falar%20sobre%20a%20origem%20e%20a%20nacionalidade.html">Falar sobre a origem e a nacionalidade</a></li>
-</ul>
+<section class="secao">
+  <h2 class="secao-titulo">Introdução</h2>
+  <ul>
+    <li><a class="exercicio" href="INTRODU%C3%87%C3%83O/2.%20Alfabeto.html"><span class="label">Alfabeto</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="INTRODU%C3%87%C3%83O/5.%20N%C3%BAmero%20dos%20nomes.html"><span class="label">Número dos nomes</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="INTRODU%C3%87%C3%83O/6.%20G%C3%A9nero%20dos%20nomes.html"><span class="label">Género dos nomes</span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Cumprimentar e tratar as pessoas</h2>
+  <ul>
+    <li><a class="exercicio" href="1.0%206452_Cumprimentar%20e%20despedir-se.html"><span class="label">Cumprimentar e despedir-se</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="2.1%206452_Formas%20de%20tratamento_ingles.html"><span class="label">Formas de tratamento</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="1.3.1%206452_Verbo%20estar_praticar.html"><span class="label">Verbo «estar»</span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Apresentar-se e apresentar pessoas</h2>
+  <ul>
+    <li><a class="exercicio" href="3.0%206452_Apresentar-se_praticar.html"><span class="label">Apresentar-se</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="3.2%206452_Verbo%20ser_praticar.html"><span class="label">Verbo «ser»</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="3.3%206452_Verbos%20ser%20e%20estar.html"><span class="label">Verbos «ser» e «estar»</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="4.%206452_Apresentar_pessoas_este_esse_aquele.html"><span class="label"><span class="frase">Apresentar pessoas.</span> <span class="frase">Este, esse, aquele</span></span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Dizer a idade e o número de telefone</h2>
+  <ul>
+    <li><a class="exercicio" href="4.2_6452_Dizer_a_idade_verbo_ter.html"><span class="label"><span class="frase">Dizer e perguntar a idade.</span> <span class="frase">Verbo «ter»</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="4.3_6452_Telefone_e_numeros.html"><span class="label"><span class="frase">Pedir e dar o número de telefone.</span> <span class="frase">Os números</span></span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Falar sobre a família</h2>
+  <ul>
+    <li><a class="exercicio" href="5.2_6452_Apresentar_a_familia.html"><span class="label"><span class="frase">Apresentar a família (1).</span> <span class="frase">Meu, minha...</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="5.2_6452_Apresentar_a_familia_2.html"><span class="label">Apresentar a família (2)</span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Falar sobre a origem, a nacionalidade e as línguas</h2>
+  <ul>
+    <li><a class="exercicio" href="6.%206452_Falar%20sobre%20a%20origem%20e%20a%20nacionalidade.html"><span class="label">Falar sobre a origem e a nacionalidade</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="6.3%206452_Que%20l%C3%ADnguas%20fala.html"><span class="label"><span class="frase">Que línguas fala?</span> <span class="frase">Verbo «falar»</span></span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Falar sobre a vida pessoal e profissional</h2>
+  <ul>
+    <li><a class="exercicio" href="7.%206452_Informa%C3%A7%C3%B5es%20pessoais%20e%20profissionais.html"><span class="label">Dar e pedir informações pessoais e profissionais</span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="7.1%206452_Os%20meus%20dados.html"><span class="label"><span class="frase">Os meus dados.</span> <span class="frase">Morada, contactos e documentos</span></span><span class="chev">&rsaquo;</span></a></li>
+    <li><a class="exercicio" href="7.2%206452_Nos%20servi%C3%A7os_dar%20os%20meus%20dados.html"><span class="label"><span class="frase">Nos serviços.</span> <span class="frase">Dar os meus dados</span></span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Falar sobre a rotina diária</h2>
+  <ul>
+    <li><a class="exercicio" href="12.5.8%206452_Verbos.%20presente%20e%20reflexos.html"><span class="label">Verbos: presente e reflexos</span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Perguntar e responder nos serviços e nos transportes</h2>
+  <ul>
+    <li><a class="exercicio" href="9.8%206452_Nos%20transportes.html"><span class="label">Nos transportes</span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
 
 <a class="voltar" href="../">&larr; voltar à página principal</a>
 
