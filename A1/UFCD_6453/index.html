@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFCD 6453 — exercícios</title>
+<style>
+  :root {
+    font-size: 16px;
+    --bg: #faf8f3;
+    --card: #f4f0e6;
+    --card-border: #ddd3ba;
+    --card-hover: #ece4cf;
+    --text: #2b2b2b;
+    --accent: #7a5c22;
+  }
+  body {
+    font-family: Calibri, Arial, sans-serif;
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 0 1.25rem 2rem;
+    color: var(--text);
+    line-height: 1.5;
+    background: var(--bg);
+  }
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0 0 1.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--card-border);
+  }
+  section.secao {
+    margin-top: 2rem;
+  }
+  section.secao:first-of-type {
+    margin-top: 0;
+  }
+  h2.secao-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--card-border);
+    text-wrap: balance;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin: 0.65rem 0;
+  }
+  a.exercicio {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 3.4rem;
+    box-sizing: border-box;
+    padding: 0.8rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.15rem;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+  a.exercicio:hover, a.exercicio:active {
+    background: var(--card-hover);
+    box-shadow: 0 2px 6px rgba(122, 92, 34, 0.15);
+  }
+  a.exercicio:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .label {
+    flex: 1 1 auto;
+    text-wrap: balance;
+  }
+  .frase {
+    display: inline-block;
+  }
+  .chev {
+    flex: 0 0 auto;
+    color: var(--accent);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .busca-campo {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 1.6rem;
+    padding: 0.8rem 1.1rem;
+    font: inherit;
+    font-size: 1.15rem;
+    color: var(--text);
+    background: #fff;
+    border: 2px solid var(--card-border);
+    border-radius: 8px;
+  }
+  .busca-campo::placeholder { color: #8a7f68; }
+  .busca-campo:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-color: var(--accent);
+  }
+  li.escondido, section.secao.escondida { display: none; }
+  .vazio {
+    display: none;
+    margin: 1.5rem 0;
+    font-size: 1.15rem;
+  }
+  a.voltar {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<h1>UFCD 6453</h1>
+
+<input type="search" id="busca" class="busca-campo" placeholder="Procurar um exercício…" aria-label="Procurar um exercício" autocomplete="off" autocapitalize="off" spellcheck="false" dir="auto">
+<p class="vazio" id="semResultados">Nenhum exercício encontrado.</p>
+
+<div id="secoes">
+
+<section class="secao">
+  <h2 class="secao-titulo">Hábitos alimentares</h2>
+  <ul>
+    <li data-alt="food drinks breakfast lunch dinner dessert coffee bread meal alimentos comida bebidas desayuno almuerzo cena postre café pan aliments nourriture boissons petit-déjeuner déjeuner dîner dessert café pain їжа напої сніданок обід вечеря десерт кава хліб еда напитки завтрак обед ужин десерт кофе хлеб খাবার পানীয় সকালের নাস্তা দুপুরের খাবার রাতের খাবার ডেজার্ট কফি রুটি کھانا مشروبات ناشتہ دوپہر کا کھانا رات کا کھانا میٹھا کافی روٹی खाना पेय नाश्ता दोपहर का खाना रात का खाना मिठाई कॉफ़ी ब्रेड खाना पेय पदार्थ बिहानको खाना दिउँसोको खाना रातिको खाना मिठाई कफी पाउरोटी yiyecekler içecekler kahvaltı öğle yemeği akşam yemeği tatlı kahve ekmek Lebensmittel Essen Getränke Frühstück Mittagessen Abendessen Nachtisch Kaffee Brot 食物 饮料 早餐 午餐 晚餐 甜点 咖啡 面包 thức ăn đồ uống bữa sáng bữa trưa bữa tối tráng miệng cà phê bánh mì الطعام المشروبات الفطور الغداء العشاء الحلوى القهوة الخبز comida refeição pequeno-almoço almoço jantar sobremesa café pão alimento bebida"><a class="exercicio" href="0.%206453_Alimentos%20e%20bebidas.html"><span class="label">Alimentos e bebidas</span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+</section>
+
+</div>
+
+<a class="voltar" href="../">&larr; voltar à página principal</a>
+
+<script>
+(function () {
+  var campo = document.getElementById('busca');
+  var secoes = Array.prototype.slice.call(document.querySelectorAll('#secoes .secao'));
+  var aviso = document.getElementById('semResultados');
+
+  function normalizar(txt) {
+    return txt.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  function filtrar() {
+    var consulta = normalizar(campo.value.trim());
+    var total = 0;
+    secoes.forEach(function (secao) {
+      var visiveis = 0;
+      Array.prototype.slice.call(secao.querySelectorAll('li')).forEach(function (li) {
+        var texto = normalizar(li.querySelector('.label').textContent + ' ' + (li.getAttribute('data-alt') || ''));
+        var corresponde = consulta === '' || texto.indexOf(consulta) !== -1;
+        li.classList.toggle('escondido', !corresponde);
+        if (corresponde) visiveis++;
+      });
+      secao.classList.toggle('escondida', visiveis === 0);
+      total += visiveis;
+    });
+    aviso.style.display = total === 0 ? 'block' : 'none';
+  }
+
+  campo.addEventListener('input', filtrar);
+  campo.addEventListener('search', filtrar);
+})();
+</script>
+
+</body>
+</html>
