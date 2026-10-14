@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UFCD 6453 — exercícios</title>
+<title>UFCD 6453 — Hábitos alimentares, cultura e lazer</title>
 <style>
   :root {
     font-size: 16px;
@@ -121,11 +121,15 @@
     font-size: 1rem;
     color: var(--accent);
   }
+  h1 .frase { text-wrap: balance; }
+  @media (max-width: 380px) {
+    h1 { font-size: 1.45rem; }
+  }
 </style>
 </head>
 <body>
 
-<h1>UFCD 6453</h1>
+<h1><span class="frase">UFCD 6453 —</span> <span class="frase">Hábitos alimentares, cultura e lazer</span></h1>
 
 <input type="search" id="busca" class="busca-campo" placeholder="Procurar um exercício…" aria-label="Procurar um exercício" autocomplete="off" autocapitalize="off" spellcheck="false" dir="auto">
 <p class="vazio" id="semResultados">Nenhum exercício encontrado.</p>
@@ -158,7 +162,7 @@
   var aviso = document.getElementById('semResultados');
 
   function normalizar(txt) {
-    return txt.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    return txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
   function filtrar() {
