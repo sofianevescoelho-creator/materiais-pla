@@ -7,12 +7,12 @@
 <style>
   :root {
     font-size: 16px;
-    --bg: #faf8f3;
-    --card: #f4f0e6;
-    --card-border: #ddd3ba;
-    --card-hover: #ece4cf;
+    --bg: #fbf9fa;
+    --card: #f6eef3;
+    --card-border: #e2cbd9;
+    --card-hover: #efe1ea;
     --text: #2b2b2b;
-    --accent: #7a5c22;
+    --accent: #862763;
   }
   body {
     font-family: Calibri, Arial, sans-serif;
@@ -71,7 +71,7 @@
   }
   a.exercicio:hover, a.exercicio:active {
     background: var(--card-hover);
-    box-shadow: 0 2px 6px rgba(122, 92, 34, 0.15);
+    box-shadow: 0 2px 6px rgba(134, 39, 99, 0.15);
   }
   a.exercicio:focus-visible {
     outline: 3px solid var(--accent);
@@ -103,7 +103,7 @@
     border: 2px solid var(--card-border);
     border-radius: 8px;
   }
-  .busca-campo::placeholder { color: #8a7f68; }
+  .busca-campo::placeholder { color: #86697c; }
   .busca-campo:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 2px;
@@ -125,6 +125,87 @@
   @media (max-width: 380px) {
     h1 { font-size: 1.45rem; }
   }
+
+  /* ===== «Outros exercícios para ouvir» (linha que abre e fecha) ===== */
+  details.mais > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 3.4rem;
+    box-sizing: border-box;
+    padding: 0.8rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 1.15rem;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+  details.mais > summary::-webkit-details-marker { display: none; }
+  details.mais > summary:hover { background: var(--card-hover); box-shadow: 0 2px 6px rgba(134, 39, 99, 0.15); }
+  details.mais > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  details.mais > summary .chev { transition: transform 0.15s ease; }
+  details.mais[open] > summary .chev { transform: rotate(90deg); }
+  .mais-n-f { white-space: nowrap; font-size: 0.95rem; color: #764c67; }
+  .mais-lista {
+    margin: 0.35rem 0 0 0.5rem;
+    border-left: 3px solid var(--card-border);
+    padding-left: 0.35rem;
+  }
+  a.mais-a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    min-height: 2.9rem;
+    box-sizing: border-box;
+    padding: 0.5rem 0.7rem;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--card-border);
+  }
+  a.mais-a:last-child { border-bottom: 0; }
+  a.mais-a:hover, a.mais-a:active { background: var(--card-hover); }
+  a.mais-a:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .mais-txt { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+  .mais-n { font-size: 1.05rem; line-height: 1.3; }
+  .mais-aba { font-size: 0.92rem; line-height: 1.35; color: #764c67; }
+
+  /* ===== Blocos fechados: o aluno vê só os títulos e abre o que procura ===== */
+  section.secao { margin-top: 0.8rem; }
+  details.bloco > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    min-height: 3.4rem;
+    box-sizing: border-box;
+    padding: 0.6rem 1.1rem;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+  details.bloco > summary::-webkit-details-marker { display: none; }
+  details.bloco > summary:hover { background: var(--card); box-shadow: 0 2px 6px rgba(134, 39, 99, 0.15); }
+  details.bloco > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  details.bloco > summary .chev { font-size: 1.7rem; transition: transform 0.15s ease; }
+  details.bloco[open] > summary .chev { transform: rotate(90deg); }
+  details.bloco > summary h2.secao-titulo {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  details.bloco > ul { margin-top: 0.6rem; }
 </style>
 </head>
 <body>
@@ -137,18 +218,33 @@
 <div id="secoes">
 
 <section class="secao">
-  <h2 class="secao-titulo">Hábitos alimentares</h2>
+  <details class="bloco">
+  <summary><h2 class="secao-titulo">Hábitos alimentares</h2><span class="chev" aria-hidden="true">&rsaquo;</span></summary>
   <ul>
     <li data-alt="food drinks breakfast lunch dinner dessert coffee bread meal alimentos comida bebidas desayuno almuerzo cena postre café pan aliments nourriture boissons petit-déjeuner déjeuner dîner dessert café pain їжа напої сніданок обід вечеря десерт кава хліб еда напитки завтрак обед ужин десерт кофе хлеб খাবার পানীয় সকালের নাস্তা দুপুরের খাবার রাতের খাবার ডেজার্ট কফি রুটি کھانا مشروبات ناشتہ دوپہر کا کھانا رات کا کھانا میٹھا کافی روٹی खाना पेय नाश्ता दोपहर का खाना रात का खाना मिठाई कॉफ़ी ब्रेड खाना पेय पदार्थ बिहानको खाना दिउँसोको खाना रातिको खाना मिठाई कफी पाउरोटी yiyecekler içecekler kahvaltı öğle yemeği akşam yemeği tatlı kahve ekmek Lebensmittel Essen Getränke Frühstück Mittagessen Abendessen Nachtisch Kaffee Brot 食物 饮料 早餐 午餐 晚餐 甜点 咖啡 面包 thức ăn đồ uống bữa sáng bữa trưa bữa tối tráng miệng cà phê bánh mì الطعام المشروبات الفطور الغداء العشاء الحلوى القهوة الخبز comida refeição pequeno-almoço almoço jantar sobremesa café pão alimento bebida"><a class="exercicio" href="0.%206453_Alimentos%20e%20bebidas.html"><span class="label">Alimentos e bebidas</span><span class="chev">&rsaquo;</span></a></li>
   </ul>
+  </details>
 </section>
-
 <section class="secao">
-  <h2 class="secao-titulo">Cozinhar e pratos típicos</h2>
+  <details class="bloco">
+  <summary><h2 class="secao-titulo">Cozinhar e pratos típicos</h2><span class="chev" aria-hidden="true">&rsaquo;</span></summary>
   <ul>
     <li data-alt="cooking techniques boil grill fry roast stew peel cut chop grate técnicas de cocina cocer asar freír guisar pelar cortar picar rallar techniques de cuisine cuire griller frire rôtir mijoter éplucher couper hacher râper техніки приготування варити смажити запікати тушкувати чистити різати терти техники приготовления варить жарить запекать тушить чистить резать натирать রান্নার পদ্ধতি সেদ্ধ করা ভাজা ঝলসানো রোস্ট করা খোসা ছাড়ানো কাটা কুচি করা কোরানো کھانا پکانے کے طریقے ابالنا تلنا بھوننا گرل کرنا چھیلنا کاٹنا کدوکش کرنا खाना पकाने के तरीके उबालना तलना भूनना ग्रिल करना छीलना काटना कद्दूकस करना खाना पकाउने तरिका उमाल्नु तार्नु भुट्नु ग्रिल गर्नु बोक्रा फाल्नु काट्नु किस्नु pişirme teknikleri haşlamak ızgara yapmak kızartmak fırında pişirmek soymak kesmek doğramak rendelemek Kochtechniken kochen grillen braten schmoren schälen schneiden hacken reiben 烹饪方法 煮 烤 炸 炖 去皮 切 切碎 擦丝 kỹ thuật nấu ăn luộc nướng chiên rán hầm gọt vỏ cắt băm bào طرق الطهي سلق شواء قلي تقشير تقطيع فرم بشر cozinhar cozer grelhar fritar assar estufar descascar cortar picar ralar técnica"><a class="exercicio" href="1.1%206453_T%C3%A9cnicas%20de%20culin%C3%A1ria.html"><span class="label">Técnicas de culinária</span><span class="chev">&rsaquo;</span></a></li>
     <li data-alt="recipe cooking cake chicken eggs omelette ingredients mix receta cocinar pastel pollo huevos tortilla ingredientes mezclar recette cuisiner gâteau poulet œufs omelette ingrédients mélanger рецепт готувати торт курка яйця омлет інгредієнти змішувати рецепт готовить торт курица яйца омлет ингредиенты смешивать রেসিপি রান্না কেক মুরগি ডিম অমলেট উপকরণ মেশানো ریسیپی ترکیب پکانا کیک مرغی انڈے آملیٹ اجزاء ملانا रेसिपी खाना पकाना केक चिकन अंडे ऑमलेट सामग्री मिलाना रेसिपी खाना पकाउने केक कुखुरा अण्डा अमलेट सामग्री मिसाउनु tarif yemek yapmak kek tavuk yumurta omlet malzemeler karıştırmak Rezept kochen Kuchen Hähnchen Eier Omelett Zutaten mischen 食谱 烹饪 蛋糕 鸡肉 鸡蛋 煎蛋卷 食材 搅拌 công thức nấu ăn bánh gà trứng trứng chiên nguyên liệu trộn وصفة طبخ كعكة دجاج بيض عجة مكونات خلط receita bolo frango ovos omelete ingredientes cozinhar outra técnica receita"><a class="exercicio" href="1.1.1%206453_Outras%20t%C3%A9cnicas%20de%20culin%C3%A1ria%20receitas.html"><span class="label">Outras técnicas de culinária (receitas)</span><span class="chev">&rsaquo;</span></a></li>
   </ul>
+  </details>
+</section>
+
+<section class="secao">
+  <details class="bloco">
+  <summary><h2 class="secao-titulo">Ouvir</h2><span class="chev" aria-hidden="true">&rsaquo;</span></summary>
+  <ul>
+    <li data-alt="listen listening listening comprehension audio recording escuchar comprensión oral comprensión auditiva audio grabación écouter compréhension orale audio enregistrement слухати аудіювання розуміння на слух аудіо запис слушать аудирование понимание на слух аудио запись শোনা শুনে বোঝা অডিও রেকর্ডিং سننا سن کر سمجھنا آڈیو ریکارڈنگ सुनना सुनकर समझना ऑडियो रिकॉर्डिंग सुन्नु सुनेर बुझ्नु अडियो रेकर्डिङ dinlemek dinleme anlama ses kaydı hören Hörverstehen Audio Aufnahme 听 听力 理解 音频 录音 nghe hiểu nghe âm thanh ghi âm استماع فهم المسموع صوت تسجيل ouvir escutar compreensão oral áudio gravação outros exercícios para ouvir exercícios de escuta"><details class="mais"><summary class="exercicio-sum"><span class="label">Outros exercícios para ouvir <span class="mais-n-f">(1 ficheiro)</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></summary>
+    <div class="mais-lista">
+      <a class="mais-a" href="0.%206453_Alimentos%20e%20bebidas.html"><span class="mais-txt"><span class="mais-n">Alimentos e bebidas</span><span class="mais-aba">aba «Praticar 1», exercício 1</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></a>
+    </div></details></li>
+  </ul>
+  </details>
 </section>
 
 </div>
@@ -159,16 +255,31 @@
 (function () {
   var campo = document.getElementById('busca');
   var secoes = Array.prototype.slice.call(document.querySelectorAll('#secoes .secao'));
+  var blocos = secoes.map(function (s) { return s.querySelector('details.bloco'); });
   var aviso = document.getElementById('semResultados');
+  var CHAVE = 'ufcd6453-blocos-abertos';
+  var antes = null; /* blocos abertos antes de começar a pesquisa */
 
   function normalizar(txt) {
-    return txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return txt.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  function abertos() {
+    return blocos.map(function (d) { return d.open ? '1' : '0'; }).join('');
+  }
+  function repor(estado) {
+    blocos.forEach(function (d, i) { d.open = estado.charAt(i) === '1'; });
+  }
+  function guardar() {
+    if (campo.value.trim() !== '') return;
+    try { sessionStorage.setItem(CHAVE, abertos()); } catch (e) {}
   }
 
   function filtrar() {
     var consulta = normalizar(campo.value.trim());
     var total = 0;
-    secoes.forEach(function (secao) {
+    if (consulta !== '' && antes === null) antes = abertos();
+    secoes.forEach(function (secao, i) {
       var visiveis = 0;
       Array.prototype.slice.call(secao.querySelectorAll('li')).forEach(function (li) {
         var texto = normalizar(li.querySelector('.label').textContent + ' ' + (li.getAttribute('data-alt') || ''));
@@ -177,11 +288,19 @@
         if (corresponde) visiveis++;
       });
       secao.classList.toggle('escondida', visiveis === 0);
+      if (consulta !== '' && visiveis > 0) blocos[i].open = true;
       total += visiveis;
     });
+    if (consulta === '' && antes !== null) { repor(antes); antes = null; }
     aviso.style.display = total === 0 ? 'block' : 'none';
   }
 
+  try {
+    var e = sessionStorage.getItem(CHAVE);
+    if (e && e.length === blocos.length) repor(e);
+  } catch (x) {}
+
+  blocos.forEach(function (d) { d.addEventListener('toggle', guardar); });
   campo.addEventListener('input', filtrar);
   campo.addEventListener('search', filtrar);
 })();
