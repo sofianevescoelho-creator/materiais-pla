@@ -117,6 +117,10 @@
   .conta .vazia{color:var(--muted);padding:6px 0;}
   .total{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:10px 0 0;font-weight:700;font-size:1.2rem;}
   .total .tv{font-size:1.9rem;color:var(--accent-dark);font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .faixa{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:900px;margin:0 auto;padding:10px 18px;padding-bottom:calc(10px + env(safe-area-inset-bottom));border:0;border-radius:12px 12px 0 0;background:var(--accent-dark);color:#fff;font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;box-shadow:0 -2px 10px rgba(0,0,0,.15);}
+  .faixa b{font-size:1.5rem;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .faixa small{display:block;font-size:.85rem;font-weight:400;opacity:.85;}
+  .faixa[hidden]{display:none;}
   .extenso{margin:4px 0 0;font-size:1.1rem;line-height:1.45;color:var(--ink);}
   .extenso b{color:var(--accent-dark);}
   .extenso small{display:block;font-size:.9rem;color:var(--muted,#666);margin-top:2px;}
@@ -269,6 +273,7 @@
     <p class="pn" id="e-prob-s"></p>
     <div class="pf" id="e-prob-a"></div>
   </div>
+  <button type="button" class="faixa" id="e-faixa" hidden><span><span id="e-faixa-rot">Conta</span><small>Ver a conta</small></span><b id="e-faixa-tot">0&nbsp;€</b></button>
 </section>
 </div>
 </div>
@@ -306,6 +311,7 @@ window.PROB_A = [{"s": "O cliente está a fazer dieta e não pode comer qualquer
       if (on && focar) b.focus();
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(atualizarFaixa, 0);
   }
   tabs.forEach(function (b, i) {
     b.addEventListener('click', function () { mostrarPainel(b.getAttribute('data-painel')); });
@@ -474,6 +480,8 @@ window.PROB_A = [{"s": "O cliente está a fazer dieta e não pode comer qualquer
     else if (pago < t) { tr.innerHTML = 'Não chega. Faltam <b>' + fmt(t - pago) + '</b>.'; tr.classList.add('neg'); }
     else if (pago === t) { tr.innerHTML = '<b>Está certo, obrigado(a).</b>'; tr.classList.remove('neg'); }
     else { tr.innerHTML = 'Aqui tem o troco: <b>' + fmt(pago - t) + '</b>.'; tr.classList.remove('neg'); }
+    $('#e-faixa-rot').textContent = ['Cliente 1', 'Cliente 2', 'Os dois'][ativa]; $('#e-faixa-tot').textContent = fmt(t);
+    atualizarFaixa();
   }
   $$('.cc').forEach(function (b) {
     b.addEventListener('click', function () { ativa = +b.getAttribute('data-c'); render(); });
@@ -498,6 +506,15 @@ window.PROB_A = [{"s": "O cliente está a fazer dieta e não pode comer qualquer
     pagos[ativa] = (pagos[ativa] === v) ? 0 : v;
     render();
   });
+  /* Faixa com o total, visível enquanto a conta está abaixo do ecrã */
+  function atualizarFaixa() {
+    var f = $('#e-faixa'), c = $('#painel-empregado .conta');
+    if (!$('#painel-empregado').classList.contains('ativo')) { f.hidden = true; return; }
+    f.hidden = c.getBoundingClientRect().top < window.innerHeight - 24;
+  }
+  $('#e-faixa').addEventListener('click', function () { $('#painel-empregado .conta').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  window.addEventListener('scroll', atualizarFaixa, { passive: true });
+  window.addEventListener('resize', atualizarFaixa);
   $('#e-nova').addEventListener('click', function () { contas = [{ c: {}, o: [] }, { c: {}, o: [] }]; pagos = [0, 0, 0]; ativa = 0; render(); CAIXAS.e.hidden = true; });
   render();
 })();
