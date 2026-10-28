@@ -599,8 +599,19 @@
   .jg-fim .resultado{margin:8px 0 0;}
   .jg-fim .botoes{justify-content:center;margin-top:18px;}
   #jg-inicio .botoes{margin-top:14px;}
+  #jg-corpo[data-nivel="r"]{--jg:var(--accent);}
+  .jg-recorde{margin:0 0 4px;font-size:1.1rem;font-weight:700;color:var(--ink);}
+  .jg-recorde.novo{color:var(--ok);display:inline-block;animation:jg-pop .5s ease-out;}
+  .jg-fim .botoes button.sec{background:transparent;color:var(--accent-dark);}
+  .jg-partilha{margin:18px 0 0;}
+  .jg-partilha a{display:inline-block;padding:8px 16px;min-height:40px;line-height:1.4;font-size:.95rem;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--accent-dark);text-decoration:none;}
+  .jg-partilha a:hover{border-color:var(--accent);}
+  .jg-confete{position:fixed;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:hidden;z-index:50;}
+  .jg-confete span{position:absolute;top:-16px;height:14px;opacity:0;border-radius:2px;animation-name:jg-cai;animation-timing-function:linear;animation-fill-mode:forwards;}
+  @keyframes jg-cai{0%{transform:translateY(0) rotate(0deg);opacity:1;}85%{opacity:1;}100%{transform:translateY(108vh) rotate(560deg);opacity:0;}}
   @media (prefers-reduced-motion:reduce){
-    .jg-pontos.sobe,.jg-fb .jg-seg,.jg-estrelas .on{animation:none;}
+    .jg-pontos.sobe,.jg-fb .jg-seg,.jg-estrelas .on,.jg-recorde.novo{animation:none;}
+    .jg-confete{display:none;}
     .jg-barra .prog-fill{transition:none;}
   }
   @media (max-width:359px){ .jg-ops.n4{grid-template-columns:1fr;} }
@@ -1314,7 +1325,7 @@ window.IMG = {"o_batedeira": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD
 </script>
 <script>
 /* ---------- Aba Jogar: 3 níveis, pontos, estrelas ---------- */
-window.JOGO_CFG = {"repetir":true};
+window.JOGO_CFG = {"repetir":true,"id":"cozinha","nome":"Na cozinha"};
 window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_forno","o_placa_inducao"],"e":1},{"k":"o_exaustor","w":"o exaustor","g":"eq","a":["exaustor"],"e":1},{"k":"o_placa_inducao","w":"a placa de indução","g":"eq","a":["placa de indução","placa vitrocerâmica","placa de vitrocerâmica","placa"],"e":1},{"k":"o_forno","w":"o forno","g":"eq","a":["forno"],"t":["forno"],"e":1},{"k":"o_micro_ondas","w":"o micro-ondas","g":"eq","a":["micro-ondas","microondas","forno micro-ondas"],"t":["forno"],"e":1},{"k":"o_frigorifico","w":"o frigorífico","g":"eq","a":["frigorífico"],"e":1},{"k":"o_lava_loica","w":"o lava-loiça","g":"eq","a":["lava-loiça","lava-louça"],"e":1},{"k":"o_maquina_lavar_loica","w":"a máquina de lavar loiça","g":"eq","a":["máquina de lavar loiça","máquina de lavar louça"],"x":["o_prato","o_garfo","o_faca","o_colher"],"e":1},{"k":"o_maquina_lavar_roupa","w":"a máquina de lavar roupa","g":"eq","a":["máquina de lavar roupa"],"e":1},{"k":"o_frigideira","w":"a frigideira","g":"ut","a":["frigideira"],"e":1},{"k":"o_tacho","w":"o tacho","g":"ut","a":["tacho"],"t":["tacho"]},{"k":"o_panela","w":"a panela","g":"ut","a":["panela"],"t":["tacho"]},{"k":"o_tabua_cortar","w":"a tábua de cortar","g":"ut","a":["tábua de cortar","tábua"],"e":1},{"k":"o_colher_pau","w":"a colher de pau","g":"ut","a":["colher de pau"],"t":["colher"],"e":1},{"k":"o_concha","w":"a concha","g":"ut","a":["concha"],"t":["colher"],"e":1},{"k":"o_ralador","w":"o ralador","g":"ut","a":["ralador"],"e":1},{"k":"o_escorredor","w":"o escorredor","g":"ut","a":["escorredor"],"e":1},{"k":"o_espatula","w":"a espátula","g":"ut","a":["espátula"],"e":1},{"k":"o_maquina_cafe","w":"a máquina de café","g":"ut","a":["máquina de café","cafeteira"],"x":["o_chavena"],"e":1},{"k":"o_torradeira","w":"a torradeira","g":"ut","a":["torradeira"],"e":1},{"k":"o_chaleira","w":"a chaleira elétrica","g":"ut","a":["chaleira elétrica","chaleira"],"e":1},{"k":"o_varinha_magica","w":"a varinha mágica","g":"ut","a":["varinha mágica","varinha","triturador"],"t":["triturar"],"e":1},{"k":"o_liquidificadora","w":"a liquidificadora","g":"ut","a":["liquidificadora","liquidificador"],"t":["triturar"],"e":1},{"k":"o_batedeira","w":"a batedeira","g":"ut","a":["batedeira"],"e":1},{"k":"o_mesa","w":"a mesa","g":"ms","a":["mesa"],"t":["mesa"],"e":1},{"k":"o_cadeira","w":"a cadeira","g":"ms","a":["cadeira"],"e":1},{"k":"o_toalha_de_mesa","w":"a toalha de mesa","g":"ms","a":["toalha de mesa","toalha"],"t":["mesa"],"e":1},{"k":"o_guardanapo_papel","w":"o guardanapo de papel","g":"ms","a":["guardanapo de papel","guardanapo","guardanapos"],"e":1},{"k":"o_prato","w":"o prato","g":"ms","a":["prato"],"t":["loica"],"e":1},{"k":"o_tigela","w":"a tigela","g":"ms","a":["tigela"],"t":["loica"],"e":1},{"k":"o_travessa","w":"a travessa","g":"ms","a":["travessa"],"t":["loica"],"e":1},{"k":"o_copo","w":"o copo","g":"ms","a":["copo"],"t":["agua"],"e":1},{"k":"o_chavena","w":"a chávena","g":"ms","a":["chávena"],"x":["o_colher"],"e":1},{"k":"o_jarro","w":"o jarro","g":"ms","a":["jarro"],"t":["agua"],"e":1},{"k":"o_garrafa_agua","w":"a garrafa de água","g":"ms","a":["garrafa de água","garrafa"],"t":["agua"],"e":1},{"k":"o_saleiro","w":"o saleiro","g":"ms","a":["saleiro"],"e":1},{"k":"o_garfo","w":"o garfo","g":"ms","a":["garfo"],"e":1},{"k":"o_faca","w":"a faca","g":"ms","a":["faca"],"e":1},{"k":"o_colher","w":"a colher","g":"ms","a":["colher"],"t":["colher"],"e":1}];
 (function () {
   'use strict';
@@ -1430,6 +1441,7 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
       }
       if (ok) {
         if (esp) { usados[esp.alvo.k] = 1; qs.splice(Math.floor(Math.random() * (qs.length + 1)), 0, esp); }
+        qs.forEach(function (q) { q.n = n; });
         return qs;
       }
       Object.keys(locais).forEach(function (k) { delete usados[k]; });
@@ -1445,10 +1457,37 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
   var qs = [], certas = 0, respondidas = 0, seguidas = 0, pontosNivel = 0, gerac = 0, TOTAL = 5, MAXIMO = 300;
   var timer = null;
 
+  var revisao = false, errosNivel = [], errosPorNivel = [[], [], []];
+  var ID = CFG.id || 'jogo', NOME = CFG.nome || 'jogo';
+  function lerRecorde() {
+    try { var v = parseInt(window.localStorage.getItem('jogo6453_' + ID), 10); return isNaN(v) ? null : v; } catch (e) { return null; }
+  }
+  function guardarRecorde(v) { try { window.localStorage.setItem('jogo6453_' + ID, String(v)); } catch (e) {} }
+  function confete() {
+    if (reduzir) return;
+    var cores = ['#862763', '#387648', '#a8791f', '#2b5f8c', '#b3453f', '#8a5a1e'], box = document.createElement('div'), i, s;
+    box.className = 'jg-confete'; box.setAttribute('aria-hidden', 'true');
+    for (i = 0; i < 40; i++) {
+      s = document.createElement('span');
+      s.style.left = (Math.random() * 100) + '%';
+      s.style.background = cores[i % cores.length];
+      s.style.animationDelay = (Math.random() * 0.6) + 's';
+      s.style.animationDuration = (1.8 + Math.random() * 1.4) + 's';
+      s.style.width = (7 + Math.floor(Math.random() * 5)) + 'px';
+      box.appendChild(s);
+    }
+    document.body.appendChild(box);
+    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 3800);
+  }
+  function linkPartilha() {
+    var t = 'Fiz ' + total + ' pontos' + (total <= MAXIMO ? ' em ' + MAXIMO : '') + ' no jogo «' + NOME + '». 🏆';
+    return 'https://wa.me/?text=' + encodeURIComponent(t);
+  }
+
   function atualizar(subiu) {
-    elCorpo.setAttribute('data-nivel', String(nivel));
-    elNivel.textContent = 'Nível ' + nivel + ' de 3';
-    elPontos.textContent = total + ' pontos';
+    elCorpo.setAttribute('data-nivel', revisao ? 'r' : String(nivel));
+    elNivel.textContent = revisao ? 'Rever os erros' : 'Nível ' + nivel + ' de 3';
+    elPontos.textContent = revisao ? 'sem pontos' : total + ' pontos';
     if (subiu && !reduzir) { elPontos.classList.remove('sobe'); void elPontos.offsetWidth; elPontos.classList.add('sobe'); }
     elFill.style.width = (respondidas / TOTAL * 100) + '%';
     elProg.textContent = Math.min(respondidas + 1, TOTAL) + ' / ' + TOTAL;
@@ -1471,9 +1510,9 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
       var fb = document.createElement('div');
       fb.className = 'jg-fb'; fb.setAttribute('role', 'status'); fb.setAttribute('aria-live', 'polite');
       q.fb = fb; q.cartao = c; q.resp = false; q.quases = 0;
-      if (nivel < 3) {
+      if (q.n < 3) {
         var ops = document.createElement('div');
-        ops.className = 'jg-ops ' + (nivel === 1 ? 'n3' : 'n4');
+        ops.className = 'jg-ops ' + (q.n === 1 ? 'n3' : 'n4');
         q.ops.forEach(function (it) {
           var b = document.createElement('button');
           b.type = 'button'; b.className = 'btn-op'; b.setAttribute('data-k', it.k); b.innerHTML = it.h;
@@ -1511,6 +1550,16 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
   function registar(q, certa) {
     q.resp = true; respondidas++;
     var p = 0;
+    if (revisao) {
+      if (certa) { certas++; q.fb.innerHTML = '<span class="ok">✓ Certo!</span>'; }
+      else q.fb.innerHTML = '<span class="err">✗ A palavra certa é: ' + q.alvo.h + '.</span>';
+      atualizar(false);
+      var m2 = gerac;
+      clearTimeout(timer);
+      timer = setTimeout(function () { if (m2 === gerac) avancar(); }, certa ? 1200 : 2400);
+      return;
+    }
+    if (!certa) errosNivel.push(q);
     if (certa) {
       certas++; seguidas++; p = 10 * nivel; pontosNivel += p; total += p;
       var h = '<span class="ok">✓ Certo! +' + p + ' pontos</span>';
@@ -1563,11 +1612,11 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
   }
 
   function avancar() {
-    if (respondidas >= TOTAL) { fimDeNivel(); return; }
+    if (respondidas >= TOTAL) { if (revisao) fimRevisao(); else fimDeNivel(); return; }
     var prox = qs.filter(function (q) { return !q.resp; })[0];
     if (!prox) return;
     prox.cartao.scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
-    if (nivel === 3 && prox.input) { try { prox.input.focus({ preventScroll: true }); } catch (e) { prox.input.focus(); } }
+    if (prox.input) { try { prox.input.focus({ preventScroll: true }); } catch (e) { prox.input.focus(); } }
   }
 
   /* ----- fim de nível e final ----- */
@@ -1587,7 +1636,9 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
     var passou = certas >= 3, h;
     if (passou) {
       estrelas[nivel - 1] = certas - 2;
+      errosPorNivel[nivel - 1] = errosNivel.slice();
       if (nivel === 3) { final(); return; }
+      if (certas === 5) confete();
       var msg = certas === 5 ? ['🎉 Perfeito! Muito bem!', 'nivel-alto'] : certas === 4 ? ['👍 Muito bom! Está no bom caminho.', 'nivel-alto'] : ['💪 Continue a praticar!', 'nivel-medio'];
       h = estrelasHtml(estrelas[nivel - 1]) +
         '<h3 class="jg-fim-t">Nível ' + nivel + ' concluído!</h3>' +
@@ -1606,17 +1657,47 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
     var pct = Math.min(100, Math.round(total / MAXIMO * 100));
     var msg = pct >= 100 ? ['🎉 Perfeito! Muito bem!', 'nivel-alto'] : pct >= 70 ? ['👍 Muito bom! Está no bom caminho.', 'nivel-alto'] : pct >= 40 ? ['💪 Continue a praticar!', 'nivel-medio'] : ['📚 Tente novamente — vai conseguir!', 'nivel-baixo'];
     var linha = [1, 2, 3].map(function (n) { return '<span class="nw">Nível ' + n + ' ' + new Array(estrelas[n - 1] + 1).join('⭐') + '</span>'; }).join(' · ');
+    var antes = lerRecorde(), novo = antes !== null && total > antes, rec = '';
+    if (antes !== null) rec = novo ? '<p class="jg-recorde novo">🏅 Novo recorde!</p>' : '<p class="jg-recorde">O seu melhor: ' + antes + ' pontos</p>';
+    guardarRecorde(antes === null ? total : Math.max(antes, total));
+    var temErros = errosPorNivel.some(function (l) { return l.length > 0; });
+    var botoes = temErros
+      ? '<button type="button" id="jg-rever">Rever os erros</button><button type="button" class="sec" id="jg-outra">Jogar outra vez</button>'
+      : '<button type="button" id="jg-outra">Jogar outra vez</button>';
     var h = '<h3 class="jg-fim-t">🏆 Passou os 3 níveis!</h3>' +
-      '<p class="jg-fim-p">' + total + ' pontos' + (total <= MAXIMO ? ' em ' + MAXIMO : '') + '</p>' +
+      '<p class="jg-fim-p">' + total + ' pontos' + (total <= MAXIMO ? ' em ' + MAXIMO : '') + '</p>' + rec +
       '<p class="jg-fim-e">' + linha + '</p>' +
       '<div class="resultado ' + msg[1] + '">' + msg[0] + '</div>' +
-      '<div class="botoes"><button type="button" id="jg-outra">Jogar outra vez</button></div>';
+      '<div class="botoes">' + botoes + '</div>' +
+      '<p class="jg-partilha"><a href="' + linkPartilha() + '" target="_blank" rel="noopener">Partilhar no WhatsApp (opcional)</a></p>';
     mostrarFim(h);
+    if (novo || certas === 5) confete();
+  }
+
+  function fimRevisao() {
+    atualizar(false);
+    mostrarFim('<h3 class="jg-fim-t">Revisão concluída!</h3>' +
+      '<div class="botoes"><button type="button" id="jg-outra">Jogar outra vez</button></div>');
+  }
+  function iniciarRevisao() {
+    var todas = [];
+    errosPorNivel.forEach(function (l) { l.forEach(function (q) { todas.push({ n: q.n, alvo: q.alvo, ops: q.ops ? baralhar(q.ops) : null }); }); });
+    if (!todas.length) return;
+    gerac++; clearTimeout(timer);
+    revisao = true; qs = todas; TOTAL = qs.length;
+    certas = 0; respondidas = 0; seguidas = 0;
+    elFim.hidden = true; elFim.innerHTML = '';
+    elItens.hidden = false; elInstr.hidden = false;
+    elInstr.textContent = 'Rever as perguntas erradas.';
+    desenhar(); atualizar(false);
+    var topo = $('.jg-barra', sec);
+    (topo || sec).scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
   }
 
   /* ----- fluxo ----- */
   function iniciarNivel() {
     gerac++; clearTimeout(timer);
+    revisao = false; TOTAL = 5; errosNivel = [];
     certas = 0; respondidas = 0; seguidas = 0; pontosNivel = 0;
     qs = criarNivel(nivel, false);
     elFim.hidden = true; elFim.innerHTML = '';
@@ -1627,7 +1708,7 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
     (topo || sec).scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
   }
   function recomecar() {
-    nivel = 1; total = 0; estrelas = [0, 0, 0]; usados = {};
+    nivel = 1; total = 0; estrelas = [0, 0, 0]; errosPorNivel = [[], [], []]; usados = {};
     iniciarNivel();
   }
   $('#jg-comecar', sec).addEventListener('click', function () {
@@ -1637,6 +1718,7 @@ window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_for
     var b = e.target.closest('button');
     if (!b) return;
     if (b.id === 'jg-seguinte') { nivel++; iniciarNivel(); }
+    else if (b.id === 'jg-rever') iniciarRevisao();
     else if (b.id === 'jg-repetir') iniciarNivel();
     else if (b.id === 'jg-outra') recomecar();
   });

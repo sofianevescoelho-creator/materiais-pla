@@ -497,8 +497,19 @@
   .jg-fim .resultado{margin:8px 0 0;}
   .jg-fim .botoes{justify-content:center;margin-top:18px;}
   #jg-inicio .botoes{margin-top:14px;}
+  #jg-corpo[data-nivel="r"]{--jg:var(--accent);}
+  .jg-recorde{margin:0 0 4px;font-size:1.1rem;font-weight:700;color:var(--ink);}
+  .jg-recorde.novo{color:var(--ok);display:inline-block;animation:jg-pop .5s ease-out;}
+  .jg-fim .botoes button.sec{background:transparent;color:var(--accent-dark);}
+  .jg-partilha{margin:18px 0 0;}
+  .jg-partilha a{display:inline-block;padding:8px 16px;min-height:40px;line-height:1.4;font-size:.95rem;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--accent-dark);text-decoration:none;}
+  .jg-partilha a:hover{border-color:var(--accent);}
+  .jg-confete{position:fixed;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:hidden;z-index:50;}
+  .jg-confete span{position:absolute;top:-16px;height:14px;opacity:0;border-radius:2px;animation-name:jg-cai;animation-timing-function:linear;animation-fill-mode:forwards;}
+  @keyframes jg-cai{0%{transform:translateY(0) rotate(0deg);opacity:1;}85%{opacity:1;}100%{transform:translateY(108vh) rotate(560deg);opacity:0;}}
   @media (prefers-reduced-motion:reduce){
-    .jg-pontos.sobe,.jg-fb .jg-seg,.jg-estrelas .on{animation:none;}
+    .jg-pontos.sobe,.jg-fb .jg-seg,.jg-estrelas .on,.jg-recorde.novo{animation:none;}
+    .jg-confete{display:none;}
     .jg-barra .prog-fill{transition:none;}
   }
   @media (max-width:359px){ .jg-ops.n4{grid-template-columns:1fr;} }
@@ -1061,12 +1072,14 @@ window.CLIPS_VOZ = {"o pão": "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAA
 </script>
 <script>
 /* ---------- Aba Jogar: 3 níveis, pontos, estrelas ---------- */
+window.JOGO_CFG = {"par":["maca","massa"],"id":"alimentos","nome":"Alimentos e bebidas"};
 window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"k":"torrada","w":"torrada","g":"pa","a":["torrada","torradas","pão torrado"],"t":["pao"],"x":["manteiga"],"e":1},{"k":"tosta_mista","w":"tosta","g":"pa","a":["tosta","tosta mista"],"t":["pao"],"x":["fiambre","queijo"]},{"k":"sandes_mista","w":"sandes","g":"pa","a":["sandes","sandes mista","sanduíche"],"t":["pao"],"x":["fiambre","queijo"],"e":1},{"k":"croissant","w":"croissant","g":"pa","a":["croissant"],"t":["pao"],"e":1,"h":"<i>croissant</i>"},{"k":"cereais","w":"cereais","g":"pa","a":["cereais","cereal"],"e":1},{"k":"bolacha","w":"bolacha","g":"pa","a":["bolacha","bolachas"],"e":1},{"k":"queijo","w":"queijo","g":"pa","a":["queijo"],"e":1},{"k":"manteiga","w":"manteiga","g":"pa","a":["manteiga"],"e":1},{"k":"compota","w":"doce","g":"pa","a":["doce","compota"],"x":["bolacha","mel","acucar_saqueta","bolo_chocolate","pudim","mousse_chocolate","arroz_doce","leite_creme","gelado"],"e":1},{"k":"mel","w":"mel","g":"pa","a":["mel"],"e":1},{"k":"acucar_saqueta","w":"açúcar","g":"pa","a":["açúcar"],"e":1},{"k":"iogurte","w":"iogurte","g":"pa","a":["iogurte","iogurtes"],"e":1},{"k":"leite","w":"leite","g":"beb","a":["leite"],"t":["leite"],"e":1},{"k":"leite_com_chocolate","w":"leite com chocolate","g":"beb","a":["leite com chocolate","chocolate quente"],"t":["leite","chavena"],"e":1},{"k":"meia_de_leite","w":"café com leite","g":"beb","a":["café com leite","meia de leite"],"t":["leite","chavena"],"e":1},{"k":"cha","w":"chá","g":"beb","a":["chá"],"t":["chavena"],"e":1},{"k":"agua","w":"água","g":"beb","a":["água"],"e":1},{"k":"sumo_laranja","w":"sumo","g":"beb","a":["sumo","sumo de laranja"],"x":["laranja"],"e":1},{"k":"batido","w":"batido","g":"beb","a":["batido","batidos"],"x":["morango"],"e":1},{"k":"refrigerante_cola","w":"refrigerante","g":"beb","a":["refrigerante","coca cola","cola"],"e":1},{"k":"vinho_tinto","w":"vinho","g":"beb","a":["vinho","vinho tinto"],"e":1},{"k":"sagres","w":"cerveja","g":"beb","a":["cerveja"],"e":1},{"k":"bica","w":"café","g":"beb","a":["café","bica"],"t":["chavena"],"e":1},{"k":"carne_vaca","w":"carne de vaca","g":"car","a":["carne de vaca"],"t":["bovino"]},{"k":"carne_porco","w":"carne de porco","g":"car","a":["carne de porco"],"t":["suino"]},{"k":"borrego","w":"borrego","g":"car","a":["borrego","perna de borrego"],"t":["suino"],"e":1},{"k":"frango","w":"frango","g":"car","a":["frango"],"e":1},{"k":"bife_fino","w":"bife","g":"car","a":["bife"],"t":["bovino"]},{"k":"costeleta","w":"costeleta","g":"car","a":["costeleta"],"t":["suino"],"e":1},{"k":"hamburguer","w":"hambúrguer","g":"car","a":["hambúrguer"],"t":["bovino"],"e":1},{"k":"carne_picada","w":"carne picada","g":"car","a":["carne picada"],"t":["bovino"],"e":1},{"k":"presunto","w":"presunto","g":"car","a":["presunto"],"t":["suino","presunto"],"e":1},{"k":"fiambre","w":"fiambre","g":"car","a":["fiambre"],"t":["presunto"],"e":1},{"k":"chourico","w":"chouriço","g":"car","a":["chouriço"],"t":["enchido"],"e":1},{"k":"salsichas","w":"salsichas","g":"car","a":["salsichas","salsicha"],"t":["enchido"],"e":1},{"k":"salmao","w":"salmão","g":"pei","a":["salmão"],"e":1},{"k":"atum","w":"atum","g":"pei","a":["atum"],"t":["bovino"],"e":1},{"k":"sardinha","w":"sardinha","g":"pei","a":["sardinha","sardinhas"],"e":1},{"k":"bacalhau","w":"bacalhau","g":"pei","a":["bacalhau"],"e":1},{"k":"camarao","w":"marisco","g":"pei","a":["marisco","camarão","camarões","gambas"],"e":1},{"k":"ovos","w":"ovo","g":"pei","a":["ovo","ovos"],"e":1},{"k":"arroz","w":"arroz","g":"leg","a":["arroz"],"t":["arroz"],"e":1},{"k":"cuscuz","w":"cuscuz","g":"leg","a":["cuscuz"],"t":["arroz"],"e":1},{"k":"batatas_fritas_prato","w":"batatas fritas","g":"leg","a":["batatas fritas","batata frita"],"t":["batata"],"e":1},{"k":"batata","w":"batatas","g":"leg","a":["batatas","batata"],"t":["batata"],"e":1},{"k":"batata_doce","w":"batata-doce","g":"leg","a":["batata-doce","batata doce"],"t":["batata"],"e":1},{"k":"massa","w":"massa","g":"leg","a":["massa","massas"],"e":1},{"k":"a_salada","w":"salada","g":"leg","a":["salada","salada mista"],"x":["alface","tomate","cebola"],"e":1},{"k":"legumes_cozidos","w":"legumes","g":"leg","a":["legumes","legumes cozidos"],"x":["brocolo","cenoura","feijao"]},{"k":"alface","w":"alface","g":"leg","a":["alface"],"t":["folhas"],"e":1},{"k":"espinafres","w":"espinafres","g":"leg","a":["espinafres","espinafre"],"t":["folhas"],"e":1},{"k":"brocolo","w":"brócolos","g":"leg","a":["brócolos","brócolo","brócolis"],"e":1},{"k":"feijao","w":"feijão","g":"leg","a":["feijão","feijões"],"e":1},{"k":"cenoura","w":"cenoura","g":"leg","a":["cenoura","cenouras"],"e":1},{"k":"tomate","w":"tomate","g":"leg","a":["tomate","tomates"],"t":["vermelho"],"e":1},{"k":"beterraba","w":"beterraba","g":"leg","a":["beterraba"],"e":1},{"k":"pimento_verde","w":"pimento","g":"leg","a":["pimento","pimento verde"],"e":1},{"k":"cebola","w":"cebola","g":"leg","a":["cebola"],"t":["bolbo"],"e":1},{"k":"alho","w":"alho","g":"leg","a":["alho"],"t":["bolbo"],"e":1},{"k":"banana","w":"banana","g":"fru","a":["banana"],"e":1},{"k":"maca","w":"maçã","g":"fru","a":["maçã"],"t":["vermelho","macapessego"],"e":1},{"k":"pera","w":"pera","g":"fru","a":["pera"],"e":1},{"k":"laranja","w":"laranja","g":"fru","a":["laranja"],"e":1},{"k":"limao","w":"limão","g":"fru","a":["limão"],"e":1},{"k":"ananas","w":"ananás","g":"fru","a":["ananás"],"e":1},{"k":"pessego","w":"pêssego","g":"fru","a":["pêssego"],"t":["macapessego"],"e":1},{"k":"morango","w":"morango","g":"fru","a":["morango"],"t":["vermelho"],"e":1},{"k":"cereja","w":"cereja","g":"fru","a":["cereja","cerejas"],"t":["vermelho"],"e":1},{"k":"uva","w":"uva","g":"fru","a":["uva","uvas"],"e":1},{"k":"melao","w":"melão","g":"fru","a":["melão"],"t":["melao"],"e":1},{"k":"melancia","w":"melancia","g":"fru","a":["melancia"],"t":["melao"],"e":1},{"k":"bolo_chocolate","w":"bolo","g":"doc","a":["bolo","bolo de chocolate"],"e":1},{"k":"pudim","w":"pudim","g":"doc","a":["pudim","pudim flan"],"t":["creme"],"e":1},{"k":"mousse_chocolate","w":"mousse","g":"doc","a":["mousse","mousse de chocolate"],"e":1},{"k":"arroz_doce","w":"arroz-doce","g":"doc","a":["arroz-doce","arroz doce"],"t":["creme","arroz"],"e":1},{"k":"leite_creme","w":"leite-creme","g":"doc","a":["leite-creme","leite creme","creme queimado"],"t":["creme","leite"],"e":1},{"k":"gelado","w":"gelado","g":"doc","a":["gelado","gelados"],"x":["morango"],"e":1}];
 (function () {
   'use strict';
   var sec = document.getElementById('jogo');
   if (!sec || !window.JOGO) return;
 
+  var CFG = window.JOGO_CFG || {};
   function $(s, r) { return (r || document).querySelector(s); }
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   function baralhar(a) {
@@ -1129,6 +1142,16 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
     return null;
   }
   function gruposAleatorios(n, excluir) {
+    if (CFG.repetir) {
+      /* poucos grupos: o mesmo grupo pode repetir-se, em proporção ao número de palavras de cada um */
+      var gr = baralhar(GRUPOS.filter(function (g) { return g !== excluir; })), saida = [], tot0 = 0, cum = 0, u = Math.random(), ant, c, q;
+      gr.forEach(function (g) { tot0 += porGrupo[g].length; });
+      for (q = 0; q < gr.length; q++) {
+        ant = Math.floor(cum + u); cum += n * porGrupo[gr[q]].length / tot0; c = Math.floor(cum + u) - ant;
+        while (c-- > 0) saida.push(gr[q]);
+      }
+      return baralhar(saida);
+    }
     var pool = GRUPOS.filter(function (g) { return g !== excluir; }), out = [], tot, r, acc, i, esc;
     while (out.length < n && pool.length) {
       tot = 0; pool.forEach(function (g) { tot += porGrupo[g].length; });
@@ -1138,22 +1161,24 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
     }
     return baralhar(out);
   }
-  /* Nível 1: uma pergunta com «maçã» e «massa» entre as opções (os formandos confundem as duas). */
-  function perguntaMacaMassa() {
+  /* Nível 1: uma pergunta com duas palavras que os formandos confundem (CFG.par = [chave, chave]). */
+  function perguntaPar() {
+    if (!CFG.par) return null;
     var ma = null, ms = null, i, tent, gs, d, alvo, outro;
-    for (i = 0; i < ITENS.length; i++) { if (ITENS[i].k === 'maca') ma = ITENS[i]; if (ITENS[i].k === 'massa') ms = ITENS[i]; }
+    for (i = 0; i < ITENS.length; i++) { if (ITENS[i].k === CFG.par[0]) ma = ITENS[i]; if (ITENS[i].k === CFG.par[1]) ms = ITENS[i]; }
     if (!ma || !ms) return null;
     alvo = Math.random() < 0.5 ? ma : ms; outro = alvo === ma ? ms : ma;
+    gs = GRUPOS.filter(function (x) { return x !== ma.g && x !== ms.g; });
+    if (!gs.length) gs = GRUPOS.filter(function (x) { return x !== alvo.g; });
     for (tent = 0; tent < 25; tent++) {
-      gs = baralhar(GRUPOS.filter(function (x) { return x !== ma.g && x !== ms.g; }));
-      d = baralhar(porGrupo[gs[0]])[0];
-      if (!conflito(alvo, d) && !conflito(outro, d)) return { alvo: alvo, ops: baralhar([alvo, outro, d]) };
+      d = baralhar(porGrupo[baralhar(gs)[0]])[0];
+      if (d !== alvo && d !== outro && !conflito(alvo, d) && !conflito(outro, d)) return { alvo: alvo, ops: baralhar([alvo, outro, d]) };
     }
     return null;
   }
   function criarNivel(n, repetido) {
     var tent, gs, qs, i, q, ok, locais, esp = null, bloq = null;
-    if (n === 1) { esp = perguntaMacaMassa(); if (esp) bloq = { maca: 1, massa: 1 }; }
+    if (n === 1) { esp = perguntaPar(); if (esp) { bloq = {}; bloq[CFG.par[0]] = 1; bloq[CFG.par[1]] = 1; } }
     for (tent = 0; tent < 60; tent++) {
       gs = gruposAleatorios(esp ? 4 : 5, esp ? esp.alvo.g : null); qs = []; ok = true; locais = {};
       for (i = 0; i < gs.length; i++) {
@@ -1163,6 +1188,7 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
       }
       if (ok) {
         if (esp) { usados[esp.alvo.k] = 1; qs.splice(Math.floor(Math.random() * (qs.length + 1)), 0, esp); }
+        qs.forEach(function (q) { q.n = n; });
         return qs;
       }
       Object.keys(locais).forEach(function (k) { delete usados[k]; });
@@ -1178,10 +1204,37 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
   var qs = [], certas = 0, respondidas = 0, seguidas = 0, pontosNivel = 0, gerac = 0, TOTAL = 5, MAXIMO = 300;
   var timer = null;
 
+  var revisao = false, errosNivel = [], errosPorNivel = [[], [], []];
+  var ID = CFG.id || 'jogo', NOME = CFG.nome || 'jogo';
+  function lerRecorde() {
+    try { var v = parseInt(window.localStorage.getItem('jogo6453_' + ID), 10); return isNaN(v) ? null : v; } catch (e) { return null; }
+  }
+  function guardarRecorde(v) { try { window.localStorage.setItem('jogo6453_' + ID, String(v)); } catch (e) {} }
+  function confete() {
+    if (reduzir) return;
+    var cores = ['#862763', '#387648', '#a8791f', '#2b5f8c', '#b3453f', '#8a5a1e'], box = document.createElement('div'), i, s;
+    box.className = 'jg-confete'; box.setAttribute('aria-hidden', 'true');
+    for (i = 0; i < 40; i++) {
+      s = document.createElement('span');
+      s.style.left = (Math.random() * 100) + '%';
+      s.style.background = cores[i % cores.length];
+      s.style.animationDelay = (Math.random() * 0.6) + 's';
+      s.style.animationDuration = (1.8 + Math.random() * 1.4) + 's';
+      s.style.width = (7 + Math.floor(Math.random() * 5)) + 'px';
+      box.appendChild(s);
+    }
+    document.body.appendChild(box);
+    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 3800);
+  }
+  function linkPartilha() {
+    var t = 'Fiz ' + total + ' pontos' + (total <= MAXIMO ? ' em ' + MAXIMO : '') + ' no jogo «' + NOME + '». 🏆';
+    return 'https://wa.me/?text=' + encodeURIComponent(t);
+  }
+
   function atualizar(subiu) {
-    elCorpo.setAttribute('data-nivel', String(nivel));
-    elNivel.textContent = 'Nível ' + nivel + ' de 3';
-    elPontos.textContent = total + ' pontos';
+    elCorpo.setAttribute('data-nivel', revisao ? 'r' : String(nivel));
+    elNivel.textContent = revisao ? 'Rever os erros' : 'Nível ' + nivel + ' de 3';
+    elPontos.textContent = revisao ? 'sem pontos' : total + ' pontos';
     if (subiu && !reduzir) { elPontos.classList.remove('sobe'); void elPontos.offsetWidth; elPontos.classList.add('sobe'); }
     elFill.style.width = (respondidas / TOTAL * 100) + '%';
     elProg.textContent = Math.min(respondidas + 1, TOTAL) + ' / ' + TOTAL;
@@ -1204,9 +1257,9 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
       var fb = document.createElement('div');
       fb.className = 'jg-fb'; fb.setAttribute('role', 'status'); fb.setAttribute('aria-live', 'polite');
       q.fb = fb; q.cartao = c; q.resp = false; q.quases = 0;
-      if (nivel < 3) {
+      if (q.n < 3) {
         var ops = document.createElement('div');
-        ops.className = 'jg-ops ' + (nivel === 1 ? 'n3' : 'n4');
+        ops.className = 'jg-ops ' + (q.n === 1 ? 'n3' : 'n4');
         q.ops.forEach(function (it) {
           var b = document.createElement('button');
           b.type = 'button'; b.className = 'btn-op'; b.setAttribute('data-k', it.k); b.innerHTML = it.h;
@@ -1244,6 +1297,16 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
   function registar(q, certa) {
     q.resp = true; respondidas++;
     var p = 0;
+    if (revisao) {
+      if (certa) { certas++; q.fb.innerHTML = '<span class="ok">✓ Certo!</span>'; }
+      else q.fb.innerHTML = '<span class="err">✗ A palavra certa é: ' + q.alvo.h + '.</span>';
+      atualizar(false);
+      var m2 = gerac;
+      clearTimeout(timer);
+      timer = setTimeout(function () { if (m2 === gerac) avancar(); }, certa ? 1200 : 2400);
+      return;
+    }
+    if (!certa) errosNivel.push(q);
     if (certa) {
       certas++; seguidas++; p = 10 * nivel; pontosNivel += p; total += p;
       var h = '<span class="ok">✓ Certo! +' + p + ' pontos</span>';
@@ -1296,11 +1359,11 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
   }
 
   function avancar() {
-    if (respondidas >= TOTAL) { fimDeNivel(); return; }
+    if (respondidas >= TOTAL) { if (revisao) fimRevisao(); else fimDeNivel(); return; }
     var prox = qs.filter(function (q) { return !q.resp; })[0];
     if (!prox) return;
     prox.cartao.scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
-    if (nivel === 3 && prox.input) { try { prox.input.focus({ preventScroll: true }); } catch (e) { prox.input.focus(); } }
+    if (prox.input) { try { prox.input.focus({ preventScroll: true }); } catch (e) { prox.input.focus(); } }
   }
 
   /* ----- fim de nível e final ----- */
@@ -1320,7 +1383,9 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
     var passou = certas >= 3, h;
     if (passou) {
       estrelas[nivel - 1] = certas - 2;
+      errosPorNivel[nivel - 1] = errosNivel.slice();
       if (nivel === 3) { final(); return; }
+      if (certas === 5) confete();
       var msg = certas === 5 ? ['🎉 Perfeito! Muito bem!', 'nivel-alto'] : certas === 4 ? ['👍 Muito bom! Está no bom caminho.', 'nivel-alto'] : ['💪 Continue a praticar!', 'nivel-medio'];
       h = estrelasHtml(estrelas[nivel - 1]) +
         '<h3 class="jg-fim-t">Nível ' + nivel + ' concluído!</h3>' +
@@ -1339,17 +1404,47 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
     var pct = Math.min(100, Math.round(total / MAXIMO * 100));
     var msg = pct >= 100 ? ['🎉 Perfeito! Muito bem!', 'nivel-alto'] : pct >= 70 ? ['👍 Muito bom! Está no bom caminho.', 'nivel-alto'] : pct >= 40 ? ['💪 Continue a praticar!', 'nivel-medio'] : ['📚 Tente novamente — vai conseguir!', 'nivel-baixo'];
     var linha = [1, 2, 3].map(function (n) { return '<span class="nw">Nível ' + n + ' ' + new Array(estrelas[n - 1] + 1).join('⭐') + '</span>'; }).join(' · ');
+    var antes = lerRecorde(), novo = antes !== null && total > antes, rec = '';
+    if (antes !== null) rec = novo ? '<p class="jg-recorde novo">🏅 Novo recorde!</p>' : '<p class="jg-recorde">O seu melhor: ' + antes + ' pontos</p>';
+    guardarRecorde(antes === null ? total : Math.max(antes, total));
+    var temErros = errosPorNivel.some(function (l) { return l.length > 0; });
+    var botoes = temErros
+      ? '<button type="button" id="jg-rever">Rever os erros</button><button type="button" class="sec" id="jg-outra">Jogar outra vez</button>'
+      : '<button type="button" id="jg-outra">Jogar outra vez</button>';
     var h = '<h3 class="jg-fim-t">🏆 Passou os 3 níveis!</h3>' +
-      '<p class="jg-fim-p">' + total + ' pontos' + (total <= MAXIMO ? ' em ' + MAXIMO : '') + '</p>' +
+      '<p class="jg-fim-p">' + total + ' pontos' + (total <= MAXIMO ? ' em ' + MAXIMO : '') + '</p>' + rec +
       '<p class="jg-fim-e">' + linha + '</p>' +
       '<div class="resultado ' + msg[1] + '">' + msg[0] + '</div>' +
-      '<div class="botoes"><button type="button" id="jg-outra">Jogar outra vez</button></div>';
+      '<div class="botoes">' + botoes + '</div>' +
+      '<p class="jg-partilha"><a href="' + linkPartilha() + '" target="_blank" rel="noopener">Partilhar no WhatsApp (opcional)</a></p>';
     mostrarFim(h);
+    if (novo || certas === 5) confete();
+  }
+
+  function fimRevisao() {
+    atualizar(false);
+    mostrarFim('<h3 class="jg-fim-t">Revisão concluída!</h3>' +
+      '<div class="botoes"><button type="button" id="jg-outra">Jogar outra vez</button></div>');
+  }
+  function iniciarRevisao() {
+    var todas = [];
+    errosPorNivel.forEach(function (l) { l.forEach(function (q) { todas.push({ n: q.n, alvo: q.alvo, ops: q.ops ? baralhar(q.ops) : null }); }); });
+    if (!todas.length) return;
+    gerac++; clearTimeout(timer);
+    revisao = true; qs = todas; TOTAL = qs.length;
+    certas = 0; respondidas = 0; seguidas = 0;
+    elFim.hidden = true; elFim.innerHTML = '';
+    elItens.hidden = false; elInstr.hidden = false;
+    elInstr.textContent = 'Rever as perguntas erradas.';
+    desenhar(); atualizar(false);
+    var topo = $('.jg-barra', sec);
+    (topo || sec).scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
   }
 
   /* ----- fluxo ----- */
   function iniciarNivel() {
     gerac++; clearTimeout(timer);
+    revisao = false; TOTAL = 5; errosNivel = [];
     certas = 0; respondidas = 0; seguidas = 0; pontosNivel = 0;
     qs = criarNivel(nivel, false);
     elFim.hidden = true; elFim.innerHTML = '';
@@ -1360,7 +1455,7 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
     (topo || sec).scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
   }
   function recomecar() {
-    nivel = 1; total = 0; estrelas = [0, 0, 0]; usados = {};
+    nivel = 1; total = 0; estrelas = [0, 0, 0]; errosPorNivel = [[], [], []]; usados = {};
     iniciarNivel();
   }
   $('#jg-comecar', sec).addEventListener('click', function () {
@@ -1370,6 +1465,7 @@ window.JOGO = [{"k":"pao","w":"pão","g":"pa","a":["pão"],"t":["pao"],"e":1},{"
     var b = e.target.closest('button');
     if (!b) return;
     if (b.id === 'jg-seguinte') { nivel++; iniciarNivel(); }
+    else if (b.id === 'jg-rever') iniciarRevisao();
     else if (b.id === 'jg-repetir') iniciarNivel();
     else if (b.id === 'jg-outra') recomecar();
   });
