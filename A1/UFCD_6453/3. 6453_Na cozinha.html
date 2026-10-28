@@ -548,18 +548,75 @@
 
 /* Situação com fotografia horizontal */
 .situacao .sit-img.larga{max-width:420px;aspect-ratio:4/3;object-fit:cover;}
+
+  /* ===== aba Jogar (3 níveis, pontos, estrelas) ===== */
+  @media (max-width:599px){ .tabs.oito .tab-btn{flex:1 1 30%;padding:10px 4px;font-size:.9rem;} }
+  @media (max-width:359px){ .tabs.oito .tab-btn{flex:1 1 45%;} }
+  #jogo{--jg:var(--q2);}
+  #jg-corpo[data-nivel="1"]{--jg:var(--q2);}
+  #jg-corpo[data-nivel="2"]{--jg:var(--q1);}
+  #jg-corpo[data-nivel="3"]{--jg:var(--q3);}
+  .jg-barra{position:sticky;top:0;z-index:20;margin:-18px -12px 14px;padding:10px 12px 8px;background:var(--paper);border-bottom:1px solid var(--border);border-radius:10px 10px 0 0;box-shadow:0 3px 8px rgba(0,0,0,.06);}
+  .jg-linha{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .jg-barra .tag-reg{background:var(--jg);border-color:var(--jg);color:#fff;}
+  .jg-pontos{font-weight:700;font-size:1.1rem;color:var(--ink);font-variant-numeric:tabular-nums;display:inline-block;transform-origin:right center;}
+  .jg-pontos.sobe{animation:jg-sobe .45s ease-out;}
+  @keyframes jg-sobe{0%{transform:scale(1);}40%{transform:scale(1.3);color:var(--ok);}100%{transform:scale(1);}}
+  .jg-barra .progresso{margin:8px 0 0;}
+  .jg-barra .prog{height:10px;}
+  .jg-barra .prog-fill{background:var(--jg);transition:width .35s ease;}
+  #jg-instr{margin:0 0 12px;font-weight:700;color:var(--ink);}
+  .jg-cartao{scroll-margin-top:96px;margin:0 0 16px;padding:14px 10px 12px;border:1px solid var(--border);border-radius:12px;background:#fdfbfc;}
+  .jg-foto{display:block;width:100%;max-width:240px;height:auto;aspect-ratio:1/1;object-fit:contain;margin:0 auto 12px;border-radius:12px;border:1px solid var(--border);background:#fff;}
+  .jg-ops{display:grid;gap:8px;width:100%;max-width:420px;margin:0 auto;}
+  .jg-ops.n3{grid-template-columns:1fr;}
+  .jg-ops.n4{grid-template-columns:1fr 1fr;}
+  .jg-ops .btn-op{min-height:48px;padding:8px 10px;font-size:1.05rem;white-space:normal;overflow-wrap:anywhere;}
+  .jg-ops .btn-op.certa::after,.jg-ops .btn-op.errada::after{content:"";}
+  .jg-ops .btn-op.certa::before{content:"✓ ";}
+  .jg-ops .btn-op.errada::before{content:"✗ ";}
+  .jg-esc{display:flex;gap:8px;align-items:stretch;width:100%;max-width:420px;margin:0 auto;}
+  .jg-esc input.resp{flex:1 1 auto;min-width:0;width:auto;height:48px;font-size:1.1rem;font-weight:700;}
+  .jg-esc button{flex:0 0 auto;font-family:inherit;font-size:1rem;min-height:48px;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;}
+  .jg-esc button:disabled{opacity:.45;cursor:not-allowed;}
+  .jg-fb{max-width:420px;margin:10px auto 0;text-align:center;font-weight:700;font-size:1.05rem;line-height:1.4;}
+  .jg-fb:empty{display:none;}
+  .jg-fb .ok{color:var(--ok);}
+  .jg-fb .err{color:var(--bad);}
+  .jg-fb .quase{color:var(--vazio);}
+  .jg-fb .jg-seg{display:inline-block;margin-top:8px;padding:3px 14px;border-radius:999px;background:var(--ok-bg);border:1px solid var(--ok);color:var(--ok);animation:jg-pop .4s ease-out;}
+  @keyframes jg-pop{0%{transform:scale(.6);opacity:0;}70%{transform:scale(1.12);opacity:1;}100%{transform:scale(1);}}
+  .jg-fim{text-align:center;padding:8px 0 4px;}
+  .jg-estrelas{display:flex;justify-content:center;gap:6px;font-size:2.6rem;line-height:1.1;margin:4px 0 6px;}
+  .jg-estrelas span{display:inline-block;}
+  .jg-estrelas .on{animation:jg-pop .5s ease-out both;}
+  .jg-estrelas span:nth-child(2){animation-delay:.15s;}
+  .jg-estrelas span:nth-child(3){animation-delay:.3s;}
+  .jg-estrelas .off{filter:grayscale(1);opacity:.25;}
+  .jg-fim-t{margin:6px 0 4px;font-size:1.5rem;line-height:1.25;color:var(--jg);}
+  .jg-fim-p{margin:0 0 4px;font-size:1.2rem;font-weight:700;color:var(--ink);}
+  .jg-fim-e{margin:0 0 6px;font-size:1.1rem;font-weight:700;color:var(--ink);}
+  .jg-fim .resultado{margin:8px 0 0;}
+  .jg-fim .botoes{justify-content:center;margin-top:18px;}
+  #jg-inicio .botoes{margin-top:14px;}
+  @media (prefers-reduced-motion:reduce){
+    .jg-pontos.sobe,.jg-fb .jg-seg,.jg-estrelas .on{animation:none;}
+    .jg-barra .prog-fill{transition:none;}
+  }
+  @media (max-width:359px){ .jg-ops.n4{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header><h1>Na cozinha</h1><p><span class="ha">UFCD 6453 — Hábitos alimentares, cultura e lazer</span><span class="hs"> · </span><span class="hb">Formadora: Sofia Coelho</span></p></header>
-  <nav class="tabs sete" role="tablist" aria-label="Abas"><button class="tab-btn active" id="tab-cozinha" role="tab" aria-selected="true" aria-controls="painel-cozinha" data-painel="cozinha" type="button">Cozinha</button><button class="tab-btn" id="tab-utensilios" role="tab" aria-selected="false" aria-controls="painel-utensilios" data-painel="utensilios" type="button" tabindex="-1">Utensílios</button><button class="tab-btn" id="tab-amesa" role="tab" aria-selected="false" aria-controls="painel-amesa" data-painel="amesa" type="button" tabindex="-1">À mesa</button><button class="tab-btn" id="tab-mesaposta" role="tab" aria-selected="false" aria-controls="painel-mesaposta" data-painel="mesaposta" type="button" tabindex="-1">Mesa posta</button><button class="tab-btn" id="tab-praticar1" role="tab" aria-selected="false" aria-controls="painel-praticar1" data-painel="praticar1" type="button" tabindex="-1">Praticar 1</button><button class="tab-btn" id="tab-praticar2" role="tab" aria-selected="false" aria-controls="painel-praticar2" data-painel="praticar2" type="button" tabindex="-1">Praticar 2</button><button class="tab-btn" id="tab-situacoes" role="tab" aria-selected="false" aria-controls="painel-situacoes" data-painel="situacoes" type="button" tabindex="-1">Situações</button></nav>
+  <nav class="tabs oito" role="tablist" aria-label="Abas"><button class="tab-btn active" id="tab-cozinha" role="tab" aria-selected="true" aria-controls="painel-cozinha" data-painel="cozinha" type="button">Cozinha</button><button class="tab-btn" id="tab-utensilios" role="tab" aria-selected="false" aria-controls="painel-utensilios" data-painel="utensilios" type="button" tabindex="-1">Utensílios</button><button class="tab-btn" id="tab-amesa" role="tab" aria-selected="false" aria-controls="painel-amesa" data-painel="amesa" type="button" tabindex="-1">À mesa</button><button class="tab-btn" id="tab-mesaposta" role="tab" aria-selected="false" aria-controls="painel-mesaposta" data-painel="mesaposta" type="button" tabindex="-1">Mesa posta</button><button class="tab-btn" id="tab-praticar1" role="tab" aria-selected="false" aria-controls="painel-praticar1" data-painel="praticar1" type="button" tabindex="-1">Praticar 1</button><button class="tab-btn" id="tab-praticar2" role="tab" aria-selected="false" aria-controls="painel-praticar2" data-painel="praticar2" type="button" tabindex="-1">Praticar 2</button><button class="tab-btn" id="tab-jogar" role="tab" aria-selected="false" aria-controls="painel-jogar" data-painel="jogar" type="button" tabindex="-1">Jogar</button><button class="tab-btn" id="tab-situacoes" role="tab" aria-selected="false" aria-controls="painel-situacoes" data-painel="situacoes" type="button" tabindex="-1">Situações</button></nav>
 <div class="tab-panel ativo" id="painel-cozinha" role="tabpanel" aria-labelledby="tab-cozinha"><section class="bloco"><h3 class="gt"><span class="gt-t">Na cozinha</span></h3><div class="foto-lista"><div class="foto-marcas"><img class="fm-img" data-img="foto_cozinha" alt="Cozinha com o frigorífico, o fogão, o exaustor, o micro-ondas, o lava-loiça, a máquina de lavar loiça e, no primeiro plano, uma mesa com um prato, um copo e talheres." width="1269" height="952" draggable="false"><svg class="fm-svg" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g class="fm-g" data-m="3"><line x1="450" y1="232" x2="450" y2="290"/><circle cx="450" cy="290" r="11"/></g><g class="fm-g" data-m="6"><line x1="655" y1="255" x2="657" y2="332"/><circle cx="657" cy="332" r="11"/></g><g class="fm-g" data-m="7"><line x1="800" y1="290" x2="797" y2="362"/><circle cx="797" cy="362" r="11"/></g><g class="fm-g" data-m="8"><line x1="790" y1="468" x2="768" y2="424"/><circle cx="768" cy="424" r="11"/></g><g class="fm-g" data-m="9"><line x1="965" y1="330" x2="968" y2="398"/><circle cx="968" cy="398" r="11"/></g><g class="fm-g" data-m="13"><line x1="925" y1="735" x2="925" y2="790"/><circle cx="925" cy="790" r="11"/></g><g class="fm-g" data-m="14"><line x1="965" y1="1030" x2="948" y2="985"/><circle cx="948" cy="985" r="11"/></g></svg><button type="button" class="mk" style="left:11.05%;top:27.62%" data-m="1" aria-pressed="false">1</button><button type="button" class="mk" style="left:64.23%;top:11.05%" data-m="2" aria-pressed="false">2</button><button type="button" class="mk" style="left:31.08%;top:21.36%" data-m="3" aria-pressed="false">3</button><button type="button" class="mk" style="left:44.20%;top:54.79%" data-m="4" aria-pressed="false">4</button><button type="button" class="mk" style="left:49.03%;top:9.67%" data-m="5" aria-pressed="false">5</button><button type="button" class="mk" style="left:45.23%;top:23.48%" data-m="6" aria-pressed="false">6</button><button type="button" class="mk" style="left:55.25%;top:26.70%" data-m="7" aria-pressed="false">7</button><button type="button" class="mk" style="left:54.56%;top:43.09%" data-m="8" aria-pressed="false">8</button><button type="button" class="mk" style="left:66.64%;top:30.39%" data-m="9" aria-pressed="false">9</button><button type="button" class="mk" style="left:81.84%;top:45.12%" data-m="10" aria-pressed="false">10</button><button type="button" class="mk" style="left:88.05%;top:64.46%" data-m="11" aria-pressed="false">11</button><button type="button" class="mk" style="left:51.80%;top:90.70%" data-m="12" aria-pressed="false">12</button><button type="button" class="mk" style="left:63.88%;top:67.68%" data-m="13" aria-pressed="false">13</button><button type="button" class="mk" style="left:66.64%;top:94.84%" data-m="14" aria-pressed="false">14</button></div><div class="lista-obj"><button type="button" class="lo" data-m="1" aria-pressed="false"><span class="lo-n">1</span><span class="lo-t"><span class="art">o</span> <b>frigorífico</b></span></button><button type="button" class="lo" data-m="2" aria-pressed="false"><span class="lo-n">2</span><span class="lo-t"><span class="art">o</span> <b>armário da cozinha</b></span></button><button type="button" class="lo" data-m="3" aria-pressed="false"><span class="lo-n">3</span><span class="lo-t"><span class="art">o</span> <b>micro-ondas</b></span></button><button type="button" class="lo" data-m="4" aria-pressed="false"><span class="lo-n">4</span><span class="lo-t"><span class="art">o</span> <b>fogão</b></span></button><button type="button" class="lo" data-m="5" aria-pressed="false"><span class="lo-n">5</span><span class="lo-t"><span class="art">o</span> <b>exaustor</b></span></button><button type="button" class="lo" data-m="6" aria-pressed="false"><span class="lo-n">6</span><span class="lo-t"><span class="art">a</span> <b>panela</b></span></button><button type="button" class="lo" data-m="7" aria-pressed="false"><span class="lo-n">7</span><span class="lo-t"><span class="art">o</span> <b>tacho</b></span></button><button type="button" class="lo" data-m="8" aria-pressed="false"><span class="lo-n">8</span><span class="lo-t"><span class="art">a</span> <b>frigideira</b></span></button><button type="button" class="lo" data-m="9" aria-pressed="false"><span class="lo-n">9</span><span class="lo-t"><span class="art">a</span> <b>fruteira</b></span></button><button type="button" class="lo" data-m="10" aria-pressed="false"><span class="lo-n">10</span><span class="lo-t"><span class="art">o</span> <b>lava-loiça</b></span></button><button type="button" class="lo" data-m="11" aria-pressed="false"><span class="lo-n">11</span><span class="lo-t"><span class="art">a</span> <b>máquina de lavar loiça</b></span></button><button type="button" class="lo" data-m="12" aria-pressed="false"><span class="lo-n">12</span><span class="lo-t"><span class="art">o</span> <b>prato</b></span></button><button type="button" class="lo" data-m="13" aria-pressed="false"><span class="lo-n">13</span><span class="lo-t"><span class="art">o</span> <b>copo</b></span></button><button type="button" class="lo" data-m="14" aria-pressed="false"><span class="lo-n">14</span><span class="lo-t"><span class="art">os</span> <b>talheres</b><small>o garfo, a faca, a colher</small></span></button></div></div><div class="separa"></div><h3 class="gt"><span class="gt-t">Equipamentos</span></h3><div class="cartoes-voc"><div class="cv"><img class="cv-img" data-img="o_fogao" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>fogão</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_exaustor" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>exaustor</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_placa_inducao" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>placa de indução</b> /<br><span class="art">a</span> <b>placa vitrocerâmica</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_forno" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>forno</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_micro_ondas" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>micro-ondas</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_frigorifico" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>frigorífico</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_lava_loica" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>lava-loiça</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_maquina_lavar_loica" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>máquina de lavar loiça</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_maquina_lavar_roupa" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>máquina de lavar roupa</b></span></div></div></div></section></div>
 <div class="tab-panel" id="painel-utensilios" role="tabpanel" aria-labelledby="tab-utensilios"><section class="bloco"><h3 class="gt"><span class="gt-t">Utensílios de cozinha</span></h3><div class="cartoes-voc"><div class="cv"><img class="cv-img" data-img="o_frigideira" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>frigideira</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_tacho" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>tacho</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_panela" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>panela</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_tabua_cortar" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>tábua de cortar</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_colher_pau" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>colher de pau</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_concha" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>concha</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_ralador" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>ralador</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_escorredor" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>escorredor</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_espatula" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>espátula</b></span></div></div></div><div class="separa"></div><h3 class="gt"><span class="gt-t">Pequenos eletrodomésticos</span></h3><div class="cartoes-voc"><div class="cv"><img class="cv-img" data-img="o_maquina_cafe" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>máquina de café</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_torradeira" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>torradeira</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_chaleira" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>chaleira elétrica</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_varinha_magica" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>varinha mágica</b> /<br><span class="art">o</span> <b>triturador</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_liquidificadora" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>liquidificadora</b> /<br><span class="art">o</span> <b>liquidificador</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_batedeira" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>batedeira</b></span></div></div></div></section></div>
 <div class="tab-panel" id="painel-amesa" role="tabpanel" aria-labelledby="tab-amesa"><section class="bloco"><h3 class="gt"><span class="gt-t">À mesa</span></h3><div class="cartoes-voc"><div class="cv"><img class="cv-img" data-img="o_mesa" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>mesa</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_cadeira" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>cadeira</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_toalha_de_mesa" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>toalha de mesa</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_guardanapo_papel" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>guardanapo de papel</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_prato" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>prato</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_tigela" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>tigela</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_copo" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>copo</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_chavena" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>chávena</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_jarro" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>jarro</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_garrafa_agua" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>garrafa de água</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_saleiro" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>saleiro</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_travessa" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>travessa</b></span></div></div></div><div class="separa"></div><h3 class="gt"><span class="gt-t">Talheres principais</span></h3><div class="cartoes-voc"><div class="cv"><img class="cv-img" data-img="o_garfo" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">o</span> <b>garfo</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_faca" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>faca</b></span></div></div><div class="cv"><img class="cv-img" data-img="o_colher" alt="" width="360" height="360" draggable="false"><div class="cv-txt"><span class="cv-pal"><span class="art">a</span> <b>colher</b></span></div></div></div></section></div>
 <div class="tab-panel" id="painel-mesaposta" role="tabpanel" aria-labelledby="tab-mesaposta"><section class="bloco"><h3 class="gt"><span class="gt-t">Loiça e talheres</span></h3><div class="foto-lista"><div class="foto-marcas"><img class="fm-img" data-img="foto_mesa" alt="Mesa posta, vista de cima, com pratos, copos, talheres, um guardanapo, o saleiro, o pimenteiro e uma chávena de café." width="1269" height="952" draggable="false"><svg class="fm-svg" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g class="fm-g" data-m="1"><line x1="165" y1="195" x2="198" y2="252"/><circle cx="198" cy="252" r="11"/></g><g class="fm-g" data-m="2"><line x1="285" y1="195" x2="282" y2="255"/><circle cx="282" cy="255" r="11"/></g><g class="fm-g" data-m="3"><line x1="405" y1="262" x2="468" y2="282"/><circle cx="468" cy="282" r="11"/></g><g class="fm-g" data-m="4"><line x1="405" y1="398" x2="478" y2="376"/><circle cx="478" cy="376" r="11"/></g><g class="fm-g" data-m="5"><line x1="960" y1="40" x2="960" y2="88"/><circle cx="960" cy="88" r="11"/></g><g class="fm-g" data-m="6"><line x1="1155" y1="85" x2="1155" y2="145"/><circle cx="1155" cy="145" r="11"/></g><g class="fm-g" data-m="7"><line x1="1340" y1="70" x2="1340" y2="130"/><circle cx="1340" cy="130" r="11"/></g><g class="fm-g" data-m="9"><line x1="232" y1="997" x2="262" y2="938"/><circle cx="262" cy="938" r="11"/></g><g class="fm-g" data-m="10"><line x1="352" y1="997" x2="345" y2="938"/><circle cx="345" cy="938" r="11"/></g><g class="fm-g" data-m="12"><line x1="650" y1="1005" x2="650" y2="945"/><circle cx="650" cy="945" r="11"/></g><g class="fm-g" data-m="13"><line x1="938" y1="1010" x2="958" y2="945"/><circle cx="958" cy="945" r="11"/></g><g class="fm-g" data-m="14"><line x1="1058" y1="1010" x2="1038" y2="945"/><circle cx="1038" cy="945" r="11"/></g><g class="fm-g" data-m="15"><line x1="1178" y1="1010" x2="1125" y2="945"/><circle cx="1125" cy="945" r="11"/></g><g class="fm-g" data-m="16"><line x1="1312" y1="610" x2="1312" y2="683"/><circle cx="1312" cy="683" r="11"/></g><g class="fm-g" data-m="17"><line x1="1360" y1="950" x2="1362" y2="872"/><circle cx="1362" cy="872" r="11"/></g></svg><button type="button" class="mk" style="left:11.40%;top:17.96%" data-m="1" aria-pressed="false">1</button><button type="button" class="mk" style="left:19.68%;top:17.96%" data-m="2" aria-pressed="false">2</button><button type="button" class="mk" style="left:27.97%;top:24.13%" data-m="3" aria-pressed="false">3</button><button type="button" class="mk" style="left:27.97%;top:36.65%" data-m="4" aria-pressed="false">4</button><button type="button" class="mk" style="left:66.30%;top:3.68%" data-m="5" aria-pressed="false">5</button><button type="button" class="mk" style="left:79.77%;top:7.83%" data-m="6" aria-pressed="false">6</button><button type="button" class="mk" style="left:92.54%;top:6.45%" data-m="7" aria-pressed="false">7</button><button type="button" class="mk" style="left:6.91%;top:68.14%" data-m="8" aria-pressed="false">8</button><button type="button" class="mk" style="left:16.02%;top:91.80%" data-m="9" aria-pressed="false">9</button><button type="button" class="mk" style="left:24.31%;top:91.80%" data-m="10" aria-pressed="false">10</button><button type="button" class="mk" style="left:44.89%;top:64.46%" data-m="11" aria-pressed="false">11</button><button type="button" class="mk" style="left:44.89%;top:92.54%" data-m="12" aria-pressed="false">12</button><button type="button" class="mk" style="left:64.78%;top:93.00%" data-m="13" aria-pressed="false">13</button><button type="button" class="mk" style="left:73.07%;top:93.00%" data-m="14" aria-pressed="false">14</button><button type="button" class="mk" style="left:81.35%;top:93.00%" data-m="15" aria-pressed="false">15</button><button type="button" class="mk" style="left:90.61%;top:56.17%" data-m="16" aria-pressed="false">16</button><button type="button" class="mk" style="left:93.92%;top:87.48%" data-m="17" aria-pressed="false">17</button></div><div class="lista-obj"><button type="button" class="lo" data-m="1" aria-pressed="false"><span class="lo-n">1</span><span class="lo-t"><span class="art">o</span> <b>saleiro</b></span></button><button type="button" class="lo" data-m="2" aria-pressed="false"><span class="lo-n">2</span><span class="lo-t"><span class="art">o</span> <b>pimenteiro</b></span></button><button type="button" class="lo" data-m="3" aria-pressed="false"><span class="lo-n">3</span><span class="lo-t"><span class="art">a</span> <b>colher de sobremesa</b></span></button><button type="button" class="lo" data-m="4" aria-pressed="false"><span class="lo-n">4</span><span class="lo-t"><span class="art">o</span> <b>garfo de sobremesa</b></span></button><button type="button" class="lo" data-m="5" aria-pressed="false"><span class="lo-n">5</span><span class="lo-t"><span class="art">o</span> <b>copo de água</b></span></button><button type="button" class="lo" data-m="6" aria-pressed="false"><span class="lo-n">6</span><span class="lo-t"><span class="art">o</span> <b>copo de vinho</b></span></button><button type="button" class="lo" data-m="7" aria-pressed="false"><span class="lo-n">7</span><span class="lo-t"><span class="art">o</span> <b>copo de champanhe</b></span></button><button type="button" class="lo" data-m="8" aria-pressed="false"><span class="lo-n">8</span><span class="lo-t"><span class="art">o</span> <b>guardanapo</b></span></button><button type="button" class="lo" data-m="9" aria-pressed="false"><span class="lo-n">9</span><span class="lo-t"><span class="art">o</span> <b>garfo de peixe</b></span></button><button type="button" class="lo" data-m="10" aria-pressed="false"><span class="lo-n">10</span><span class="lo-t"><span class="art">o</span> <b>garfo de carne</b></span></button><button type="button" class="lo" data-m="11" aria-pressed="false"><span class="lo-n">11</span><span class="lo-t"><span class="art">o</span> <b>prato fundo</b></span></button><button type="button" class="lo" data-m="12" aria-pressed="false"><span class="lo-n">12</span><span class="lo-t"><span class="art">o</span> <b>prato raso</b></span></button><button type="button" class="lo" data-m="13" aria-pressed="false"><span class="lo-n">13</span><span class="lo-t"><span class="art">a</span> <b>faca de carne</b></span></button><button type="button" class="lo" data-m="14" aria-pressed="false"><span class="lo-n">14</span><span class="lo-t"><span class="art">a</span> <b>faca de peixe</b></span></button><button type="button" class="lo" data-m="15" aria-pressed="false"><span class="lo-n">15</span><span class="lo-t"><span class="art">a</span> <b>colher de sopa</b></span></button><button type="button" class="lo" data-m="16" aria-pressed="false"><span class="lo-n">16</span><span class="lo-t"><span class="art">a</span> <b>chávena de café</b></span></button><button type="button" class="lo" data-m="17" aria-pressed="false"><span class="lo-n">17</span><span class="lo-t"><span class="art">a</span> <b>colher de café</b></span></button></div></div></section></div>
 <div class="tab-panel" id="painel-praticar1" role="tabpanel" aria-labelledby="tab-praticar1"><div class="exercicios"><section class="exercicio" id="ex1" data-tipo="ligar"><h2 class="ex-t">Exercício 1</h2><p class="instrucao">Ligar cada fotografia ao nome correto.</p><div class="ligar lg-f4" data-multi="0"><svg class="lg-svg" aria-hidden="true" focusable="false"></svg><div class="lg-col lg-esq"><button type="button" class="lg-it lg-e lg-foto" data-r="3" aria-pressed="false" aria-label="Fotografia 1"><span class="lg-n">1</span><img data-img="o_fogao" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="4" aria-pressed="false" aria-label="Fotografia 2"><span class="lg-n">2</span><img data-img="o_forno" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="2" aria-pressed="false" aria-label="Fotografia 3"><span class="lg-n">3</span><img data-img="o_placa_inducao" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="1" aria-pressed="false" aria-label="Fotografia 4"><span class="lg-n">4</span><img data-img="o_micro_ondas" alt="" width="360" height="360" draggable="false"></button></div><div class="lg-col lg-dir"><button type="button" class="lg-it lg-d" data-id="1" data-cor="1" aria-pressed="false"><span class="lg-txt"><span class="art">o</span> <b>micro-ondas</b></span></button><button type="button" class="lg-it lg-d" data-id="2" data-cor="2" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>placa de indução</b></span></button><button type="button" class="lg-it lg-d" data-id="3" data-cor="3" aria-pressed="false"><span class="lg-txt"><span class="art">o</span> <b>fogão</b></span></button><button type="button" class="lg-it lg-d" data-id="4" data-cor="4" aria-pressed="false"><span class="lg-txt"><span class="art">o</span> <b>forno</b></span></button></div></div><p class="lg-aria" role="status" aria-live="polite"></p><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section><section class="exercicio" id="ex2" data-tipo="ligar"><h2 class="ex-t">Exercício 2</h2><p class="instrucao">Ligar cada fotografia ao nome correto.</p><div class="ligar lg-f4" data-multi="0"><svg class="lg-svg" aria-hidden="true" focusable="false"></svg><div class="lg-col lg-esq"><button type="button" class="lg-it lg-e lg-foto" data-r="3" aria-pressed="false" aria-label="Fotografia 1"><span class="lg-n">1</span><img data-img="o_panela" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="4" aria-pressed="false" aria-label="Fotografia 2"><span class="lg-n">2</span><img data-img="o_tacho" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="1" aria-pressed="false" aria-label="Fotografia 3"><span class="lg-n">3</span><img data-img="o_frigideira" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="2" aria-pressed="false" aria-label="Fotografia 4"><span class="lg-n">4</span><img data-img="o_escorredor" alt="" width="360" height="360" draggable="false"></button></div><div class="lg-col lg-dir"><button type="button" class="lg-it lg-d" data-id="1" data-cor="1" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>frigideira</b></span></button><button type="button" class="lg-it lg-d" data-id="2" data-cor="2" aria-pressed="false"><span class="lg-txt"><span class="art">o</span> <b>escorredor</b></span></button><button type="button" class="lg-it lg-d" data-id="3" data-cor="3" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>panela</b></span></button><button type="button" class="lg-it lg-d" data-id="4" data-cor="4" aria-pressed="false"><span class="lg-txt"><span class="art">o</span> <b>tacho</b></span></button></div></div><p class="lg-aria" role="status" aria-live="polite"></p><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section><section class="exercicio" id="ex3" data-tipo="ligar"><h2 class="ex-t">Exercício 3</h2><p class="instrucao">Ligar cada fotografia ao nome correto.</p><div class="ligar lg-f4" data-multi="0"><svg class="lg-svg" aria-hidden="true" focusable="false"></svg><div class="lg-col lg-esq"><button type="button" class="lg-it lg-e lg-foto" data-r="4" aria-pressed="false" aria-label="Fotografia 1"><span class="lg-n">1</span><img data-img="o_colher_pau" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="3" aria-pressed="false" aria-label="Fotografia 2"><span class="lg-n">2</span><img data-img="o_concha" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="1" aria-pressed="false" aria-label="Fotografia 3"><span class="lg-n">3</span><img data-img="o_espatula" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="2" aria-pressed="false" aria-label="Fotografia 4"><span class="lg-n">4</span><img data-img="o_ralador" alt="" width="360" height="360" draggable="false"></button></div><div class="lg-col lg-dir"><button type="button" class="lg-it lg-d" data-id="1" data-cor="1" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>espátula</b></span></button><button type="button" class="lg-it lg-d" data-id="2" data-cor="2" aria-pressed="false"><span class="lg-txt"><span class="art">o</span> <b>ralador</b></span></button><button type="button" class="lg-it lg-d" data-id="3" data-cor="3" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>concha</b></span></button><button type="button" class="lg-it lg-d" data-id="4" data-cor="4" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>colher de pau</b></span></button></div></div><p class="lg-aria" role="status" aria-live="polite"></p><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section><section class="exercicio" id="ex4" data-tipo="ligar"><h2 class="ex-t">Exercício 4</h2><p class="instrucao">Ligar cada fotografia ao nome correto.</p><div class="ligar lg-f4" data-multi="0"><svg class="lg-svg" aria-hidden="true" focusable="false"></svg><div class="lg-col lg-esq"><button type="button" class="lg-it lg-e lg-foto" data-r="3" aria-pressed="false" aria-label="Fotografia 1"><span class="lg-n">1</span><img data-img="o_batedeira" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="4" aria-pressed="false" aria-label="Fotografia 2"><span class="lg-n">2</span><img data-img="o_liquidificadora" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="1" aria-pressed="false" aria-label="Fotografia 3"><span class="lg-n">3</span><img data-img="o_varinha_magica" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="2" aria-pressed="false" aria-label="Fotografia 4"><span class="lg-n">4</span><img data-img="o_torradeira" alt="" width="360" height="360" draggable="false"></button></div><div class="lg-col lg-dir"><button type="button" class="lg-it lg-d" data-id="1" data-cor="1" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>varinha mágica</b></span></button><button type="button" class="lg-it lg-d" data-id="2" data-cor="2" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>torradeira</b></span></button><button type="button" class="lg-it lg-d" data-id="3" data-cor="3" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>batedeira</b></span></button><button type="button" class="lg-it lg-d" data-id="4" data-cor="4" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>liquidificadora</b></span></button></div></div><p class="lg-aria" role="status" aria-live="polite"></p><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section><section class="exercicio" id="ex5" data-tipo="ligar"><h2 class="ex-t">Exercício 5</h2><p class="instrucao">Ligar cada fotografia ao nome correto.</p><div class="ligar lg-f4" data-multi="0"><svg class="lg-svg" aria-hidden="true" focusable="false"></svg><div class="lg-col lg-esq"><button type="button" class="lg-it lg-e lg-foto" data-r="3" aria-pressed="false" aria-label="Fotografia 1"><span class="lg-n">1</span><img data-img="o_tigela" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="4" aria-pressed="false" aria-label="Fotografia 2"><span class="lg-n">2</span><img data-img="o_travessa" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="1" aria-pressed="false" aria-label="Fotografia 3"><span class="lg-n">3</span><img data-img="o_jarro" alt="" width="360" height="360" draggable="false"></button><button type="button" class="lg-it lg-e lg-foto" data-r="2" aria-pressed="false" aria-label="Fotografia 4"><span class="lg-n">4</span><img data-img="o_garrafa_agua" alt="" width="360" height="360" draggable="false"></button></div><div class="lg-col lg-dir"><button type="button" class="lg-it lg-d" data-id="1" data-cor="1" aria-pressed="false"><span class="lg-txt"><span class="art">o</span> <b>jarro</b></span></button><button type="button" class="lg-it lg-d" data-id="2" data-cor="2" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>garrafa de água</b></span></button><button type="button" class="lg-it lg-d" data-id="3" data-cor="3" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>tigela</b></span></button><button type="button" class="lg-it lg-d" data-id="4" data-cor="4" aria-pressed="false"><span class="lg-txt"><span class="art">a</span> <b>travessa</b></span></button></div></div><p class="lg-aria" role="status" aria-live="polite"></p><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section></div></div>
 <div class="tab-panel" id="painel-praticar2" role="tabpanel" aria-labelledby="tab-praticar2"><div class="exercicios"><section class="exercicio" id="ex6" data-tipo="banco"><h2 class="ex-t">Exercício 6</h2><p class="instrucao">Arrastar as palavras para o lugar correto (ou clicar na palavra e depois no espaço).</p><div class="ex-foto"><div class="foto-marcas fm-ex"><img class="fm-img" data-img="foto_cozinha" alt="Cozinha com o frigorífico, o fogão, o exaustor, o micro-ondas, o lava-loiça, a máquina de lavar loiça e, no primeiro plano, uma mesa com um prato, um copo e talheres." width="1269" height="952" draggable="false"><svg class="fm-svg" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g class="fm-g"><line x1="450" y1="232" x2="450" y2="290"/><circle cx="450" cy="290" r="11"/></g><g class="fm-g"><line x1="800" y1="290" x2="797" y2="362"/><circle cx="797" cy="362" r="11"/></g><g class="fm-g"><line x1="655" y1="255" x2="657" y2="332"/><circle cx="657" cy="332" r="11"/></g></svg><span class="mk let" style="left:31.08%;top:21.36%" aria-hidden="true">a</span><span class="mk let" style="left:44.20%;top:54.79%" aria-hidden="true">b</span><span class="mk let" style="left:55.25%;top:26.70%" aria-hidden="true">c</span><span class="mk let" style="left:11.05%;top:27.62%" aria-hidden="true">d</span><span class="mk let" style="left:45.23%;top:23.48%" aria-hidden="true">e</span><span class="mk let" style="left:49.03%;top:9.67%" aria-hidden="true">f</span><span class="mk let" style="left:64.23%;top:11.05%" aria-hidden="true">g</span></div><div class="ex-lado"><div class="banco" aria-label="Palavras"><button type="button" class="chip" data-v="a panela" data-ordem="0">a panela</button><button type="button" class="chip" data-v="o frigorífico" data-ordem="1">o frigorífico</button><button type="button" class="chip" data-v="o exaustor" data-ordem="2">o exaustor</button><button type="button" class="chip" data-v="o fogão" data-ordem="3">o fogão</button><button type="button" class="chip" data-v="o armário da cozinha" data-ordem="4">o armário da cozinha</button><button type="button" class="chip" data-v="o tacho" data-ordem="5">o tacho</button><button type="button" class="chip" data-v="o micro-ondas" data-ordem="6">o micro-ondas</button></div><div class="lin-slots"><div class="lin-s"><span class="alinea">a)</span><span class="slot" role="button" tabindex="0" data-r="o micro-ondas" aria-label="Espaço a)"></span></div><div class="lin-s"><span class="alinea">b)</span><span class="slot" role="button" tabindex="0" data-r="o fogão" aria-label="Espaço b)"></span></div><div class="lin-s"><span class="alinea">c)</span><span class="slot" role="button" tabindex="0" data-r="o tacho" aria-label="Espaço c)"></span></div><div class="lin-s"><span class="alinea">d)</span><span class="slot" role="button" tabindex="0" data-r="o frigorífico" aria-label="Espaço d)"></span></div><div class="lin-s"><span class="alinea">e)</span><span class="slot" role="button" tabindex="0" data-r="a panela" aria-label="Espaço e)"></span></div><div class="lin-s"><span class="alinea">f)</span><span class="slot" role="button" tabindex="0" data-r="o exaustor" aria-label="Espaço f)"></span></div><div class="lin-s"><span class="alinea">g)</span><span class="slot" role="button" tabindex="0" data-r="o armário da cozinha" aria-label="Espaço g)"></span></div></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section><section class="exercicio" id="ex7" data-tipo="banco"><h2 class="ex-t">Exercício 7</h2><p class="instrucao">Arrastar as palavras para o lugar correto (ou clicar na palavra e depois no espaço).</p><div class="ex-foto"><div class="foto-marcas fm-ex"><img class="fm-img" data-img="foto_cozinha" alt="Cozinha com o frigorífico, o fogão, o exaustor, o micro-ondas, o lava-loiça, a máquina de lavar loiça e, no primeiro plano, uma mesa com um prato, um copo e talheres." width="1269" height="952" draggable="false"><svg class="fm-svg" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g class="fm-g"><line x1="925" y1="735" x2="925" y2="790"/><circle cx="925" cy="790" r="11"/></g><g class="fm-g"><line x1="965" y1="330" x2="968" y2="398"/><circle cx="968" cy="398" r="11"/></g><g class="fm-g"><line x1="790" y1="468" x2="768" y2="424"/><circle cx="768" cy="424" r="11"/></g></svg><span class="mk let" style="left:63.88%;top:67.68%" aria-hidden="true">a</span><span class="mk let" style="left:88.05%;top:64.46%" aria-hidden="true">b</span><span class="mk let" style="left:66.64%;top:30.39%" aria-hidden="true">c</span><span class="mk let" style="left:41.44%;top:82.41%" aria-hidden="true">d</span><span class="mk let" style="left:63.19%;top:93.19%" aria-hidden="true">d</span><span class="mk let" style="left:73.20%;top:87.02%" aria-hidden="true">d</span><span class="mk let" style="left:54.56%;top:43.09%" aria-hidden="true">e</span><span class="mk let" style="left:51.80%;top:90.70%" aria-hidden="true">f</span><span class="mk let" style="left:81.84%;top:45.12%" aria-hidden="true">g</span></div><div class="ex-lado"><div class="banco" aria-label="Palavras"><button type="button" class="chip" data-v="a fruteira" data-ordem="0">a fruteira</button><button type="button" class="chip" data-v="os talheres" data-ordem="1">os talheres</button><button type="button" class="chip" data-v="o prato" data-ordem="2">o prato</button><button type="button" class="chip" data-v="o lava-loiça" data-ordem="3">o lava-loiça</button><button type="button" class="chip" data-v="o copo" data-ordem="4">o copo</button><button type="button" class="chip" data-v="a frigideira" data-ordem="5">a frigideira</button><button type="button" class="chip" data-v="a máquina de lavar loiça" data-ordem="6">a máquina de lavar loiça</button></div><div class="lin-slots"><div class="lin-s"><span class="alinea">a)</span><span class="slot" role="button" tabindex="0" data-r="o copo" aria-label="Espaço a)"></span></div><div class="lin-s"><span class="alinea">b)</span><span class="slot" role="button" tabindex="0" data-r="a máquina de lavar loiça" aria-label="Espaço b)"></span></div><div class="lin-s"><span class="alinea">c)</span><span class="slot" role="button" tabindex="0" data-r="a fruteira" aria-label="Espaço c)"></span></div><div class="lin-s"><span class="alinea">d)</span><span class="slot" role="button" tabindex="0" data-r="os talheres" aria-label="Espaço d)"></span></div><div class="lin-s"><span class="alinea">e)</span><span class="slot" role="button" tabindex="0" data-r="a frigideira" aria-label="Espaço e)"></span></div><div class="lin-s"><span class="alinea">f)</span><span class="slot" role="button" tabindex="0" data-r="o prato" aria-label="Espaço f)"></span></div><div class="lin-s"><span class="alinea">g)</span><span class="slot" role="button" tabindex="0" data-r="o lava-loiça" aria-label="Espaço g)"></span></div></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section><section class="exercicio" id="ex8" data-tipo="banco"><h2 class="ex-t">Exercício 8</h2><p class="instrucao">Arrastar as palavras para o lugar correto (ou clicar na palavra e depois no espaço).</p><div class="ex-foto"><div class="foto-marcas fm-ex"><img class="fm-img" data-img="foto_mesa" alt="Mesa posta, vista de cima, com pratos, copos, talheres, um guardanapo, o saleiro, o pimenteiro e uma chávena de café." width="1269" height="952" draggable="false"><svg class="fm-svg" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g class="fm-g"><line x1="1155" y1="85" x2="1155" y2="145"/><circle cx="1155" cy="145" r="11"/></g><g class="fm-g"><line x1="165" y1="195" x2="198" y2="252"/><circle cx="198" cy="252" r="11"/></g><g class="fm-g"><line x1="405" y1="262" x2="468" y2="282"/><circle cx="468" cy="282" r="11"/></g><g class="fm-g"><line x1="1340" y1="70" x2="1340" y2="130"/><circle cx="1340" cy="130" r="11"/></g><g class="fm-g"><line x1="285" y1="195" x2="282" y2="255"/><circle cx="282" cy="255" r="11"/></g><g class="fm-g"><line x1="405" y1="398" x2="478" y2="376"/><circle cx="478" cy="376" r="11"/></g><g class="fm-g"><line x1="960" y1="40" x2="960" y2="88"/><circle cx="960" cy="88" r="11"/></g></svg><span class="mk let" style="left:79.77%;top:7.83%" aria-hidden="true">a</span><span class="mk let" style="left:6.91%;top:68.14%" aria-hidden="true">b</span><span class="mk let" style="left:11.40%;top:17.96%" aria-hidden="true">c</span><span class="mk let" style="left:27.97%;top:24.13%" aria-hidden="true">d</span><span class="mk let" style="left:92.54%;top:6.45%" aria-hidden="true">e</span><span class="mk let" style="left:19.68%;top:17.96%" aria-hidden="true">f</span><span class="mk let" style="left:27.97%;top:36.65%" aria-hidden="true">g</span><span class="mk let" style="left:66.30%;top:3.68%" aria-hidden="true">h</span></div><div class="ex-lado"><div class="banco" aria-label="Palavras"><button type="button" class="chip" data-v="o copo de água" data-ordem="0">o copo de água</button><button type="button" class="chip" data-v="a colher de sobremesa" data-ordem="1">a colher de sobremesa</button><button type="button" class="chip" data-v="o pimenteiro" data-ordem="2">o pimenteiro</button><button type="button" class="chip" data-v="o copo de champanhe" data-ordem="3">o copo de champanhe</button><button type="button" class="chip" data-v="o guardanapo" data-ordem="4">o guardanapo</button><button type="button" class="chip" data-v="o garfo de sobremesa" data-ordem="5">o garfo de sobremesa</button><button type="button" class="chip" data-v="o saleiro" data-ordem="6">o saleiro</button><button type="button" class="chip" data-v="o copo de vinho" data-ordem="7">o copo de vinho</button></div><div class="lin-slots"><div class="lin-s"><span class="alinea">a)</span><span class="slot" role="button" tabindex="0" data-r="o copo de vinho" aria-label="Espaço a)"></span></div><div class="lin-s"><span class="alinea">b)</span><span class="slot" role="button" tabindex="0" data-r="o guardanapo" aria-label="Espaço b)"></span></div><div class="lin-s"><span class="alinea">c)</span><span class="slot" role="button" tabindex="0" data-r="o saleiro" aria-label="Espaço c)"></span></div><div class="lin-s"><span class="alinea">d)</span><span class="slot" role="button" tabindex="0" data-r="a colher de sobremesa" aria-label="Espaço d)"></span></div><div class="lin-s"><span class="alinea">e)</span><span class="slot" role="button" tabindex="0" data-r="o copo de champanhe" aria-label="Espaço e)"></span></div><div class="lin-s"><span class="alinea">f)</span><span class="slot" role="button" tabindex="0" data-r="o pimenteiro" aria-label="Espaço f)"></span></div><div class="lin-s"><span class="alinea">g)</span><span class="slot" role="button" tabindex="0" data-r="o garfo de sobremesa" aria-label="Espaço g)"></span></div><div class="lin-s"><span class="alinea">h)</span><span class="slot" role="button" tabindex="0" data-r="o copo de água" aria-label="Espaço h)"></span></div></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section><section class="exercicio" id="ex9" data-tipo="banco"><h2 class="ex-t">Exercício 9</h2><p class="instrucao">Arrastar as palavras para o lugar correto (ou clicar na palavra e depois no espaço).</p><div class="ex-foto"><div class="foto-marcas fm-ex"><img class="fm-img" data-img="foto_mesa" alt="Mesa posta, vista de cima, com pratos, copos, talheres, um guardanapo, o saleiro, o pimenteiro e uma chávena de café." width="1269" height="952" draggable="false"><svg class="fm-svg" viewBox="0 0 1448 1086" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g class="fm-g"><line x1="1058" y1="1010" x2="1038" y2="945"/><circle cx="1038" cy="945" r="11"/></g><g class="fm-g"><line x1="650" y1="1005" x2="650" y2="945"/><circle cx="650" cy="945" r="11"/></g><g class="fm-g"><line x1="1360" y1="950" x2="1362" y2="872"/><circle cx="1362" cy="872" r="11"/></g><g class="fm-g"><line x1="352" y1="997" x2="345" y2="938"/><circle cx="345" cy="938" r="11"/></g><g class="fm-g"><line x1="1312" y1="610" x2="1312" y2="683"/><circle cx="1312" cy="683" r="11"/></g><g class="fm-g"><line x1="1178" y1="1010" x2="1125" y2="945"/><circle cx="1125" cy="945" r="11"/></g><g class="fm-g"><line x1="938" y1="1010" x2="958" y2="945"/><circle cx="958" cy="945" r="11"/></g><g class="fm-g"><line x1="232" y1="997" x2="262" y2="938"/><circle cx="262" cy="938" r="11"/></g></svg><span class="mk let" style="left:73.07%;top:93.00%" aria-hidden="true">a</span><span class="mk let" style="left:44.89%;top:92.54%" aria-hidden="true">b</span><span class="mk let" style="left:93.92%;top:87.48%" aria-hidden="true">c</span><span class="mk let" style="left:24.31%;top:91.80%" aria-hidden="true">d</span><span class="mk let" style="left:90.61%;top:56.17%" aria-hidden="true">e</span><span class="mk let" style="left:81.35%;top:93.00%" aria-hidden="true">f</span><span class="mk let" style="left:44.89%;top:64.46%" aria-hidden="true">g</span><span class="mk let" style="left:64.78%;top:93.00%" aria-hidden="true">h</span><span class="mk let" style="left:16.02%;top:91.80%" aria-hidden="true">i</span></div><div class="ex-lado"><div class="banco" aria-label="Palavras"><button type="button" class="chip" data-v="a colher de sopa" data-ordem="0">a colher de sopa</button><button type="button" class="chip" data-v="o garfo de peixe" data-ordem="1">o garfo de peixe</button><button type="button" class="chip" data-v="a faca de carne" data-ordem="2">a faca de carne</button><button type="button" class="chip" data-v="o prato fundo" data-ordem="3">o prato fundo</button><button type="button" class="chip" data-v="a faca de peixe" data-ordem="4">a faca de peixe</button><button type="button" class="chip" data-v="a chávena de café" data-ordem="5">a chávena de café</button><button type="button" class="chip" data-v="o garfo de carne" data-ordem="6">o garfo de carne</button><button type="button" class="chip" data-v="a colher de café" data-ordem="7">a colher de café</button><button type="button" class="chip" data-v="o prato raso" data-ordem="8">o prato raso</button></div><div class="lin-slots"><div class="lin-s"><span class="alinea">a)</span><span class="slot" role="button" tabindex="0" data-r="a faca de peixe" aria-label="Espaço a)"></span></div><div class="lin-s"><span class="alinea">b)</span><span class="slot" role="button" tabindex="0" data-r="o prato raso" aria-label="Espaço b)"></span></div><div class="lin-s"><span class="alinea">c)</span><span class="slot" role="button" tabindex="0" data-r="a colher de café" aria-label="Espaço c)"></span></div><div class="lin-s"><span class="alinea">d)</span><span class="slot" role="button" tabindex="0" data-r="o garfo de carne" aria-label="Espaço d)"></span></div><div class="lin-s"><span class="alinea">e)</span><span class="slot" role="button" tabindex="0" data-r="a chávena de café" aria-label="Espaço e)"></span></div><div class="lin-s"><span class="alinea">f)</span><span class="slot" role="button" tabindex="0" data-r="a colher de sopa" aria-label="Espaço f)"></span></div><div class="lin-s"><span class="alinea">g)</span><span class="slot" role="button" tabindex="0" data-r="o prato fundo" aria-label="Espaço g)"></span></div><div class="lin-s"><span class="alinea">h)</span><span class="slot" role="button" tabindex="0" data-r="a faca de carne" aria-label="Espaço h)"></span></div><div class="lin-s"><span class="alinea">i)</span><span class="slot" role="button" tabindex="0" data-r="o garfo de peixe" aria-label="Espaço i)"></span></div></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section></div></div>
+<div class="tab-panel" id="painel-jogar" role="tabpanel" aria-labelledby="tab-jogar"><section class="bloco jogo" id="jogo"><div id="jg-inicio"><p class="instrucao">Cinco fotografias em cada nível. Escolher ou escrever a palavra correta. Fazer o máximo de pontos.</p><div class="botoes"><button type="button" id="jg-comecar">Começar</button></div></div><div id="jg-corpo" data-nivel="1" hidden><div class="jg-barra"><div class="jg-linha"><span class="tag-reg" id="jg-nivel">Nível 1 de 3</span><span class="jg-pontos" id="jg-pontos">0 pontos</span></div><div class="progresso"><div class="prog"><span class="prog-fill" id="jg-fill"></span></div><span class="contagem" id="jg-prog">1 / 5</span></div></div><p id="jg-instr"></p><div id="jg-itens"></div><div class="jg-fim" id="jg-fim" role="status" aria-live="polite" hidden></div></div></section></div>
 <div class="tab-panel" id="painel-situacoes" role="tabpanel" aria-labelledby="tab-situacoes"><section class="bloco"><div class="situacao" id="sit1"><div class="sit-topo"><span class="tag-reg">Situação 1</span></div><img class="sit-img" data-img="a_preparar_refeicao" alt="Um homem a cozinhar uma refeição na cozinha" width="640" height="640" draggable="false"><p class="instrucao">Fazer a pergunta a um colega. Depois, escrever sobre o colega.</p><div class="perguntas-sit"><div class="frase-som pastilha"><span class="txt">O que tens na tua cozinha?</span></div></div><textarea class="resp-livre grande" rows="4" aria-label="Escrever sobre o colega" autocapitalize="sentences" spellcheck="false"></textarea><div class="sit-exemplo"><button type="button" class="ver-resp" aria-controls="sit1-ex" aria-expanded="false" data-abrir="Ver um exemplo" data-fechar="Esconder o exemplo">Ver um exemplo</button><div class="respostas" id="sit1-ex" hidden><div class="dialogo-texto"><div class="balao-linha b"><div class="fala"><div class="corpo-fala"><div class="balao"><span class="texto">Tenho um fogão, um frigorífico, um micro-ondas e uma máquina de lavar loiça.</span></div></div></div></div></div></div></div></div><div class="situacao" id="sit2"><div class="sit-topo"><span class="tag-reg">Situação 2</span></div><img class="sit-img" data-img="a_lavar_loica" alt="Um homem a lavar um prato no lava-loiça da cozinha" width="640" height="640" draggable="false"><p class="instrucao">Fazer a pergunta a um colega. Depois, escrever sobre o colega.</p><div class="perguntas-sit"><div class="frase-som pastilha"><span class="txt">Lavas a loiça no lava-loiça ou na máquina de lavar loiça?</span></div></div><textarea class="resp-livre grande" rows="4" aria-label="Escrever sobre o colega" autocapitalize="sentences" spellcheck="false"></textarea><div class="sit-exemplo"><button type="button" class="ver-resp" aria-controls="sit2-ex" aria-expanded="false" data-abrir="Ver um exemplo" data-fechar="Esconder o exemplo">Ver um exemplo</button><div class="respostas" id="sit2-ex" hidden><div class="dialogo-texto"><div class="balao-linha b"><div class="fala"><div class="corpo-fala"><div class="balao"><span class="texto">Lavo a loiça na máquina de lavar loiça.</span></div></div></div></div></div></div></div></div><div class="situacao" id="sit3"><div class="sit-topo"><span class="tag-reg">Situação 3</span></div><img class="sit-img larga" data-img="foto_mesa" alt="Mesa posta vista de cima" width="640" height="640" draggable="false"><p class="instrucao">Fazer as perguntas a um colega. Depois, escrever as respostas.</p><div class="perguntas-sit"><div class="frase-som pastilha"><span class="txt">Onde fica o guardanapo? E o copo de vinho?</span></div></div><textarea class="resp-livre grande" rows="4" aria-label="Escrever as respostas" autocapitalize="sentences" spellcheck="false"></textarea><div class="sit-exemplo"><button type="button" class="ver-resp" aria-controls="sit3-ex" aria-expanded="false" data-abrir="Ver um exemplo" data-fechar="Esconder o exemplo">Ver um exemplo</button><div class="respostas" id="sit3-ex" hidden><div class="dialogo-texto"><div class="balao-linha b"><div class="fala"><div class="corpo-fala"><div class="balao"><span class="texto">O guardanapo fica à esquerda dos garfos. O copo de vinho fica entre o copo de água e o copo de champanhe.</span></div></div></div></div></div></div></div></div></section></div>
 </div>
 <script>
@@ -1252,6 +1309,336 @@ window.IMG = {"o_batedeira": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD
 (function () {
   Array.prototype.slice.call(document.querySelectorAll('textarea.resp-livre')).forEach(function (t) {
     t.addEventListener('input', function () { t.style.height = 'auto'; t.style.height = (t.scrollHeight + 4) + 'px'; });
+  });
+})();
+</script>
+<script>
+/* ---------- Aba Jogar: 3 níveis, pontos, estrelas ---------- */
+window.JOGO_CFG = {"repetir":true};
+window.JOGO = [{"k":"o_fogao","w":"o fogão","g":"eq","a":["fogão"],"x":["o_forno","o_placa_inducao"],"e":1},{"k":"o_exaustor","w":"o exaustor","g":"eq","a":["exaustor"],"e":1},{"k":"o_placa_inducao","w":"a placa de indução","g":"eq","a":["placa de indução","placa vitrocerâmica","placa de vitrocerâmica","placa"],"e":1},{"k":"o_forno","w":"o forno","g":"eq","a":["forno"],"t":["forno"],"e":1},{"k":"o_micro_ondas","w":"o micro-ondas","g":"eq","a":["micro-ondas","microondas","forno micro-ondas"],"t":["forno"],"e":1},{"k":"o_frigorifico","w":"o frigorífico","g":"eq","a":["frigorífico"],"e":1},{"k":"o_lava_loica","w":"o lava-loiça","g":"eq","a":["lava-loiça","lava-louça"],"e":1},{"k":"o_maquina_lavar_loica","w":"a máquina de lavar loiça","g":"eq","a":["máquina de lavar loiça","máquina de lavar louça"],"x":["o_prato","o_garfo","o_faca","o_colher"],"e":1},{"k":"o_maquina_lavar_roupa","w":"a máquina de lavar roupa","g":"eq","a":["máquina de lavar roupa"],"e":1},{"k":"o_frigideira","w":"a frigideira","g":"ut","a":["frigideira"],"e":1},{"k":"o_tacho","w":"o tacho","g":"ut","a":["tacho"],"t":["tacho"]},{"k":"o_panela","w":"a panela","g":"ut","a":["panela"],"t":["tacho"]},{"k":"o_tabua_cortar","w":"a tábua de cortar","g":"ut","a":["tábua de cortar","tábua"],"e":1},{"k":"o_colher_pau","w":"a colher de pau","g":"ut","a":["colher de pau"],"t":["colher"],"e":1},{"k":"o_concha","w":"a concha","g":"ut","a":["concha"],"t":["colher"],"e":1},{"k":"o_ralador","w":"o ralador","g":"ut","a":["ralador"],"e":1},{"k":"o_escorredor","w":"o escorredor","g":"ut","a":["escorredor"],"e":1},{"k":"o_espatula","w":"a espátula","g":"ut","a":["espátula"],"e":1},{"k":"o_maquina_cafe","w":"a máquina de café","g":"ut","a":["máquina de café","cafeteira"],"x":["o_chavena"],"e":1},{"k":"o_torradeira","w":"a torradeira","g":"ut","a":["torradeira"],"e":1},{"k":"o_chaleira","w":"a chaleira elétrica","g":"ut","a":["chaleira elétrica","chaleira"],"e":1},{"k":"o_varinha_magica","w":"a varinha mágica","g":"ut","a":["varinha mágica","varinha","triturador"],"t":["triturar"],"e":1},{"k":"o_liquidificadora","w":"a liquidificadora","g":"ut","a":["liquidificadora","liquidificador"],"t":["triturar"],"e":1},{"k":"o_batedeira","w":"a batedeira","g":"ut","a":["batedeira"],"e":1},{"k":"o_mesa","w":"a mesa","g":"ms","a":["mesa"],"t":["mesa"],"e":1},{"k":"o_cadeira","w":"a cadeira","g":"ms","a":["cadeira"],"e":1},{"k":"o_toalha_de_mesa","w":"a toalha de mesa","g":"ms","a":["toalha de mesa","toalha"],"t":["mesa"],"e":1},{"k":"o_guardanapo_papel","w":"o guardanapo de papel","g":"ms","a":["guardanapo de papel","guardanapo","guardanapos"],"e":1},{"k":"o_prato","w":"o prato","g":"ms","a":["prato"],"t":["loica"],"e":1},{"k":"o_tigela","w":"a tigela","g":"ms","a":["tigela"],"t":["loica"],"e":1},{"k":"o_travessa","w":"a travessa","g":"ms","a":["travessa"],"t":["loica"],"e":1},{"k":"o_copo","w":"o copo","g":"ms","a":["copo"],"t":["agua"],"e":1},{"k":"o_chavena","w":"a chávena","g":"ms","a":["chávena"],"x":["o_colher"],"e":1},{"k":"o_jarro","w":"o jarro","g":"ms","a":["jarro"],"t":["agua"],"e":1},{"k":"o_garrafa_agua","w":"a garrafa de água","g":"ms","a":["garrafa de água","garrafa"],"t":["agua"],"e":1},{"k":"o_saleiro","w":"o saleiro","g":"ms","a":["saleiro"],"e":1},{"k":"o_garfo","w":"o garfo","g":"ms","a":["garfo"],"e":1},{"k":"o_faca","w":"a faca","g":"ms","a":["faca"],"e":1},{"k":"o_colher","w":"a colher","g":"ms","a":["colher"],"t":["colher"],"e":1}];
+(function () {
+  'use strict';
+  var sec = document.getElementById('jogo');
+  if (!sec || !window.JOGO) return;
+
+  var CFG = window.JOGO_CFG || {};
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function baralhar(a) {
+    var r = a.slice(), i, j, t;
+    for (i = r.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = r[i]; r[i] = r[j]; r[j] = t; }
+    return r;
+  }
+  function semAcentos(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function normalizar(s) {
+    s = s.normalize('NFC').toLowerCase().replace(/[.,;:!?"“”«»()]/g, ' ').replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim();
+    return s.replace(/^(o|a|os|as|um|uma|uns|umas) /, '');
+  }
+  var reduzir = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----- dados ----- */
+  var ITENS = window.JOGO.map(function (o) {
+    return {
+      k: o.k, w: o.w, h: o.h || o.w, g: o.g, e: !!o.e,
+      t: [o.k].concat(o.t || []), x: o.x || [],
+      an: o.a.map(normalizar)
+    };
+  });
+  var GRUPOS = [], porGrupo = {};
+  ITENS.forEach(function (it) {
+    if (!porGrupo[it.g]) { porGrupo[it.g] = []; GRUPOS.push(it.g); }
+    porGrupo[it.g].push(it);
+  });
+  function conflito(a, b) {
+    if (a === b || a.w === b.w) return true;
+    var i;
+    for (i = 0; i < a.t.length; i++) if (b.t.indexOf(a.t[i]) >= 0) return true;
+    return a.x.indexOf(b.k) >= 0 || b.x.indexOf(a.k) >= 0;
+  }
+  function livres(lista, usados) { return lista.filter(function (it) { return !usados[it.k]; }); }
+
+  /* ----- perguntas ----- */
+  var usados = {};
+  function tentarPergunta(n, g, bloq) {
+    var alvos = baralhar(porGrupo[g].filter(function (it) { return !usados[it.k] && !(bloq && bloq[it.k]) && (n < 3 || it.e); }));
+    var a, tent, i, ops, cand, d1, d2, gs, pool, c;
+    for (a = 0; a < alvos.length; a++) {
+      var alvo = alvos[a];
+      if (n === 3) return { alvo: alvo, ops: null };
+      if (n === 1) {
+        for (tent = 0; tent < 25; tent++) {
+          gs = baralhar(GRUPOS.filter(function (x) { return x !== g; }));
+          d1 = baralhar(porGrupo[gs[0]])[0]; d2 = baralhar(porGrupo[gs[1]])[0];
+          if (!conflito(alvo, d1) && !conflito(alvo, d2) && !conflito(d1, d2)) return { alvo: alvo, ops: baralhar([alvo, d1, d2]) };
+        }
+      } else {
+        pool = baralhar(porGrupo[g].filter(function (it) { return !conflito(alvo, it); }));
+        ops = [alvo];
+        for (i = 0; i < pool.length && ops.length < 4; i++) {
+          c = pool[i];
+          if (ops.every(function (o) { return !conflito(o, c); })) ops.push(c);
+        }
+        if (ops.length === 4) return { alvo: alvo, ops: baralhar(ops) };
+      }
+    }
+    return null;
+  }
+  function gruposAleatorios(n, excluir) {
+    if (CFG.repetir) {
+      /* poucos grupos: o mesmo grupo pode repetir-se, em proporção ao número de palavras de cada um */
+      var gr = baralhar(GRUPOS.filter(function (g) { return g !== excluir; })), saida = [], tot0 = 0, cum = 0, u = Math.random(), ant, c, q;
+      gr.forEach(function (g) { tot0 += porGrupo[g].length; });
+      for (q = 0; q < gr.length; q++) {
+        ant = Math.floor(cum + u); cum += n * porGrupo[gr[q]].length / tot0; c = Math.floor(cum + u) - ant;
+        while (c-- > 0) saida.push(gr[q]);
+      }
+      return baralhar(saida);
+    }
+    var pool = GRUPOS.filter(function (g) { return g !== excluir; }), out = [], tot, r, acc, i, esc;
+    while (out.length < n && pool.length) {
+      tot = 0; pool.forEach(function (g) { tot += porGrupo[g].length; });
+      r = Math.random() * tot; acc = 0; esc = pool.length - 1;
+      for (i = 0; i < pool.length; i++) { acc += porGrupo[pool[i]].length; if (r < acc) { esc = i; break; } }
+      out.push(pool.splice(esc, 1)[0]);
+    }
+    return baralhar(out);
+  }
+  /* Nível 1: uma pergunta com duas palavras que os formandos confundem (CFG.par = [chave, chave]). */
+  function perguntaPar() {
+    if (!CFG.par) return null;
+    var ma = null, ms = null, i, tent, gs, d, alvo, outro;
+    for (i = 0; i < ITENS.length; i++) { if (ITENS[i].k === CFG.par[0]) ma = ITENS[i]; if (ITENS[i].k === CFG.par[1]) ms = ITENS[i]; }
+    if (!ma || !ms) return null;
+    alvo = Math.random() < 0.5 ? ma : ms; outro = alvo === ma ? ms : ma;
+    gs = GRUPOS.filter(function (x) { return x !== ma.g && x !== ms.g; });
+    if (!gs.length) gs = GRUPOS.filter(function (x) { return x !== alvo.g; });
+    for (tent = 0; tent < 25; tent++) {
+      d = baralhar(porGrupo[baralhar(gs)[0]])[0];
+      if (d !== alvo && d !== outro && !conflito(alvo, d) && !conflito(outro, d)) return { alvo: alvo, ops: baralhar([alvo, outro, d]) };
+    }
+    return null;
+  }
+  function criarNivel(n, repetido) {
+    var tent, gs, qs, i, q, ok, locais, esp = null, bloq = null;
+    if (n === 1) { esp = perguntaPar(); if (esp) { bloq = {}; bloq[CFG.par[0]] = 1; bloq[CFG.par[1]] = 1; } }
+    for (tent = 0; tent < 60; tent++) {
+      gs = gruposAleatorios(esp ? 4 : 5, esp ? esp.alvo.g : null); qs = []; ok = true; locais = {};
+      for (i = 0; i < gs.length; i++) {
+        q = tentarPergunta(n, gs[i], bloq);
+        if (!q) { ok = false; break; }
+        usados[q.alvo.k] = 1; locais[q.alvo.k] = 1; qs.push(q);
+      }
+      if (ok) {
+        if (esp) { usados[esp.alvo.k] = 1; qs.splice(Math.floor(Math.random() * (qs.length + 1)), 0, esp); }
+        return qs;
+      }
+      Object.keys(locais).forEach(function (k) { delete usados[k]; });
+    }
+    if (!repetido) { usados = {}; return criarNivel(n, true); }
+    return [];
+  }
+
+  /* ----- estado ----- */
+  var elIni = $('#jg-inicio', sec), elCorpo = $('#jg-corpo', sec), elItens = $('#jg-itens', sec), elFim = $('#jg-fim', sec);
+  var elNivel = $('#jg-nivel', sec), elPontos = $('#jg-pontos', sec), elFill = $('#jg-fill', sec), elProg = $('#jg-prog', sec), elInstr = $('#jg-instr', sec);
+  var nivel = 1, total = 0, estrelas = [0, 0, 0];
+  var qs = [], certas = 0, respondidas = 0, seguidas = 0, pontosNivel = 0, gerac = 0, TOTAL = 5, MAXIMO = 300;
+  var timer = null;
+
+  function atualizar(subiu) {
+    elCorpo.setAttribute('data-nivel', String(nivel));
+    elNivel.textContent = 'Nível ' + nivel + ' de 3';
+    elPontos.textContent = total + ' pontos';
+    if (subiu && !reduzir) { elPontos.classList.remove('sobe'); void elPontos.offsetWidth; elPontos.classList.add('sobe'); }
+    elFill.style.width = (respondidas / TOTAL * 100) + '%';
+    elProg.textContent = Math.min(respondidas + 1, TOTAL) + ' / ' + TOTAL;
+  }
+
+  function criarFoto(it) {
+    var im = document.createElement('img');
+    im.className = 'jg-foto'; im.alt = ''; im.width = 360; im.height = 360; im.draggable = false;
+    var d = window.IMG && window.IMG[it.k];
+    if (d) im.src = d; else im.classList.add('sem-imagem');
+    return im;
+  }
+
+  function desenhar() {
+    elItens.innerHTML = '';
+    qs.forEach(function (q, i) {
+      var c = document.createElement('div');
+      c.className = 'jg-cartao'; c.setAttribute('data-i', String(i));
+      c.appendChild(criarFoto(q.alvo));
+      var fb = document.createElement('div');
+      fb.className = 'jg-fb'; fb.setAttribute('role', 'status'); fb.setAttribute('aria-live', 'polite');
+      q.fb = fb; q.cartao = c; q.resp = false; q.quases = 0;
+      if (nivel < 3) {
+        var ops = document.createElement('div');
+        ops.className = 'jg-ops ' + (nivel === 1 ? 'n3' : 'n4');
+        q.ops.forEach(function (it) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'btn-op'; b.setAttribute('data-k', it.k); b.innerHTML = it.h;
+          b.addEventListener('click', function () { escolher(q, b); });
+          ops.appendChild(b);
+        });
+        q.btns = $$('.btn-op', ops);
+        c.appendChild(ops);
+      } else {
+        var r = document.createElement('div');
+        r.className = 'jg-esc';
+        var inp = document.createElement('input');
+        inp.type = 'text'; inp.className = 'resp'; inp.placeholder = 'Escrever aqui…';
+        inp.setAttribute('autocomplete', 'off'); inp.setAttribute('autocorrect', 'off'); inp.setAttribute('autocapitalize', 'none');
+        inp.setAttribute('spellcheck', 'false'); inp.setAttribute('enterkeyhint', 'done'); inp.setAttribute('lang', 'pt-PT');
+        inp.setAttribute('aria-label', 'Escrever a palavra correta.');
+        var bv = document.createElement('button');
+        bv.type = 'button'; bv.textContent = 'Verificar';
+        inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); verificar(q); } });
+        inp.addEventListener('input', function () {
+          if (q.resp) return;
+          inp.classList.remove('quase'); fb.innerHTML = '';
+        });
+        bv.addEventListener('click', function () { verificar(q); });
+        q.input = inp; q.bv = bv;
+        r.appendChild(inp); r.appendChild(bv);
+        c.appendChild(r);
+      }
+      c.appendChild(fb);
+      elItens.appendChild(c);
+    });
+  }
+
+  /* ----- respostas ----- */
+  function registar(q, certa) {
+    q.resp = true; respondidas++;
+    var p = 0;
+    if (certa) {
+      certas++; seguidas++; p = 10 * nivel; pontosNivel += p; total += p;
+      var h = '<span class="ok">✓ Certo! +' + p + ' pontos</span>';
+      if (seguidas >= 3) h += '<br><span class="jg-seg">🔥 ' + seguidas + ' seguidas!</span>';
+      q.fb.innerHTML = h;
+    } else {
+      seguidas = 0;
+      q.fb.innerHTML = '<span class="err">✗ A palavra certa é: ' + q.alvo.h + '.</span>';
+    }
+    atualizar(certa);
+    var minha = gerac;
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (minha === gerac) avancar(); }, certa ? 1200 : 2400);
+  }
+
+  function escolher(q, btn) {
+    if (q.resp) return;
+    var certa = btn.getAttribute('data-k') === q.alvo.k;
+    q.btns.forEach(function (b) {
+      b.disabled = true;
+      if (b === btn) b.classList.add(certa ? 'certa' : 'errada');
+      else if (b.getAttribute('data-k') === q.alvo.k) b.classList.add('certa');
+    });
+    registar(q, certa);
+  }
+
+  function avaliar(it, n) {
+    var i, sa = semAcentos(n);
+    for (i = 0; i < it.an.length; i++) if (n === it.an[i]) return 'certa';
+    for (i = 0; i < it.an.length; i++) if (sa === semAcentos(it.an[i])) return 'quase';
+    return 'errada';
+  }
+
+  function verificar(q) {
+    if (q.resp) return;
+    var n = normalizar(q.input.value);
+    if (!n) { q.input.focus(); return; }
+    var r = avaliar(q.alvo, n);
+    if (r === 'quase' && q.quases < 3) {
+      q.quases++;
+      q.input.classList.add('quase');
+      q.fb.innerHTML = '<span class="quase">Quase! Falta o acento.</span>';
+      q.input.focus();
+      return;
+    }
+    q.input.classList.remove('quase');
+    q.input.classList.add(r === 'certa' ? 'certa' : 'errada');
+    q.input.disabled = true; q.bv.disabled = true;
+    registar(q, r === 'certa');
+  }
+
+  function avancar() {
+    if (respondidas >= TOTAL) { fimDeNivel(); return; }
+    var prox = qs.filter(function (q) { return !q.resp; })[0];
+    if (!prox) return;
+    prox.cartao.scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
+    if (nivel === 3 && prox.input) { try { prox.input.focus({ preventScroll: true }); } catch (e) { prox.input.focus(); } }
+  }
+
+  /* ----- fim de nível e final ----- */
+  function estrelasHtml(n) {
+    var h = '<div class="jg-estrelas" aria-label="' + n + ' de 3 estrelas">', i;
+    for (i = 1; i <= 3; i++) h += '<span class="' + (i <= n ? 'on' : 'off') + '" aria-hidden="true">⭐</span>';
+    return h + '</div>';
+  }
+  function mostrarFim(html) {
+    elItens.hidden = true; elInstr.hidden = true;
+    elFim.innerHTML = html; elFim.hidden = false;
+    var topo = $('.jg-barra', sec);
+    (topo || sec).scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
+  }
+  function fimDeNivel() {
+    atualizar(false);
+    var passou = certas >= 3, h;
+    if (passou) {
+      estrelas[nivel - 1] = certas - 2;
+      if (nivel === 3) { final(); return; }
+      var msg = certas === 5 ? ['🎉 Perfeito! Muito bem!', 'nivel-alto'] : certas === 4 ? ['👍 Muito bom! Está no bom caminho.', 'nivel-alto'] : ['💪 Continue a praticar!', 'nivel-medio'];
+      h = estrelasHtml(estrelas[nivel - 1]) +
+        '<h3 class="jg-fim-t">Nível ' + nivel + ' concluído!</h3>' +
+        '<p class="jg-fim-p">+' + pontosNivel + ' pontos</p>' +
+        '<div class="resultado ' + msg[1] + '">' + msg[0] + '</div>' +
+        '<div class="botoes"><button type="button" id="jg-seguinte">Ir para o nível ' + (nivel + 1) + '</button></div>';
+    } else {
+      var m2 = certas === 2 ? ['💪 Quase! Falta 1 certa para passar.', 'nivel-medio'] : ['📚 Tente novamente — vai conseguir!', 'nivel-baixo'];
+      h = '<h3 class="jg-fim-t">Nível ' + nivel + ' por concluir</h3>' +
+        '<div class="resultado ' + m2[1] + '">' + m2[0] + '</div>' +
+        '<div class="botoes"><button type="button" id="jg-repetir">Tentar outra vez</button></div>';
+    }
+    mostrarFim(h);
+  }
+  function final() {
+    var pct = Math.min(100, Math.round(total / MAXIMO * 100));
+    var msg = pct >= 100 ? ['🎉 Perfeito! Muito bem!', 'nivel-alto'] : pct >= 70 ? ['👍 Muito bom! Está no bom caminho.', 'nivel-alto'] : pct >= 40 ? ['💪 Continue a praticar!', 'nivel-medio'] : ['📚 Tente novamente — vai conseguir!', 'nivel-baixo'];
+    var linha = [1, 2, 3].map(function (n) { return '<span class="nw">Nível ' + n + ' ' + new Array(estrelas[n - 1] + 1).join('⭐') + '</span>'; }).join(' · ');
+    var h = '<h3 class="jg-fim-t">🏆 Passou os 3 níveis!</h3>' +
+      '<p class="jg-fim-p">' + total + ' pontos' + (total <= MAXIMO ? ' em ' + MAXIMO : '') + '</p>' +
+      '<p class="jg-fim-e">' + linha + '</p>' +
+      '<div class="resultado ' + msg[1] + '">' + msg[0] + '</div>' +
+      '<div class="botoes"><button type="button" id="jg-outra">Jogar outra vez</button></div>';
+    mostrarFim(h);
+  }
+
+  /* ----- fluxo ----- */
+  function iniciarNivel() {
+    gerac++; clearTimeout(timer);
+    certas = 0; respondidas = 0; seguidas = 0; pontosNivel = 0;
+    qs = criarNivel(nivel, false);
+    elFim.hidden = true; elFim.innerHTML = '';
+    elItens.hidden = false; elInstr.hidden = false;
+    elInstr.textContent = nivel < 3 ? 'Escolher a palavra correta.' : 'Escrever a palavra correta.';
+    desenhar(); atualizar(false);
+    var topo = $('.jg-barra', sec);
+    (topo || sec).scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
+  }
+  function recomecar() {
+    nivel = 1; total = 0; estrelas = [0, 0, 0]; usados = {};
+    iniciarNivel();
+  }
+  $('#jg-comecar', sec).addEventListener('click', function () {
+    elIni.hidden = true; elCorpo.hidden = false; recomecar();
+  });
+  elFim.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.id === 'jg-seguinte') { nivel++; iniciarNivel(); }
+    else if (b.id === 'jg-repetir') iniciarNivel();
+    else if (b.id === 'jg-outra') recomecar();
   });
 })();
 </script>
