@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <title>Alfabeto</title>
 <style>
 /* Carlito © 2010-2013 Łukasz Dziedzic (Lato), SIL Open Font License 1.1, https://openfontlicense.org. Substituta livre da Calibri, com as mesmas métricas. */
@@ -36,15 +37,6 @@
     line-height:1.5;
   }
   .wrap{ max-width:960px; margin:0 auto; }
-  header{
-    background:var(--accent);
-    color:#fff;
-    padding:22px 24px;
-    border-radius:10px;
-    margin-bottom:22px;
-  }
-  header .sub{ font-size:0.9rem; opacity:0.92; margin:0; }
-  header h1{ margin:0 0 6px 0; font-size:1.4rem; font-weight:700; letter-spacing:.2px; }
 
   nav.tabs{
     display:flex;
@@ -87,7 +79,9 @@
 
   h2{ font-size:1.15rem; color:var(--accent-dark); margin:30px 0 6px 0; border-top:1px solid var(--border); padding-top:22px; }
   h2:first-child{ border-top:none; padding-top:0; margin-top:0; }
-  p.instrucao{ font-style:italic; color:#6b7278; margin:0 0 14px 0; }
+  p.instrucao{ font-style:italic; color:#656c72; margin:0 0 14px 0; }
+  section.tab-panel h2.ex-t{display:inline-block;margin:0 0 10px;padding:3px 16px;border-radius:999px;background:var(--accent);border:1px solid var(--accent);color:#fff;font-size:1.05rem;font-weight:700;line-height:1.5;text-align:left;}
+  section.tab-panel h2.ex-t.ex-seguinte{margin-top:30px;}
   p.nota, div.nota{ font-size:0.92rem; color:#555; background:var(--caixa-bg); border-radius:8px; padding:8px 12px; margin:8px 0; }
 
   .alfabeto-linha{ font-size:1.5rem; letter-spacing:3px; font-weight:700; word-break:break-all; margin:6px 0; }
@@ -137,7 +131,7 @@
   .grupo-zona.vazio-alerta{ border-color:var(--vazio); background:var(--vazio-bg); }
   .grupo-zona h3{ margin:0 0 4px 0; font-size:1.05rem; color:var(--accent-dark); text-align:center; }
   .grupo-zona h3 .btn-som{ font-size:0.8rem; background:none; border:none; cursor:pointer; vertical-align:middle; padding:0; }
-  .grupo-zona .exemplo{ display:block; text-align:center; font-size:0.78rem; color:#8a9096; margin-bottom:8px; }
+  .grupo-zona .exemplo{ display:block; text-align:center; font-size:0.78rem; color:#656c72; margin-bottom:8px; }
   .zona-drop{ display:flex; flex-wrap:wrap; gap:6px; min-height:60px; }
 
   .botoes{ display:flex; gap:10px; flex-wrap:wrap; margin:18px 0; }
@@ -150,10 +144,26 @@
 
 
   @media (max-width:480px){
-    header h1{ font-size:1.25rem; }
     .alfabeto-linha{ font-size:1.1rem; letter-spacing:1.5px; }
     table.ref .lista-exemplos .exemplo{ display:inline; white-space:normal; }
   }
+
+  /* Cabeçalho único e baixo (norma de 7 out. 2026) */
+  header{background:var(--accent);color:#fff;padding:14px 16px 13px;border-radius:10px;margin-bottom:12px;}
+  header h1{margin:0 0 2px;font-size:1.4rem;font-weight:700;letter-spacing:.2px;line-height:1.3;}
+  header p{margin:0;font-size:1rem;opacity:.92;line-height:1.4;}
+  @media (max-width:520px){header p .hs{display:none;}header p .ha,header p .hb{display:block;}}
+  @media (max-width:360px){header{padding-left:12px;padding-right:12px;}}
+  @media (min-width:600px){header{padding:18px 24px;margin-bottom:16px;}}
+  header h1 .nb{white-space:nowrap;}
+
+  /* Alvos de toque de 44 px nos botões de som e nos chips (decisão de 7 out. 2026) */
+  button.btn-som-alfabeto{min-height:44px;}
+  button.btn-som{min-height:44px;min-width:44px;}
+  button.chip,button.chip.btn-som,button.chip.certo{min-height:44px;}
+
+  /* «Ainda faltam respostas.»: Verificar com tudo em branco */
+  #resultado.nivel-vazio{display:inline-block;padding:12px 16px;border:1px solid #a8791f;border-radius:8px;background:#f8f0dd;color:#7a5610;}
 </style>
 </head>
 <body>
@@ -161,7 +171,7 @@
 
 <header>
   <h1>Alfabeto</h1>
-  <p class="sub">INTRODUÇÃO · Formadora: Sofia Coelho</p>
+  <p><span class="ha">INTRODUÇÃO</span><span class="hs"> · </span><span class="hb">Formadora: Sofia Coelho</span></p>
 </header>
 
 <nav class="tabs">
@@ -183,7 +193,7 @@
     </div>
     <audio id="audio-alfabeto" preload="none"></audio>
     <audio id="audio-alfabeto-repetir" preload="none"></audio>
-    <p class="nota"><strong>K, W, Y</strong>: só em palavras estrangeiras (ex.: kg, WhatsApp). <strong>Ç</strong> = C com cedilha.</p>
+    <p class="nota"><strong>K, W, Y</strong>: em palavras estrangeiras, nomes próprios, símbolos e unidades (ex.: WhatsApp, kg...). <strong>Ç</strong> = C com cedilha.</p>
 
     <h2>Som dominante</h2>
     <table class="ref">
@@ -509,7 +519,7 @@
   <!-- ================= PRATICAR ================= -->
   <section class="tab-panel" id="tab-praticar">
 
-    <h2>1. Classificar o som do X</h2>
+    <h2 class="ex-t">Exercício 1</h2>
     <p class="instrucao">Arrastar as palavras para o grupo correto (ou clicar na palavra e depois no grupo).<span class="ic">👆</span></p>
 
     <div class="banco" id="banco"></div>
@@ -530,7 +540,8 @@
 
     <div id="resultado"></div>
 
-    <h2>2. Ouvir e repetir</h2>
+    <h2 class="ex-t ex-seguinte">Exercício 2</h2>
+    <p class="instrucao">Ouvir e repetir.</p>
 
     <div class="banco" id="banco-em-final">
       <button type="button" class="chip btn-som" data-p="está bem">está bem <span class="chip-som">🔊</span></button>
@@ -1009,6 +1020,13 @@ document.querySelectorAll('.zona-drop').forEach(permitirLargar);
 var resultadoDiv = document.getElementById('resultado');
 
 document.getElementById('btn-verificar').addEventListener('click', function(){
+  resultadoDiv.className = '';
+  if(!document.querySelector('.zona-drop .chip')){
+    resultadoDiv.textContent = 'Ainda faltam respostas.';
+    resultadoDiv.className = 'nivel-vazio';
+    banco.classList.add('vazio-alerta');
+    return;
+  }
   var total = PALAVRAS.length;
   var certas = 0;
   var vazias = 0;
@@ -1033,12 +1051,13 @@ document.getElementById('btn-verificar').addEventListener('click', function(){
 
   var pct = Math.round((certas/total)*100);
   var msg;
-  if(pct === 100) msg = '🎉 Perfeito! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
-  else if(pct >= 70) msg = '👍 Muito bom! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
-  else if(pct >= 40) msg = '💪 Continue a praticar! ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
-  else msg = '📚 Tente novamente. ' + certas + ' de ' + total + ' pontos (' + pct + '%)';
-  if(vazias > 0){ msg += ' — ainda há ' + vazias + ' por colocar.'; }
-  resultadoDiv.textContent = msg;
+  if(pct === 100) msg = '🎉 Perfeito! Muito bem!';
+  else if(pct >= 70) msg = '👍 Muito bom! Está no bom caminho.';
+  else if(pct >= 40) msg = '💪 Continue a praticar!';
+  else msg = '📚 Tente novamente — vai conseguir!';
+  var abertura = certas + ' de ' + total + ' pontos (' + pct + '%)';
+  if(vazias > 0){ abertura += ' — ainda há ' + vazias + ' por colocar'; }
+  resultadoDiv.textContent = abertura + '. ' + msg;
 });
 
 document.getElementById('btn-solucoes').addEventListener('click', function(){
@@ -1055,7 +1074,8 @@ document.getElementById('btn-solucoes').addEventListener('click', function(){
   travado = true;
   document.getElementById('btn-verificar').disabled = true;
   document.getElementById('btn-solucoes').disabled = true;
-  resultadoDiv.textContent = '📚 Soluções mostradas.';
+  resultadoDiv.className = '';
+  resultadoDiv.textContent = 'Soluções mostradas.';
 });
 
 document.getElementById('btn-limpar').addEventListener('click', function(){
@@ -1065,10 +1085,12 @@ document.getElementById('btn-limpar').addEventListener('click', function(){
   document.getElementById('btn-verificar').disabled = false;
   document.getElementById('btn-solucoes').disabled = false;
   banco.classList.remove('vazio-alerta');
+  resultadoDiv.className = '';
   resultadoDiv.textContent = '';
   montarBanco();
 });
 </script>
 
+<footer class="rodape-direitos" style="margin:32px auto 0;padding:0 16px 20px;text-align:center;font-size:13.5px;line-height:1.4;font-family:inherit;color:#6b6b6b;background:none;border:0">© 2026 Sofia Ribeiro Coelho. Todos os direitos reservados.</footer>
 </body>
 </html>
