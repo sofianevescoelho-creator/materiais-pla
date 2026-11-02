@@ -42,6 +42,16 @@
   .barra-som input[type=range]{display:block;width:100%;height:32px;margin:0;accent-color:var(--accent);cursor:pointer;}
   .ouvir-linha{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0 0;}
   .leitor{margin:0;}
+  /* barra do leitor sempre à vista: cola-se ao topo do ecrã enquanto o aluno escreve e confere */
+  html{scroll-padding-top:120px;}
+  .leitor-fixo{position:sticky;top:0;z-index:30;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin-bottom:22px;box-shadow:0 3px 10px rgba(0,0,0,.10);}
+  .leitor-fixo .leitor{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;}
+  .leitor-fixo .ouvir-linha{order:1;margin:0;}
+  .leitor-fixo .barra-som{order:2;flex:1 1 140px;margin:0;}
+  .leitor-fixo .btn-som.grande{font-size:1rem;min-height:44px;padding:0 16px;}
+  section.bloco-instr{margin-bottom:10px;padding-bottom:16px;}
+  section.bloco-instr p.instrucao{margin:0;}
+  @media (min-width:600px){ .leitor-fixo{padding:10px 24px;margin-bottom:26px;} section.bloco-instr{margin-bottom:12px;} }
   .btn-som{flex:0 0 auto;min-width:44px;height:44px;border-radius:22px;border:1px solid var(--border);background:var(--paper);cursor:pointer;font-family:inherit;font-size:1rem;font-weight:700;color:var(--accent-dark);display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 16px;line-height:1;-webkit-tap-highlight-color:transparent;}
   .btn-som:hover{background:var(--bank-bg);}
   .btn-som.toca{background:var(--bank-bg);border-color:var(--accent);}
@@ -125,10 +135,12 @@
     <h1>Fortalecer a anca muda a passada?</h1>
     <p><span class="ha">Transcrição</span><span class="hs"> · </span><span class="hb">Formadora: Sofia Coelho</span></p>
   </header>
-  <section class="bloco">
+  <section class="bloco bloco-instr">
     <p class="instrucao">Ouça o texto as vezes necessárias e escreva o que ouve nos espaços. No fim, clique em «Verificar». O texto completo está no botão do fim, para comparar.</p>
-    <div class="leitor" data-t0="0.0" data-t1="auto" data-nome="o texto todo"><div class="barra-som"><input type="range" class="pos" min="0.0" max="0.0" step="0.1" value="0.0" aria-label="Posição em o texto todo"></div><div class="ouvir-linha"><button class="btn-som grande" type="button" data-acao="ouvir" aria-label="Ouvir o texto todo"><span class="ic" aria-hidden="true">🔊</span><span class="rt">Ouvir</span></button><button class="btn-som lento" type="button" data-acao="devagar" aria-label="Ouvir o texto todo devagar"><span class="ic" aria-hidden="true">🐢</span><span class="rt">Devagar</span></button></div></div>
   </section>
+  <div class="leitor-fixo">
+    <div class="leitor" data-t0="0.0" data-t1="auto" data-nome="o texto todo"><div class="barra-som"><input type="range" class="pos" min="0.0" max="0.0" step="0.1" value="0.0" aria-label="Posição em o texto todo"></div><div class="ouvir-linha"><button class="btn-som grande" type="button" data-acao="ouvir" aria-label="Ouvir o texto todo"><span class="ic" aria-hidden="true">🔊</span><span class="rt">Ouvir</span></button><button class="btn-som lento" type="button" data-acao="devagar" aria-label="Ouvir o texto todo devagar"><span class="ic" aria-hidden="true">🐢</span><span class="rt">Devagar</span></button></div></div>
+  </div>
   <section class="bloco">
     <div class="glossario"><div class="gl-topo"><h3 class="parte-titulo" style="margin:0">Vocabulário</h3><button type="button" class="ver-ingles" aria-expanded="false" data-abrir="Mostrar inglês" data-fechar="Esconder inglês">Mostrar inglês</button></div><p class="gl-nota">Para ver o significado: clicar em «Mostrar inglês» ou procurar num dicionário. <a href="https://www.infopedia.pt/dicionarios/portugues-ingles/" target="_blank" rel="noopener">Infopédia</a> (Porto Editora; consulta gratuita com limite diário) e <a href="https://www.linguee.pt/portugues-ingles/" target="_blank" rel="noopener">Linguee</a> (gratuito, com exemplos).</p><div class="gl-lista"><div class="gl"><div class="gl-w"><b>a anca</b></div><span class="gl-en" hidden><i>the hip</i></span></div><div class="gl"><div class="gl-w"><b>a passada</b></div><span class="gl-en" hidden><i>the stride</i></span></div><div class="gl"><div class="gl-w"><b>o fortalecimento, fortalecer</b></div><span class="gl-en" hidden><i>strengthening, to strengthen</i></span></div><div class="gl"><div class="gl-w"><b>a técnica de corrida</b></div><span class="gl-en" hidden><i>running technique (form)</i></span></div><div class="gl"><div class="gl-w"><b>corredores treinados</b></div><span class="gl-en" hidden><i>trained runners</i></span></div><div class="gl"><div class="gl-w"><b>a prancha lateral</b></div><span class="gl-en" hidden><i>side plank</i></span></div><div class="gl"><div class="gl-w"><b>a bacia</b></div><span class="gl-en" hidden><i>the pelvis</i></span></div><div class="gl"><div class="gl-w"><b>apesar destes ganhos</b></div><span class="gl-en" hidden><i>despite these gains</i></span></div><div class="gl"><div class="gl-w"><b>por si só</b></div><span class="gl-en" hidden><i>by itself, on its own</i></span></div><div class="gl"><div class="gl-w"><b>a fadiga</b></div><span class="gl-en" hidden><i>fatigue</i></span></div><div class="gl"><div class="gl-w"><b>lesões antigas</b></div><span class="gl-en" hidden><i>old injuries</i></span></div><div class="gl"><div class="gl-w"><b>o gesto repetido</b></div><span class="gl-en" hidden><i>the repeated movement</i></span></div><div class="gl"><div class="gl-w"><b>vale a pena</b></div><span class="gl-en" hidden><i>it’s worth it</i></span></div><div class="gl"><div class="gl-w"><b>suportar a carga de treino</b></div><span class="gl-en" hidden><i>to handle the training load</i></span></div><div class="gl"><div class="gl-w"><b>distinguir</b></div><span class="gl-en" hidden><i>to tell apart</i></span></div></div></div>
   </section>
