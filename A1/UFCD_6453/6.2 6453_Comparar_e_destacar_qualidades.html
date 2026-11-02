@@ -1261,7 +1261,7 @@ window.IMG = {"batatas": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wB
       atualizar(false);
       var m2 = gerac;
       clearTimeout(timer);
-      timer = setTimeout(function () { if (m2 === gerac) avancar(); }, certa ? 1200 : 3200);
+      timer = setTimeout(function () { if (m2 === gerac) avancar(); }, certa ? 1200 : 5000);
       return;
     }
     if (!certa) errosNivel.push(q);
@@ -1277,7 +1277,7 @@ window.IMG = {"batatas": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wB
     atualizar(certa);
     var minha = gerac;
     clearTimeout(timer);
-    timer = setTimeout(function () { if (minha === gerac) avancar(); }, certa ? 1200 : 3200);
+    timer = setTimeout(function () { if (minha === gerac) avancar(); }, certa ? 1200 : 5000);
   }
 
   function escolher(q, btn) {
