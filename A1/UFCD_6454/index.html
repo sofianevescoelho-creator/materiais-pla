@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>UFCD 6454 — O corpo humano, saúde e serviços</title>
+<style>
+  :root {
+    font-size: 16px;
+    --bg: #fafbf9;
+    --card: #f4f6ee;
+    --card-border: #dbe2cb;
+    --card-hover: #ebefe1;
+    --text: #2b2b2b;
+    --accent: #576F20;
+  }
+  body {
+    font-family: Calibri, Arial, sans-serif;
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 0 1.25rem 2rem;
+    color: var(--text);
+    line-height: 1.5;
+    background: var(--bg);
+  }
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0 0 1.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--card-border);
+  }
+  section.secao {
+    margin-top: 2rem;
+  }
+  section.secao:first-of-type {
+    margin-top: 0;
+  }
+  h2.secao-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--card-border);
+    text-wrap: balance;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin: 0.65rem 0;
+  }
+  a.exercicio {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 3.4rem;
+    box-sizing: border-box;
+    padding: 0.8rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.15rem;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+  a.exercicio:hover, a.exercicio:active {
+    background: var(--card-hover);
+    box-shadow: 0 2px 6px rgba(87, 111, 32, 0.15);
+  }
+  a.exercicio:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .label {
+    flex: 1 1 auto;
+    text-wrap: balance;
+  }
+  .frase {
+    display: inline-block;
+  }
+  .chev {
+    flex: 0 0 auto;
+    color: var(--accent);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .busca-campo {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 1.6rem;
+    padding: 0.8rem 1.1rem;
+    font: inherit;
+    font-size: 1.15rem;
+    color: var(--text);
+    background: #fff;
+    border: 2px solid var(--card-border);
+    border-radius: 8px;
+  }
+  .busca-campo::placeholder { color: #6d755c; }
+  .busca-campo:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-color: var(--accent);
+  }
+  li.escondido, section.secao.escondida { display: none; }
+  .vazio {
+    display: none;
+    margin: 1.5rem 0;
+    font-size: 1.15rem;
+  }
+  a.voltar {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+  h1 .frase { text-wrap: balance; }
+  @media (max-width: 380px) {
+    h1 { font-size: 1.45rem; }
+  }
+
+  /* ===== «Outros exercícios para ouvir» (linha que abre e fecha) ===== */
+  details.mais > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 3.4rem;
+    box-sizing: border-box;
+    padding: 0.8rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 1.15rem;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+  details.mais > summary::-webkit-details-marker { display: none; }
+  details.mais > summary:hover { background: var(--card-hover); box-shadow: 0 2px 6px rgba(87, 111, 32, 0.15); }
+  details.mais > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  details.mais > summary .chev { transition: transform 0.15s ease; }
+  details.mais[open] > summary .chev { transform: rotate(90deg); }
+  .mais-n-f { white-space: nowrap; font-size: 0.95rem; color: #5e6a44; }
+  .mais-lista {
+    margin: 0.35rem 0 0 0.5rem;
+    border-left: 3px solid var(--card-border);
+    padding-left: 0.35rem;
+  }
+  a.mais-a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    min-height: 2.9rem;
+    box-sizing: border-box;
+    padding: 0.5rem 0.7rem;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--card-border);
+  }
+  a.mais-a:last-child { border-bottom: 0; }
+  a.mais-a:hover, a.mais-a:active { background: var(--card-hover); }
+  a.mais-a:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .mais-txt { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+  .mais-n { font-size: 1.05rem; line-height: 1.3; }
+  .mais-aba { font-size: 0.92rem; line-height: 1.35; color: #5e6a44; }
+
+  /* ===== Blocos fechados: o aluno vê só os títulos e abre o que procura ===== */
+  section.secao { margin-top: 0.8rem; }
+  details.bloco > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    min-height: 3.4rem;
+    box-sizing: border-box;
+    padding: 0.6rem 1.1rem;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+  details.bloco > summary::-webkit-details-marker { display: none; }
+  details.bloco > summary:hover { background: var(--card); box-shadow: 0 2px 6px rgba(87, 111, 32, 0.15); }
+  details.bloco > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  details.bloco > summary .chev { font-size: 1.7rem; transition: transform 0.15s ease; }
+  details.bloco[open] > summary .chev { transform: rotate(90deg); }
+  details.bloco > summary h2.secao-titulo {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  details.bloco > ul { margin-top: 0.6rem; }
+</style>
+</head>
+<body>
+
+<h1><span class="frase">UFCD 6454 —</span> <span class="frase">O corpo humano, saúde e serviços</span></h1>
+
+<input type="search" id="busca" class="busca-campo" placeholder="Procurar um exercício…" aria-label="Procurar um exercício" autocomplete="off" autocapitalize="off" spellcheck="false" dir="auto">
+<p class="vazio" id="semResultados">Nenhum exercício encontrado.</p>
+
+<div id="secoes">
+
+<section class="secao">
+  <details class="bloco">
+  <summary><h2 class="secao-titulo">Comprar na loja de roupa</h2><span class="chev" aria-hidden="true">&rsaquo;</span></summary>
+  <ul>
+    <li data-alt="clothes shoes accessories shirt trousers dress skirt jacket sweater jumper boots hat bag glasses cotton wool ropa zapatos accesorios camisa pantalones vestido falda chaqueta jersey botas sombrero bolso gafas algodón lana vêtements chaussures accessoires chemise pantalon robe jupe veste pull bottes chapeau sac lunettes coton laine одяг взуття аксесуари сорочка штани сукня спідниця куртка светр черевики капелюх сумка окуляри бавовна вовна одежда обувь аксессуары рубашка брюки платье юбка куртка свитер ботинки шляпа сумка очки хлопок шерсть পোশাক জুতা অ্যাক্সেসরিজ শার্ট প্যান্ট ড্রেস স্কার্ট জ্যাকেট সোয়েটার বুট টুপি ব্যাগ চশমা সুতি উল کپڑے جوتے لوازمات شرٹ پتلون ڈریس اسکرٹ جیکٹ سویٹر بوٹ ٹوپی بیگ عینک سوتی اون कपड़े जूते एक्सेसरीज़ शर्ट पैंट ड्रेस स्कर्ट जैकेट स्वेटर बूट टोपी बैग चश्मा सूती ऊन लुगाकपडा जुत्ता एक्सेसरिज सर्ट प्यान्ट ड्रेस स्कर्ट ज्याकेट स्वेटर बुट टोपी ब्याग चस्मा सुती ऊन giysi ayakkabı aksesuar gömlek pantolon elbise etek ceket kazak bot şapka çanta gözlük pamuk yün Kleidung Schuhe Accessoires Hemd Hose Kleid Rock Jacke Pullover Stiefel Hut Tasche Brille Baumwolle Wolle 衣服 鞋子 配饰 衬衫 裤子 连衣裙 裙子 夹克 毛衣 靴子 帽子 包 眼镜 棉 羊毛 quần áo giày phụ kiện áo sơ mi quần đầm chân váy áo khoác áo len bốt mũ túi kính cotton len ملابس أحذية إكسسوارات قميص بنطلون فستان تنورة جاكيت كنزة بوت قبعة حقيبة نظارات قطن صوف roupa sapatos camisa calças vestido saia casaco camisola t-shirt pijama fato botas ténis sandálias chapéu boné gravata cinto mala mochila relógio óculos algodão linho seda lã acessório"><a class="exercicio" href="1.1%206454_Vestu%C3%A1rio%2C%20cal%C3%A7ado%20e%20acess%C3%B3rios.html"><span class="label">Vestuário, calçado e acessórios</span><span class="chev">&rsaquo;</span></a></li>
+  </ul>
+  </details>
+</section>
+
+</div>
+
+<a class="voltar" href="../">&larr; voltar à página principal</a>
+
+<script>
+(function () {
+  var campo = document.getElementById('busca');
+  var secoes = Array.prototype.slice.call(document.querySelectorAll('#secoes .secao'));
+  var blocos = secoes.map(function (s) { return s.querySelector('details.bloco'); });
+  var aviso = document.getElementById('semResultados');
+  var CHAVE = 'ufcd6454-blocos-abertos';
+  var antes = null; /* blocos abertos antes de começar a pesquisa */
+
+  function normalizar(txt) {
+    return txt.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  function abertos() {
+    return blocos.map(function (d) { return d.open ? '1' : '0'; }).join('');
+  }
+  function repor(estado) {
+    blocos.forEach(function (d, i) { d.open = estado.charAt(i) === '1'; });
+  }
+  function guardar() {
+    if (campo.value.trim() !== '') return;
+    try { sessionStorage.setItem(CHAVE, abertos()); } catch (e) {}
+  }
+
+  function filtrar() {
+    var consulta = normalizar(campo.value.trim());
+    var total = 0;
+    if (consulta !== '' && antes === null) antes = abertos();
+    secoes.forEach(function (secao, i) {
+      var visiveis = 0;
+      Array.prototype.slice.call(secao.querySelectorAll('li')).forEach(function (li) {
+        var texto = normalizar(li.querySelector('.label').textContent + ' ' + (li.getAttribute('data-alt') || ''));
+        var corresponde = consulta === '' || texto.indexOf(consulta) !== -1;
+        li.classList.toggle('escondido', !corresponde);
+        if (corresponde) visiveis++;
+      });
+      secao.classList.toggle('escondida', visiveis === 0);
+      if (consulta !== '' && visiveis > 0) blocos[i].open = true;
+      total += visiveis;
+    });
+    if (consulta === '' && antes !== null) { repor(antes); antes = null; }
+    aviso.style.display = total === 0 ? 'block' : 'none';
+  }
+
+  try {
+    var e = sessionStorage.getItem(CHAVE);
+    if (e && e.length === blocos.length) repor(e);
+  } catch (x) {}
+
+  blocos.forEach(function (d) { d.addEventListener('toggle', guardar); });
+  campo.addEventListener('input', filtrar);
+  campo.addEventListener('search', filtrar);
+})();
+</script>
+
+<footer class="rodape-direitos" style="margin:32px auto 0;padding:0 16px 20px;text-align:center;font-size:13.5px;line-height:1.4;font-family:inherit;color:#6b6b6b;background:none;border:0">© 2026 Sofia Ribeiro Coelho. Todos os direitos reservados.</footer>
+</body>
+</html>
