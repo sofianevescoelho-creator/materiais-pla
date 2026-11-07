@@ -479,6 +479,7 @@
   .jg-ops .btn-op.errada::before{content:"✗ ";}
   .jg-fb{max-width:440px;margin:10px auto 0;text-align:center;font-weight:700;font-size:1.05rem;line-height:1.4;}
   .jg-fb:empty{display:none;}
+  .jg-cont{justify-content:center;margin-top:12px;scroll-margin-bottom:28px;}
   .jg-fb .ok{color:var(--ok);}
   .jg-fb .err{color:var(--bad);}
   .jg-fb .jg-seg{display:inline-block;margin-top:8px;padding:3px 14px;border-radius:999px;background:var(--ok-bg);border:1px solid var(--ok);color:var(--ok);animation:jg-pop .4s ease-out;}
@@ -1945,16 +1946,12 @@ window.IMG = {"b10_visita": "data:image/webp;base64,UklGRmKwAABXRUJQVlA4IFawAABw
     var erro = (q.frases && q.frases.length > 1)
       ? '<span class="err">✗ As frases corretas são:<br>' + q.frases.map(esc).join('<br>') + '</span>'
       : '<span class="err">✗ A frase correta é: ' + esc(q.frase) + '</span>';
-    var nf = q.frases ? q.frases.length : 1;
-    var espera = nf > 3 ? 8200 : nf > 2 ? 6800 : nf > 1 ? 5200 : 3200;   /* mais tempo no ecrã quando se mostram 2 ou 3 frases corretas */
     if (q.lacuna) { q.lacuna.textContent = q.certa; q.lacuna.classList.add('cheia'); }
     if (revisao) {
       if (certa) { certas++; q.fb.innerHTML = '<span class="ok">✓ Certo!</span>'; }
       else q.fb.innerHTML = erro;
       atualizar(false);
-      var m2 = gerac;
-      clearTimeout(timer);
-      timer = setTimeout(function () { if (m2 === gerac) avancar(); }, certa ? 1200 : espera);
+      depoisDaResposta(q, certa);
       return;
     }
     if (!certa) errosNivel.push(q);
@@ -1968,9 +1965,33 @@ window.IMG = {"b10_visita": "data:image/webp;base64,UklGRmKwAABXRUJQVlA4IFawAABw
       q.fb.innerHTML = erro;
     }
     atualizar(certa);
-    var minha = gerac;
+    depoisDaResposta(q, certa);
+  }
+
+  /* depois de cada resposta (Sofia, 7 de novembro de 2026): o acerto avança sozinho ao fim de 3 s;
+     o erro não avança sozinho: fica no ecrã até o formando carregar em «Continuar» */
+  function depoisDaResposta(q, certa) {
+    var g = gerac;
     clearTimeout(timer);
-    timer = setTimeout(function () { if (minha === gerac) avancar(); }, certa ? 1200 : espera);
+    if (certa) {
+      timer = setTimeout(function () { if (g === gerac) avancar(); }, 3000);
+      return;
+    }
+    var d = document.createElement('div');
+    d.className = 'botoes jg-cont';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Continuar';
+    b.addEventListener('click', function () {
+      if (!d.parentNode) return;
+      d.parentNode.removeChild(d);
+      /* um segundo toque (toque duplo) não pode cair numa opção da pergunta seguinte */
+      elItens.style.pointerEvents = 'none';
+      setTimeout(function () { elItens.style.pointerEvents = ''; }, 450);
+      if (g === gerac) avancar();
+    });
+    d.appendChild(b);
+    q.cartao.appendChild(d);
+    try { b.focus({ preventScroll: true }); d.scrollIntoView({ block: 'nearest' }); } catch (e) {}
   }
 
   function escolher(q, btn) {

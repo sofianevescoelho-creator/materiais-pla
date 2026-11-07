@@ -150,6 +150,7 @@ header h1 .nb{white-space:nowrap;}
 .jg-ops .btn-op.errada::before{content:"✗ ";}
 .jg-fb{max-width:440px;margin:10px auto 0;text-align:center;font-weight:700;font-size:1.05rem;line-height:1.4;}
 .jg-fb:empty{display:none;}
+.jg-cont{justify-content:center;margin-top:12px;scroll-margin-bottom:28px;}
 .jg-fb .ok{color:var(--ok);}
 .jg-fb .err{color:var(--bad);}
 .jg-fb .jg-seg{display:inline-block;margin-top:8px;padding:3px 14px;border-radius:999px;background:var(--ok-bg);border:1px solid var(--ok);color:var(--ok);animation:jg-pop .4s ease-out;}
@@ -523,28 +524,24 @@ p.instrucao.fr-nota{margin:0 0 12px;}
   /* ----- respostas ----- */
   function registar(q, certa, op) {
     q.resp = true; respondidas++;
-    var p = 0, erro, espera = 3200;
+    var p = 0, erro;
     if (q.tipo === 'ord') {
       var fr = q.src.frases;
       erro = fr.length > 1
         ? '<span class="err">✗ Respostas possíveis:<br>' + fr.map(function (f) { return esc(nb(f)); }).join('<br>') + '</span>'
         : '<span class="err">✗ A frase certa é: ' + esc(nb(fr[0])) + '</span>';
-      espera = fr.length > 3 ? 8200 : fr.length > 2 ? 6800 : fr.length > 1 ? 5200 : 3200;   /* mais tempo no ecrã quando se mostram várias frases */
     } else if (q.tipo === 'esc') {
       var cert = q.ops.filter(function (o) { return o.ok; })[0];
       erro = '<span class="err">✗ A resposta certa é: ' + esc(nb(cert.t)) + '</span>';
     } else {
       /* nível 3: a frase escolhida com as palavras erradas riscadas e, por baixo, a mesma frase corrigida (correção a negrito) */
       erro = op ? '<span class="err3"><span class="x">✗</span> ' + op.rb + '</span><span class="cer3">A frase certa é: ' + op.cb + '</span>' : '';
-      espera = 7000;   /* duas frases no ecrã (aprovado: 7 s) */
     }
     if (revisao) {
       if (certa) { certas++; q.fb.innerHTML = '<span class="ok">✓ Certo!</span>'; }
       else q.fb.innerHTML = erro;
       atualizar(false);
-      var m2 = gerac;
-      clearTimeout(timer);
-      timer = setTimeout(function () { if (m2 === gerac) avancar(); }, certa ? 1200 : espera);
+      depoisDaResposta(q, certa);
       return;
     }
     if (!certa) errosNivel.push(q);
@@ -558,9 +555,33 @@ p.instrucao.fr-nota{margin:0 0 12px;}
       q.fb.innerHTML = erro;
     }
     atualizar(certa);
-    var minha = gerac;
+    depoisDaResposta(q, certa);
+  }
+
+  /* depois de cada resposta (Sofia, 7 de novembro de 2026): o acerto avança sozinho ao fim de 3 s;
+     o erro não avança sozinho: fica no ecrã até o formando carregar em «Continuar» */
+  function depoisDaResposta(q, certa) {
+    var g = gerac;
     clearTimeout(timer);
-    timer = setTimeout(function () { if (minha === gerac) avancar(); }, certa ? 1200 : espera);
+    if (certa) {
+      timer = setTimeout(function () { if (g === gerac) avancar(); }, 3000);
+      return;
+    }
+    var d = document.createElement('div');
+    d.className = 'botoes jg-cont';
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = 'Continuar';
+    b.addEventListener('click', function () {
+      if (!d.parentNode) return;
+      d.parentNode.removeChild(d);
+      /* um segundo toque (toque duplo) não pode cair numa opção da pergunta seguinte */
+      elItens.style.pointerEvents = 'none';
+      setTimeout(function () { elItens.style.pointerEvents = ''; }, 450);
+      if (g === gerac) avancar();
+    });
+    d.appendChild(b);
+    q.cartao.appendChild(d);
+    try { b.focus({ preventScroll: true }); d.scrollIntoView({ block: 'nearest' }); } catch (e) {}
   }
 
   function escolher(q, btn) {
