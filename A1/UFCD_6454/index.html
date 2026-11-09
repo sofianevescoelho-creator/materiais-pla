@@ -232,6 +232,14 @@
   </details>
 </section>
 
+<section class="secao">
+  <details class="bloco">
+  <summary><h2 class="secao-titulo">Ir aos correios, à papelaria e ao banco</h2><span class="chev" aria-hidden="true">&rsaquo;</span></summary>
+  <ul>
+  </ul>
+  </details>
+</section>
+
 </div>
 
 <a class="voltar" href="../">&larr; voltar à página principal</a>
@@ -272,7 +280,7 @@
         li.classList.toggle('escondido', !corresponde);
         if (corresponde) visiveis++;
       });
-      secao.classList.toggle('escondida', visiveis === 0);
+      secao.classList.toggle('escondida', consulta !== '' && visiveis === 0);
       if (consulta !== '' && visiveis > 0) blocos[i].open = true;
       total += visiveis;
     });
