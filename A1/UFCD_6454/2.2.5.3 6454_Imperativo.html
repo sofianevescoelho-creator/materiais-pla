@@ -1501,7 +1501,8 @@
   .lg-pes .lg-col{gap:10px;}
   .lg-cartaz + .lg-cartaz{margin-top:22px;padding-top:22px;border-top:1px solid var(--border);}
   .lg-porm{margin:0 auto 14px;text-align:center;}
-  .lg-porm img{display:inline-block;height:180px;width:auto;max-width:100%;border-radius:8px;border:1px solid var(--border);}
+  .lg-porm img{display:inline-block;height:240px;width:auto;max-width:100%;border-radius:8px;border:1px solid var(--border);}
+  @media (min-width:600px){ .lg-cartaz{display:grid;grid-template-columns:220px minmax(0,1fr);column-gap:24px;align-items:center;} .lg-porm{margin:0;justify-self:center;} .lg-porm img{height:260px;} .lg-cartaz .ligar{margin:0;width:100%;} }   /* computador: a imagem ao lado do ligar (Sofia, 21h17) */
   .lg-it.sel{box-shadow:0 0 0 4px rgba(87,111,32,.3);}
   @media (max-width:359px){ .lg-pes{--lg-e:108px;--lg-g:26px;} .lg-pes .lg-it{font-size:.98rem;} }
   @media (max-width:359px){ .cn-quadro.longo .cn-fontes{justify-content:space-between;gap:4px;} .cn-quadro.longo .cn-fonte .cn-raiz{margin-left:.7em;} .cn-quadro.longo .cn-eu-o{margin-left:.75em;} }   /* 320 px: o círculo do «transfere» já não encosta ao «eu» */
