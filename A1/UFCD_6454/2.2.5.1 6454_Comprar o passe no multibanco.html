@@ -1037,6 +1037,11 @@
   #pap-ex3 .item-esc > .linha-ord{flex:1 1 0;}
   #pap-ex3 .resp-dada{flex:0 0 100%;margin:2px 0 0;font-size:1.05rem;line-height:1.4;color:var(--ink);}
   #pap-ex3 .resp-dada u{text-decoration-thickness:2px;text-underline-offset:3px;}
+.glossario:not(.aberto) .gl-w{white-space:nowrap;}
+.glossario:not(.aberto) .gl + .gl::before{content:"\00a0· ";}
+.glossario:not(.aberto) .gl:nth-child(8) .gl-w{white-space:normal;display:inline-block;max-width:100%;vertical-align:top;}
+.glossario:not(.aberto) .gl:nth-child(8) .gl-w::after{content:"\00a0·";color:var(--muted);}
+.glossario:not(.aberto) .gl:nth-child(9)::before{content:" ";}
 </style>
 <style>
   /* Carregar o passe no multibanco — escolha múltipla (cópia das regras do #pap-ex2 do «Na papelaria») */
