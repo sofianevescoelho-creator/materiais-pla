@@ -1438,6 +1438,9 @@ section.exercicio > .som.ouvir{margin:0 0 6px;}
 #painel-sit .mapa-ex .dest{fill:#e3ebcd;stroke:var(--accent);stroke-width:3.2;}
 #painel-sit .sit-fim{margin:24px 0 0;padding-top:14px;border-top:1px solid var(--border);font-weight:700;color:var(--accent-dark);font-size:1.05rem;}
 #painel-sit .im-res{font-size:1.05rem;}
+#painel-sit .sit-cx{border:2px solid var(--accent);background:#f3f6ea;border-radius:10px;padding:10px 14px;margin:0 0 18px;font-size:1.12rem;line-height:1.45;}
+#painel-sit .sit-cx p{margin:0;}
+#painel-sit .sit-cx p + p{margin-top:8px;}
 </style>
 </head>
 <body>
@@ -2678,6 +2681,12 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
     return p;
   }
   function par(cls, html) { var p = document.createElement('p'); p.className = cls; p.innerHTML = html; return p; }
+  function caixaSit(linhas) {
+    var box = document.createElement('div');
+    box.className = 'sit-cx';
+    linhas.forEach(function (t) { box.appendChild(par('', t)); });
+    return box;
+  }
   function lista(titulo, frases) {
     var box = document.createElement('div');
     box.className = 'sit-col';
@@ -2702,10 +2711,13 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
     var sec = document.createElement('section');
     sec.className = 'bloco';
     if (escolha.papel === 'pede') {
-      sec.appendChild(par('sit-txt', 'Está aqui: ' + de.em + '. ' + s.motivo));
-      sec.appendChild(par('sit-txt', 'Pergunte ao colega ' + para.onde + '. <b>Não olhe para o telemóvel do colega.</b>'));
+      sec.appendChild(caixaSit([
+        'Está aqui: <b>' + de.em + '</b>. ' + s.motivo,
+        'Pergunte ao colega ' + para.onde.replace(/^(onde (?:é|são)) (.*)$/, '$1 <b>$2</b>') + '.',
+        '(Não olhe para o telemóvel do colega.)',
+        'Siga as indicações com o dedo e toque no prédio onde chegou.'
+      ]));
       sec.appendChild(lista('Exemplos de perguntas', PERGUNTAR));
-      sec.appendChild(par('sit-txt', 'Siga as indicações com o dedo e toque no prédio onde chegou.'));
       var caixa = document.createElement('div');
       caixa.className = 'sit-mapa';
       var svg = desenharMapa(s, 'pede');
@@ -2739,8 +2751,11 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
         if (a && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); tocar(a); }
       });
     } else {
-      sec.appendChild(par('sit-txt', 'O seu colega está ' + de.em + ' e quer ir ' + para.a + '.'));
-      sec.appendChild(par('sit-txt', 'Veja o caminho no mapa e explique ao colega. <b>Não mostre o seu telemóvel.</b>'));
+      sec.appendChild(caixaSit([
+        'O seu colega está <b>' + de.em + '</b> e quer ir <b>' + para.a + '</b>.',
+        'Veja o caminho no mapa e explique ao colega.',
+        '(Não mostre o seu telemóvel.)'
+      ]));
       var cx = document.createElement('div');
       cx.className = 'sit-mapa';
       cx.appendChild(desenharMapa(s, 'da'));
