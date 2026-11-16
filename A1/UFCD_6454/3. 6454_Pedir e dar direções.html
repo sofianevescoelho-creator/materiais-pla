@@ -1424,10 +1424,11 @@ section.exercicio > .som.ouvir{margin:0 0 6px;}
 .mf-lupa .mf-fechar{position:fixed;top:12px;right:12px;z-index:2;min-height:44px;padding:8px 18px;border-radius:22px;border:1px solid #fff;background:rgba(0,0,0,.55);color:#fff;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;}
 /* ===== Aba Situações: pedir e dar direções em pares ===== */
 #painel-sit .sit-num{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;max-width:420px;margin:0 0 24px;}
+#painel-sit .sit-sitio{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;margin:0 0 16px;}
 #painel-sit .sit-papel{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;}
-#painel-sit .sit-num button,#painel-sit .sit-papel button{font-family:inherit;font-size:1.05rem;min-height:48px;padding:8px 10px;border-radius:8px;border:1px solid var(--accent);background:var(--paper);color:var(--accent-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;}
+#painel-sit .sit-num button,#painel-sit .sit-papel button,#painel-sit .sit-sitio button{font-family:inherit;font-size:1.05rem;min-height:48px;padding:8px 10px;border-radius:8px;border:1px solid var(--accent);background:var(--paper);color:var(--accent-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;}
 #painel-sit .sit-num button{font-weight:700;}
-#painel-sit .sit-num button.sel,#painel-sit .sit-papel button.sel{background:var(--accent);color:#fff;}
+#painel-sit .sit-num button.sel,#painel-sit .sit-papel button.sel,#painel-sit .sit-sitio button.sel{background:var(--accent);color:#fff;}
 #painel-sit .sit-txt{margin:0 0 12px;font-size:1.08rem;line-height:1.5;}
 #painel-sit .sit-txt + .sit-txt{margin-top:-4px;}
 #painel-sit .sit-col{background:var(--bank-bg);border-radius:10px;padding:12px 14px;margin:6px 0 24px;}
@@ -1486,7 +1487,7 @@ section.exercicio > .som.ouvir{margin:0 0 6px;}
 </div>
 
 <div class="tab-panel" id="painel-sit" role="tabpanel" aria-labelledby="tab-sit">
-<section class="bloco"><p class="instrucao">Trabalhe com um colega. Escolham o mesmo número. Um colega pede direções e o outro dá direções.</p><div class="sit-num"><button type="button" data-n="0" aria-pressed="false">1</button><button type="button" data-n="1" aria-pressed="false">2</button><button type="button" data-n="2" aria-pressed="false">3</button><button type="button" data-n="3" aria-pressed="false">4</button><button type="button" data-n="4" aria-pressed="false">5</button><button type="button" data-n="5" aria-pressed="false">6</button><button type="button" data-n="6" aria-pressed="false">7</button><button type="button" data-n="7" aria-pressed="false">8</button><button type="button" data-n="8" aria-pressed="false">9</button><button type="button" data-n="9" aria-pressed="false">10</button></div><div class="sit-papel"><button type="button" data-papel="pede" aria-pressed="false">Preciso de direções</button><button type="button" data-papel="da" aria-pressed="false">Dou direções</button></div></section>
+<section class="bloco"><p class="instrucao">Trabalhe com um colega. Escolham o mesmo sítio e o mesmo número. Um colega pede direções e o outro dá direções.</p><div class="sit-sitio"><button type="button" data-sitio="rua" aria-pressed="false">Na rua</button><button type="button" data-sitio="centro" aria-pressed="false">No centro de saúde</button></div><div class="sit-num"><button type="button" data-n="0" aria-pressed="false">1</button><button type="button" data-n="1" aria-pressed="false">2</button><button type="button" data-n="2" aria-pressed="false">3</button><button type="button" data-n="3" aria-pressed="false">4</button><button type="button" data-n="4" aria-pressed="false">5</button><button type="button" data-n="5" aria-pressed="false">6</button><button type="button" data-n="6" aria-pressed="false">7</button><button type="button" data-n="7" aria-pressed="false">8</button><button type="button" data-n="8" aria-pressed="false">9</button><button type="button" data-n="9" aria-pressed="false">10</button></div><div class="sit-papel"><button type="button" data-papel="pede" aria-pressed="false">Preciso de direções</button><button type="button" data-papel="da" aria-pressed="false">Dou direções</button></div></section>
 <div class="sit-conteudo" hidden></div>
 </div>
 
@@ -2671,6 +2672,101 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
     return svg;
   }
 
+  /* ---------- Centro de saúde: planta de três pisos ---------- */
+  var PISO_Y = { 2: 0, 1: 126, 0: 252 };
+  var PISO_NOME = { 2: '2.º andar', 1: '1.º andar', 0: 'Rés do chão' };
+  var SALA_R = { A: [6, 22, 90, 34], B: [216, 22, 64, 34], C: [6, 82, 90, 34], D: [100, 82, 112, 34], E: [216, 82, 64, 34], F: [284, 22, 50, 94] };
+  var SALA_NOME = {
+    '2A': ['Médico de', 'família'], '2C': ['Vacinação'], '2F': ['Casa de', 'banho'],
+    '1A': ['Saúde', 'infantil'], '1E': ['Saúde', 'materna'],
+    '0A': ['Enfermagem'], '0E': ['Secretaria'], '0F': ['Casa de', 'banho']
+  };
+  var LUGAR_C = {
+    entrada: { em: 'na entrada' },
+    secretaria: { id: '0E', em: 'na secretaria', a: 'à secretaria', onde: 'onde é a secretaria' },
+    enfermagem: { id: '0A', em: 'na enfermagem', a: 'à enfermagem', onde: 'onde é a enfermagem' },
+    vacinacao: { id: '2C', em: 'na vacinação', a: 'à vacinação', onde: 'onde é a vacinação' },
+    medico: { id: '2A', a: 'ao médico de família', onde: 'onde é o médico de família' },
+    infantil: { id: '1A', a: 'à saúde infantil', onde: 'onde é a saúde infantil' },
+    materna: { id: '1E', a: 'à saúde materna', onde: 'onde é a saúde materna' },
+    wc: { id: '0F', a: 'à casa de banho', onde: 'onde é a casa de banho' }
+  };
+  /* Percursos: [x, y, tracejado] — tracejado = subir ou descer pelas escadas ou pelo elevador */
+  var SIT_C = [
+    { de: 'entrada', para: 'secretaria', motivo: 'Precisa de marcar uma consulta.', p: [[156, 362], [156, 321], [248, 321], [248, 334]] },
+    { de: 'entrada', para: 'medico', motivo: 'Tem consulta com o médico de família.', p: [[156, 362], [156, 321], [185, 321], [185, 308], [185, 56, 1], [185, 69], [51, 69], [51, 56]] },
+    { de: 'entrada', para: 'materna', motivo: 'Está grávida. Tem consulta às 11h00.', p: [[156, 362], [156, 321], [127, 321], [127, 308], [127, 182, 1], [127, 195], [248, 195], [248, 208]] },
+    { de: 'secretaria', para: 'vacinacao', motivo: 'Vai vacinar o filho.', p: [[248, 334], [248, 321], [185, 321], [185, 308], [185, 56, 1], [185, 69], [51, 69], [51, 82]] },
+    { de: 'secretaria', para: 'infantil', motivo: 'A filha tem consulta às 15h30.', p: [[248, 334], [248, 321], [127, 321], [127, 308], [127, 182, 1], [127, 195], [51, 195], [51, 182]] },
+    { de: 'enfermagem', para: 'wc', motivo: 'Precisa de ir à casa de banho.', p: [[51, 308], [51, 321], [284, 321]] },
+    { de: 'vacinacao', para: 'enfermagem', motivo: 'Precisa de fazer um penso.', p: [[51, 82], [51, 69], [185, 69], [185, 56], [185, 308, 1], [185, 321], [51, 321], [51, 308]] },
+    { de: 'vacinacao', para: 'secretaria', motivo: 'Precisa de marcar a próxima vacina.', p: [[51, 82], [51, 69], [127, 69], [127, 56], [127, 308, 1], [127, 321], [248, 321], [248, 334]] },
+    { de: 'enfermagem', para: 'vacinacao', motivo: 'Vai vacinar a filha.', p: [[51, 308], [51, 321], [185, 321], [185, 308], [185, 56, 1], [185, 69], [51, 69], [51, 82]] },
+    { de: 'enfermagem', para: 'medico', motivo: 'Agora tem consulta com o médico de família.', p: [[51, 308], [51, 321], [127, 321], [127, 308], [127, 56, 1], [127, 69], [51, 69], [51, 56]] }
+  ];
+  function textoC(pai, x, y, linhas, cor, halo) {
+    var y0 = y - (linhas.length - 1) * 7.5;
+    linhas.forEach(function (l, i) {
+      var t = texto(pai, x, y0 + i * 15, l, 13);
+      if (cor) t.setAttribute('fill', cor);
+      if (halo) { t.setAttribute('stroke', halo); t.setAttribute('stroke-width', 4); t.setAttribute('paint-order', 'stroke'); }
+    });
+  }
+  function nomearSala(svg, id) {
+    var r = SALA_R[id.charAt(1)], y = PISO_Y[id.charAt(0)];
+    textoC(svg, r[0] + r[2] / 2, y + r[1] + r[3] / 2, SALA_NOME[id]);
+  }
+  function desenharPlanta(s, papel) {
+    var svg = el('svg', { class: 'mapa mapa-ex planta', viewBox: '0 0 340 374', role: 'img', 'aria-label': 'Planta do centro de saúde' });
+    el('rect', { x: 0, y: 0, width: 340, height: 374, fill: '#f4f2ec' }, svg);
+    var dest = LUGAR_C[s.para].id, orig = LUGAR_C[s.de].id;
+    var nucleos = [];
+    [2, 1, 0].forEach(function (pi) {
+      var y = PISO_Y[pi];
+      texto(svg, 6, y + 11, PISO_NOME[pi], 13).setAttribute('text-anchor', 'start');
+      svg.lastChild.setAttribute('fill', '#303d10');
+      el('rect', { x: 6, y: y + 58, width: 278, height: 22, fill: '#d6d2c6' }, svg);
+      [['Escadas', 100], ['Elevador', 158]].forEach(function (n) {
+        el('rect', { x: n[1], y: y + 22, width: 54, height: 34, rx: 3, fill: '#ebefe0', stroke: '#b9b3a3', 'stroke-width': 1.2 }, svg);
+        nucleos.push([n[0], n[1] + 27, y + 39]);
+      });
+      Object.keys(SALA_R).forEach(function (k) {
+        var r = SALA_R[k], id = pi + k;
+        if (pi === 0 && k === 'D') {
+          textoC(svg, r[0] + 28, y + r[1] + 17, ['Entrada'], '#6b6558');
+          return;
+        }
+        var at = { x: r[0], y: y + r[1], width: r[2], height: r[3], rx: 3, fill: '#ffffff', stroke: '#b9b3a3', 'stroke-width': 1.2 };
+        if (papel === 'pede' && id !== orig) { at['class'] = 'alvo'; at['data-id'] = id; at.tabindex = 0; at.role = 'button'; at['aria-label'] = 'Porta'; }
+        if (papel === 'da' && id === dest) at['class'] = 'dest';
+        el('rect', at, svg);
+        if (SALA_NOME[id] && (papel === 'da' || id === orig)) nomearSala(svg, id);
+      });
+    });
+    if (papel === 'da') {
+      var p = s.p, cor = '#576F20';
+      for (var i = 1; i < p.length; i++) {
+        var a = p[i - 1], b = p[i], fim = b;
+        if (i === p.length - 1) {
+          var L0 = Math.hypot(b[0] - a[0], b[1] - a[1]);
+          fim = [b[0] - (b[0] - a[0]) / L0 * 8, b[1] - (b[1] - a[1]) / L0 * 8];
+        }
+        var at2 = { x1: a[0], y1: a[1], x2: fim[0], y2: fim[1], stroke: cor, 'stroke-width': 5, 'stroke-linecap': 'round' };
+        if (b[2]) { at2['stroke-dasharray'] = '2 9'; at2['stroke-width'] = 4.5; }
+        el('line', at2, svg);
+      }
+      var n = p.length, A = p[n - 2], B = p[n - 1];
+      var L = Math.hypot(B[0] - A[0], B[1] - A[1]), ux = (B[0] - A[0]) / L, uy = (B[1] - A[1]) / L;
+      var bx = B[0] - ux * 13, by = B[1] - uy * 13;
+      el('polygon', { points: B[0] + ',' + B[1] + ' ' + (bx - uy * 8) + ',' + (by + ux * 8) + ' ' + (bx + uy * 8) + ',' + (by - ux * 8), fill: cor }, svg);
+    }
+    /* nomes das escadas e do elevador por cima do percurso */
+    nucleos.forEach(function (n) { textoC(svg, n[1], n[2], [n[0]], null, '#ebefe0'); });
+    marcador(svg, s.p[0][0], s.p[0][1], angulo(s.p[0], s.p[1]));
+    svg.revelar = function () { nomearSala(svg, dest); };
+    return svg;
+  }
+
   function legenda() {
     var p = document.createElement('p');
     p.className = 'sit-leg';
@@ -2700,14 +2796,23 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
   var PERGUNTAR = ['Desculpe, sabe onde é a farmácia?', 'Desculpe, há uma farmácia aqui perto?', 'Fica longe?', 'Desculpe, como vou para o banco?', 'Como se vai para o banco?'];
   var RESPOSTAS = ['Vire à direita. / Vire à esquerda.', 'Vire na primeira à esquerda.', 'Siga em frente. = Vá em frente.', 'Atravesse a rua.', 'É o terceiro prédio à esquerda.', 'do outro lado da rua', 'ao lado do banco', 'em frente da escola', 'na esquina', 'ao fundo da rua', 'É já ali.'];
 
+  var PERGUNTAR_C = ['Desculpe, onde é a secretaria?', 'Desculpe, sabe onde é a casa de banho?', 'É neste piso?'];
+  var RESPOSTAS_C = ['Suba ao segundo andar. / Desça ao rés do chão.', 'Suba as escadas. / Suba no elevador.', 'Fique neste piso.', 'Vire à direita. / Vire à esquerda.', 'Siga pelo corredor.', 'É ao fundo do corredor.', 'É a segunda porta à esquerda.', 'É a última porta à sua direita.'];
+  var SITIO = {
+    rua: { sit: SIT, lugar: LUGAR, desenhar: desenharMapa, alvo: 'no prédio', perguntar: PERGUNTAR, respostas: RESPOSTAS },
+    centro: { sit: SIT_C, lugar: LUGAR_C, desenhar: desenharPlanta, alvo: 'na porta', perguntar: PERGUNTAR_C, respostas: RESPOSTAS_C }
+  };
+
   var conteudo = painel.querySelector('.sit-conteudo');
-  var escolha = { n: null, papel: null };
+  var escolha = { sitio: null, n: null, papel: null };
 
   function mostrar() {
     conteudo.innerHTML = '';
-    if (escolha.n === null || !escolha.papel) { conteudo.hidden = true; return; }
+    if (!escolha.sitio || escolha.n === null || !escolha.papel) { conteudo.hidden = true; return; }
     conteudo.hidden = false;
-    var s = SIT[escolha.n], de = LUGAR[s.de], para = LUGAR[s.para];
+    var S = SITIO[escolha.sitio];
+    var s = S.sit[escolha.n], de = S.lugar[s.de], para = S.lugar[s.para];
+    var desenharMapa = S.desenhar, PERGUNTAR = S.perguntar, RESPOSTAS = S.respostas;
     var sec = document.createElement('section');
     sec.className = 'bloco';
     if (escolha.papel === 'pede') {
@@ -2715,12 +2820,13 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
         'Está aqui: <b>' + de.em + '</b>. ' + s.motivo,
         'Pergunte ao colega ' + para.onde.replace(/^(onde (?:é|são)) (.*)$/, '$1 <b>$2</b>') + '.',
         '(Não olhe para o telemóvel do colega.)',
-        'Siga as indicações com o dedo e toque no prédio onde chegou.'
+        'Siga as indicações com o dedo e toque ' + S.alvo + ' onde chegou.'
       ]));
       sec.appendChild(lista('Exemplos de perguntas', PERGUNTAR));
       var caixa = document.createElement('div');
       caixa.className = 'sit-mapa';
       var svg = desenharMapa(s, 'pede');
+      var alvoCerto = para.id || s.para;
       caixa.appendChild(svg);
       sec.appendChild(caixa);
       sec.appendChild(legenda());
@@ -2732,10 +2838,11 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
       var tocar = function (alvo) {
         if (feito) return;
         svg.querySelectorAll('.alvo').forEach(function (r) { r.classList.remove('certa', 'errada'); });
-        if (alvo.getAttribute('data-id') === s.para) {
+        if (alvo.getAttribute('data-id') === alvoCerto) {
           feito = true;
           alvo.classList.add('certa');
-          EDIF.forEach(function (d) { if (d.id === s.para) nomear(svg, d); });
+          if (svg.revelar) svg.revelar();
+          else EDIF.forEach(function (d) { if (d.id === s.para) nomear(svg, d); });
           svg.querySelectorAll('.alvo').forEach(function (r) { r.style.cursor = 'default'; r.removeAttribute('tabindex'); });
           res.className = 'im-res certa';
           res.textContent = 'Muito bem! Chegou ' + para.a + '.';
@@ -2782,6 +2889,7 @@ window.CLIPS_VOZ = {"cor_dialogo": "data:audio/mpeg;base64,//twwAAAAAAAAAAAAAAAA
       });
     });
   }
+  ligar('.sit-sitio', 'sitio', function (b) { return b.getAttribute('data-sitio'); });
   ligar('.sit-num', 'n', function (b) { return +b.getAttribute('data-n'); });
   ligar('.sit-papel', 'papel', function (b) { return b.getAttribute('data-papel'); });
 })();
