@@ -1487,6 +1487,14 @@ section.exercicio > .som.ouvir{margin:0 0 6px;}
 #painel-sit .sit-dlg p{margin:0;}
 #painel-sit .sit-dlg p + p{margin-top:6px;}
 
+
+  /* Ex. 3: ordenar as palavras das perguntas (alínea e espaços na mesma linha; por baixo, a resposta dada; no fim, o banco) */
+  .itens-ord{display:flex;flex-direction:column;gap:14px;}
+  .item-esc.ord.grupo-banco{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:0;}
+  .item-esc.ord > .linha-ord{flex:1 1 0;}
+  .item-esc.ord .ponto{font-size:1.3rem;}
+  .ord .resp-dada{flex:0 0 100%;margin:0;font-size:1.1rem;line-height:1.5;color:var(--ink);}
+  .ord .resp-dada u{text-decoration-thickness:2px;text-underline-offset:3px;}
 </style>
 </head>
 <body>
@@ -1559,13 +1567,14 @@ section.exercicio > .som.ouvir{margin:0 0 6px;}
 </div>
 
 <div class="tab-panel" id="painel-p1" role="tabpanel" aria-labelledby="tab-p1">
-<section class="bloco exercicio" id="ex-1" data-tipo="fotos"><div class="ex-cab"><h2 class="ex-t">Exercício 1</h2></div><p class="instrucao">Selecione a opção correta.</p><div class="dial-fixo"><button type="button" class="abrir-dial" aria-expanded="false" data-abrir="Ver o diálogo" data-fechar="Esconder o diálogo">Ver o diálogo</button><div class="dial-corpo" hidden><p><span class="quem">Farmacêutico:</span> Boa tarde. Diga, por favor.</p><p><span class="quem">Cliente:</span> Boa tarde. Estou constipada e tenho muita tosse. Tem alguma coisa para a tosse?</p><p><span class="quem">Farmacêutico:</span> A tosse é seca?</p><p><span class="quem">Cliente:</span> É seca, principalmente à noite. Não me deixa dormir.</p><p><span class="quem">Farmacêutico:</span> Tem febre?</p><p><span class="quem">Cliente:</span> Não, não tenho febre. Mas dói-me a garganta.</p><p><span class="quem">Farmacêutico:</span> Há quantos dias está assim?</p><p><span class="quem">Cliente:</span> Há quatro dias.</p><p><span class="quem">Farmacêutico:</span> Para a tosse, posso dar-lhe este xarope. E, para a garganta, estas pastilhas.</p><p><span class="quem">Cliente:</span> Sou alérgica à penicilina. Posso tomar?</p><p><span class="quem">Farmacêutico:</span> Pode. O xarope e as pastilhas não são antibióticos.</p><p><span class="quem">Cliente:</span> E como devo tomar o xarope?</p><p><span class="quem">Farmacêutico:</span> Uma colher de sopa de manhã e outra à noite. Pode chupar três ou quatro pastilhas por dia.</p><p><span class="quem">Cliente:</span> Quanto é?</p><p><span class="quem">Farmacêutico:</span> São 11,45 €.</p><p><span class="quem">Cliente:</span> Está bem. Muito obrigada.</p><p><span class="quem">Farmacêutico:</span> De nada. No caso de piorar, vá ao centro de saúde. As melhoras!</p></div></div><div class="itens-esc3"><div class="item-foto esc3" data-r="a"><p class="esc3-q"><span class="n-item">1.</span> A cliente leva um xarope e pastilhas. Porquê?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Ela tem tosse e dores de garganta.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Ela tem febre e tosse.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Ela tem tosse e dores de cabeça.</button></div></div><div class="item-foto esc3" data-r="c"><p class="esc3-q"><span class="n-item">2.</span> Porque é que a cliente fala sobre a penicilina?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Quer comprar um antibiótico.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Precisa de uma receita do médico.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Não pode tomar alguns medicamentos.</button></div></div><div class="item-foto esc3" data-r="b"><p class="esc3-q"><span class="n-item">3.</span> Quantas vezes por dia é que a cliente precisa de tomar o xarope?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Precisa de tomar de oito em oito horas.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Precisa de tomar duas vezes por dia.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Precisa de tomar três ou quatro vezes por dia.</button></div></div><div class="item-foto esc3" data-r="c"><p class="esc3-q"><span class="n-item">4.</span> A tosse da cliente fica pior. O que é que ela deve fazer?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Deve tomar mais pastilhas.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Deve voltar à farmácia.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Deve ir ao médico.</button></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
-<section class="bloco exercicio" id="ex-2" data-tipo="fotos"><div class="ex-cab"><h2 class="ex-t">Exercício 2</h2></div><p class="instrucao">Selecione a opção correta.</p><div class="dial-fixo"><button type="button" class="abrir-dial" aria-expanded="false" data-abrir="Ver o diálogo" data-fechar="Esconder o diálogo">Ver o diálogo</button><div class="dial-corpo" hidden><p class="dc-parte">Parte 1</p><p><span class="quem">Farmacêutica:</span> Bom dia! Em que posso ajudá-lo?</p><p><span class="quem">Cliente:</span> Bom dia. Queria uma caixa de paracetamol e outra de ibuprofeno, por favor.</p><p><span class="quem">Farmacêutica:</span> Para adulto ou para criança?</p><p><span class="quem">Cliente:</span> Para adulto, em comprimidos.</p><p><span class="quem">Farmacêutica:</span> Tem preferência por alguma marca?</p><p><span class="quem">Cliente:</span> Qual é a diferença de preço?</p><p><span class="quem">Farmacêutica:</span> O Ben-u-ron custa 2,95 € e o genérico custa 1,90 €.</p><p><span class="quem">Cliente:</span> Então, pode ser o genérico.</p><p><span class="quem">Farmacêutica:</span> Aqui tem: o paracetamol de 500 mg e o ibuprofeno de 400 mg. Sabe como deve tomar?</p><p><span class="quem">Cliente:</span> Sim. O paracetamol de 8 em 8 horas, para as dores ou para a febre, e o ibuprofeno às refeições. Está certo?</p><p><span class="quem">Farmacêutica:</span> Está, sim. Mas não tome os dois ao mesmo tempo. E, no caso de continuar com sintomas, consulte um médico. Mais alguma coisa?</p><p class="dc-parte">Parte 2</p><p><span class="quem">Cliente:</span> Sim. Tenho uma receita do médico. Está aqui no telemóvel.</p><p><span class="quem">Farmacêutica:</span> Posso ver a mensagem? (…) Muito bem, é um xarope para a tosse. Deve tomar depois das refeições.</p><p><span class="quem">Cliente:</span> Obrigado. Quanto é tudo?</p><p><span class="quem">Farmacêutica:</span> São 9,80 €. Quer a fatura com contribuinte?</p><p><span class="quem">Cliente:</span> Sim, por favor. É o 299 012 345.</p><p><span class="quem">Farmacêutica:</span> Paga em dinheiro ou com cartão?</p><p><span class="quem">Cliente:</span> Com cartão.</p><p><span class="quem">Farmacêutica:</span> Pode aproximar o cartão. (…) Está pago. Aqui tem o talão e os medicamentos. As melhoras!</p><p><span class="quem">Cliente:</span> Muito obrigado. Bom dia!</p></div></div><div class="itens-esc3"><div class="item-foto esc3" data-r="a"><p class="esc3-q"><span class="n-item">1.</span> Porque é que o cliente escolhe o genérico?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> O genérico é mais barato.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> O genérico é mais forte.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> O genérico é para crianças.</button></div></div><div class="item-foto esc3" data-r="b"><p class="esc3-q"><span class="n-item">2.</span> Quando é que o cliente deve tomar o ibuprofeno?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Deve tomar de manhã e à noite.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Deve tomar quando come.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Deve tomar antes de dormir.</button></div></div><div class="item-foto esc3" data-r="c"><p class="esc3-q"><span class="n-item">3.</span> O que é que a farmacêutica faz antes de dar o xarope?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Telefona ao médico.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Pede o número de utente.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Lê a mensagem do telemóvel.</button></div></div><div class="item-foto esc3" data-r="b"><p class="esc3-q"><span class="n-item">4.</span> O que é que a farmacêutica diz sobre os dois medicamentos?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Ele tem de tomar os dois às refeições.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Ele não pode tomar os dois juntos.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Ele pode tomar os dois de oito em oito horas.</button></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
+<section class="bloco exercicio" id="ex-1" data-tipo="fotos"><div class="ex-cab"><h2 class="ex-t">Exercício 1</h2></div><p class="instrucao">Selecione a opção correta.</p><div class="dial-fixo"><button type="button" class="abrir-dial" aria-expanded="false" data-abrir="Ver o diálogo" data-fechar="Esconder o diálogo">Ver o diálogo</button><div class="dial-corpo" hidden><p><span class="quem">Farmacêutico:</span> Boa tarde. Diga, por favor.</p><p><span class="quem">Cliente:</span> Boa tarde. Estou constipada e tenho muita tosse. Tem alguma coisa para a tosse?</p><p><span class="quem">Farmacêutico:</span> A tosse é seca?</p><p><span class="quem">Cliente:</span> É seca, principalmente à noite. Não me deixa dormir.</p><p><span class="quem">Farmacêutico:</span> Tem febre?</p><p><span class="quem">Cliente:</span> Não, não tenho febre. Mas dói-me a garganta.</p><p><span class="quem">Farmacêutico:</span> Há quantos dias está assim?</p><p><span class="quem">Cliente:</span> Há quatro dias.</p><p><span class="quem">Farmacêutico:</span> Para a tosse, posso dar-lhe este xarope. E, para a garganta, estas pastilhas.</p><p><span class="quem">Cliente:</span> Sou alérgica à penicilina. Posso tomar?</p><p><span class="quem">Farmacêutico:</span> Pode. O xarope e as pastilhas não são antibióticos.</p><p><span class="quem">Cliente:</span> E como devo tomar o xarope?</p><p><span class="quem">Farmacêutico:</span> Uma colher de sopa de manhã e outra à noite. Pode chupar três ou quatro pastilhas por dia.</p><p><span class="quem">Cliente:</span> Quanto é?</p><p><span class="quem">Farmacêutico:</span> São 11,45 €.</p><p><span class="quem">Cliente:</span> Está bem. Muito obrigada.</p><p><span class="quem">Farmacêutico:</span> De nada. No caso de piorar, vá ao centro de saúde. As melhoras!</p></div></div><div class="itens-esc3"><div class="item-foto esc3" data-r="a"><p class="esc3-q"><span class="n-item">1.</span> A cliente leva um xarope e pastilhas. Porquê?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Ela tem tosse e dores de garganta.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Ela tem febre e tosse.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Ela tem tosse e dores de cabeça.</button></div></div><div class="item-foto esc3" data-r="b"><p class="esc3-q"><span class="n-item">2.</span> Quando é que a cliente precisa de tomar o xarope?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Precisa de tomar de oito em oito horas, depois das refeições.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Precisa de tomar de manhã e à noite.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Precisa de tomar três ou quatro vezes por dia.</button></div></div><div class="item-foto esc3" data-r="c"><p class="esc3-q"><span class="n-item">3.</span> Onde é que a cliente deve ir, no caso de não melhorar?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Deve voltar à farmácia.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Deve ir ao hospital.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Deve ir ao centro de saúde.</button></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
+<section class="bloco exercicio" id="ex-2" data-tipo="fotos"><div class="ex-cab"><h2 class="ex-t">Exercício 2</h2></div><p class="instrucao">Selecione a opção correta.</p><div class="dial-fixo"><button type="button" class="abrir-dial" aria-expanded="false" data-abrir="Ver o diálogo" data-fechar="Esconder o diálogo">Ver o diálogo</button><div class="dial-corpo" hidden><p class="dc-parte">Parte 1</p><p><span class="quem">Farmacêutica:</span> Bom dia! Em que posso ajudá-lo?</p><p><span class="quem">Cliente:</span> Bom dia. Queria uma caixa de paracetamol e outra de ibuprofeno, por favor.</p><p><span class="quem">Farmacêutica:</span> Para adulto ou para criança?</p><p><span class="quem">Cliente:</span> Para adulto, em comprimidos.</p><p><span class="quem">Farmacêutica:</span> Tem preferência por alguma marca?</p><p><span class="quem">Cliente:</span> Qual é a diferença de preço?</p><p><span class="quem">Farmacêutica:</span> O Ben-u-ron custa 2,95 € e o genérico custa 1,90 €.</p><p><span class="quem">Cliente:</span> Então, pode ser o genérico.</p><p><span class="quem">Farmacêutica:</span> Aqui tem: o paracetamol de 500 mg e o ibuprofeno de 400 mg. Sabe como deve tomar?</p><p><span class="quem">Cliente:</span> Sim. O paracetamol de 8 em 8 horas, para as dores ou para a febre, e o ibuprofeno às refeições. Está certo?</p><p><span class="quem">Farmacêutica:</span> Está, sim. Mas não tome os dois ao mesmo tempo. E, no caso de continuar com sintomas, consulte um médico. Mais alguma coisa?</p><p class="dc-parte">Parte 2</p><p><span class="quem">Cliente:</span> Sim. Tenho uma receita do médico. Está aqui no telemóvel.</p><p><span class="quem">Farmacêutica:</span> Posso ver a mensagem? (…) Muito bem, é um xarope para a tosse. Deve tomar depois das refeições.</p><p><span class="quem">Cliente:</span> Obrigado. Quanto é tudo?</p><p><span class="quem">Farmacêutica:</span> São 9,80 €. Quer a fatura com contribuinte?</p><p><span class="quem">Cliente:</span> Sim, por favor. É o 299 012 345.</p><p><span class="quem">Farmacêutica:</span> Paga em dinheiro ou com cartão?</p><p><span class="quem">Cliente:</span> Com cartão.</p><p><span class="quem">Farmacêutica:</span> Pode aproximar o cartão. (…) Está pago. Aqui tem o talão e os medicamentos. As melhoras!</p><p><span class="quem">Cliente:</span> Muito obrigado. Bom dia!</p></div></div><div class="itens-esc3"><div class="item-foto esc3" data-r="a"><p class="esc3-q"><span class="n-item">1.</span> Porque é que o cliente escolhe o genérico?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> O genérico é mais barato.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> O genérico é mais forte.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> O genérico é para crianças.</button></div></div><div class="item-foto esc3" data-r="b"><p class="esc3-q"><span class="n-item">2.</span> Quando é que o cliente deve tomar o ibuprofeno?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Deve tomar de manhã e à noite.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Deve tomar quando come.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Deve tomar antes de dormir.</button></div></div><div class="item-foto esc3" data-r="c"><p class="esc3-q"><span class="n-item">3.</span> O cliente não tem a receita em papel. Como é que a farmacêutica sabe qual é o medicamento?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Pede o cartão de cidadão do cliente.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Pede o número de utente do cliente.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Vê a receita no telemóvel do cliente.</button></div></div><div class="item-foto esc3" data-r="b"><p class="esc3-q"><span class="n-item">4.</span> São 13h00. O cliente está a almoçar e toma o ibuprofeno. Também tem febre. O que é que deve fazer?</p><div class="opcoes tres"><button type="button" class="btn-op" data-v="a"><span class="op-l">a)</span> Deve tomar também o paracetamol.</button><button type="button" class="btn-op" data-v="b"><span class="op-l">b)</span> Deve esperar um pouco para tomar o paracetamol.</button><button type="button" class="btn-op" data-v="c"><span class="op-l">c)</span> Deve tomar o xarope para a febre.</button></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
+<section class="bloco exercicio" id="ex-ord" data-tipo="ordenar"><div class="ex-cab"><h2 class="ex-t">Exercício 3</h2></div><p class="instrucao">Ordene as palavras para escrever as perguntas para as respostas dadas.</p><div class="dial-fixo"><button type="button" class="abrir-dial" aria-expanded="false" data-abrir="Ver o diálogo" data-fechar="Esconder o diálogo">Ver o diálogo</button><div class="dial-corpo" hidden><p><span class="quem">Farmacêutico:</span> Boa tarde. Diga, por favor.</p><p><span class="quem">Cliente:</span> Boa tarde. Estou constipada e tenho muita tosse. Tem alguma coisa para a tosse?</p><p><span class="quem">Farmacêutico:</span> A tosse é seca?</p><p><span class="quem">Cliente:</span> É seca, principalmente à noite. Não me deixa dormir.</p><p><span class="quem">Farmacêutico:</span> Tem febre?</p><p><span class="quem">Cliente:</span> Não, não tenho febre. Mas dói-me a garganta.</p><p><span class="quem">Farmacêutico:</span> Há quantos dias está assim?</p><p><span class="quem">Cliente:</span> Há quatro dias.</p><p><span class="quem">Farmacêutico:</span> Para a tosse, posso dar-lhe este xarope. E, para a garganta, estas pastilhas.</p><p><span class="quem">Cliente:</span> Sou alérgica à penicilina. Posso tomar?</p><p><span class="quem">Farmacêutico:</span> Pode. O xarope e as pastilhas não são antibióticos.</p><p><span class="quem">Cliente:</span> E como devo tomar o xarope?</p><p><span class="quem">Farmacêutico:</span> Uma colher de sopa de manhã e outra à noite. Pode chupar três ou quatro pastilhas por dia.</p><p><span class="quem">Cliente:</span> Quanto é?</p><p><span class="quem">Farmacêutico:</span> São 11,45 €.</p><p><span class="quem">Cliente:</span> Está bem. Muito obrigada.</p><p><span class="quem">Farmacêutico:</span> De nada. No caso de piorar, vá ao centro de saúde. As melhoras!</p></div></div><div class="itens-ord"><div class="item-esc ord grupo-banco" data-validas="[[&quot;há&quot;, &quot;quantos dias&quot;, &quot;é que&quot;, &quot;ela&quot;, &quot;se sente&quot;, &quot;mal&quot;]]"><span class="alinea">a)</span><div class="linha-ord l3"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar" data-cap></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="fim"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="ponto">?</span><span class="marca" aria-hidden="true"></span></span></div><p class="resp-dada">Ela sente-se mal há <u>quatro dias</u>.</p><div class="banco compacto"><button type="button" class="chip" data-v="ela" data-ordem="0">ela</button><button type="button" class="chip" data-v="mal" data-ordem="1">mal</button><button type="button" class="chip" data-v="é que" data-ordem="2">é que</button><button type="button" class="chip" data-v="quantos dias" data-ordem="3">quantos dias</button><button type="button" class="chip" data-v="se sente" data-ordem="4">se sente</button><button type="button" class="chip" data-v="há" data-ordem="5">há</button></div></div><div class="item-esc ord grupo-banco" data-validas="[[&quot;que medicamentos&quot;, &quot;é que&quot;, &quot;ela&quot;, &quot;compra&quot;]]"><span class="alinea">b)</span><div class="linha-ord"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar" data-cap></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="fim"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="ponto">?</span><span class="marca" aria-hidden="true"></span></span></div><p class="resp-dada">Ela compra <u>xarope e pastilhas</u>.</p><div class="banco compacto"><button type="button" class="chip" data-v="compra" data-ordem="0">compra</button><button type="button" class="chip" data-v="ela" data-ordem="1">ela</button><button type="button" class="chip" data-v="que medicamentos" data-ordem="2">que medicamentos</button><button type="button" class="chip" data-v="é que" data-ordem="3">é que</button></div></div><div class="item-esc ord grupo-banco" data-validas="[[&quot;quanto&quot;, &quot;custam&quot;, &quot;o xarope&quot;, &quot;e&quot;, &quot;as pastilhas&quot;], [&quot;quanto&quot;, &quot;custam&quot;, &quot;as pastilhas&quot;, &quot;e&quot;, &quot;o xarope&quot;]]"><span class="alinea">c)</span><div class="linha-ord"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar" data-cap></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="fim"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="ponto">?</span><span class="marca" aria-hidden="true"></span></span></div><p class="resp-dada">O xarope e as pastilhas custam <u>11,45 €</u>.</p><div class="banco compacto"><button type="button" class="chip" data-v="o xarope" data-ordem="0">o xarope</button><button type="button" class="chip" data-v="custam" data-ordem="1">custam</button><button type="button" class="chip" data-v="as pastilhas" data-ordem="2">as pastilhas</button><button type="button" class="chip" data-v="quanto" data-ordem="3">quanto</button><button type="button" class="chip" data-v="e" data-ordem="4">e</button></div></div><div class="item-esc ord grupo-banco" data-validas="[[&quot;quantas pastilhas&quot;, &quot;é que&quot;, &quot;ela&quot;, &quot;pode&quot;, &quot;chupar&quot;, &quot;por dia&quot;], [&quot;quantas pastilhas&quot;, &quot;por dia&quot;, &quot;é que&quot;, &quot;ela&quot;, &quot;pode&quot;, &quot;chupar&quot;]]"><span class="alinea">d)</span><div class="linha-ord l3"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar" data-cap></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="fim"><span class="slot" tabindex="0" role="button" aria-label="Espaço para completar"></span><span class="ponto">?</span><span class="marca" aria-hidden="true"></span></span></div><p class="resp-dada">Ela pode chupar <u>três ou quatro</u> pastilhas por dia.</p><div class="banco compacto"><button type="button" class="chip" data-v="pode" data-ordem="0">pode</button><button type="button" class="chip" data-v="por dia" data-ordem="1">por dia</button><button type="button" class="chip" data-v="ela" data-ordem="2">ela</button><button type="button" class="chip" data-v="chupar" data-ordem="3">chupar</button><button type="button" class="chip" data-v="quantas pastilhas" data-ordem="4">quantas pastilhas</button><button type="button" class="chip" data-v="é que" data-ordem="5">é que</button></div></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
 </div>
 
 <div class="tab-panel" id="painel-p2" role="tabpanel" aria-labelledby="tab-p2">
-<section class="bloco exercicio" id="ex-3" data-tipo="ligar"><div class="ex-cab"><h2 class="ex-t">Exercício 3</h2></div><p class="instrucao">Ligue cada pergunta à resposta correta.</p><div class="ligar" data-multi="0"><svg class="lg-svg" aria-hidden="true" focusable="false"></svg><div class="lg-col lg-esq"><button type="button" class="lg-it lg-e" data-r="2" aria-pressed="false"><span class="lg-txt"><span class="n-q">1.</span> Tem alguma coisa para as dores de cabeça?</span></button><button type="button" class="lg-it lg-e" data-r="4" aria-pressed="false"><span class="lg-txt"><span class="n-q">2.</span> Quanto tempo devo tomar o xarope?</span></button><button type="button" class="lg-it lg-e" data-r="5" aria-pressed="false"><span class="lg-txt"><span class="n-q">3.</span> O meu filho tem febre. O que é que posso dar?</span></button><button type="button" class="lg-it lg-e" data-r="1" aria-pressed="false"><span class="lg-txt"><span class="n-q">4.</span> Tem este medicamento em genérico?</span></button><button type="button" class="lg-it lg-e" data-r="3" aria-pressed="false"><span class="lg-txt"><span class="n-q">5.</span> Esta pomada é para quê?</span></button></div><div class="lg-col lg-dir"><button type="button" class="lg-it lg-d" data-id="1" data-cor="1" aria-pressed="false"><span class="lg-txt"><span class="n-q">A)</span> Tenho, sim. É igual e custa menos.</span></button><button type="button" class="lg-it lg-d" data-id="2" data-cor="2" aria-pressed="false"><span class="lg-txt"><span class="n-q">B)</span> Estes comprimidos são muito bons. Tome um de oito em oito horas.</span></button><button type="button" class="lg-it lg-d" data-id="3" data-cor="3" aria-pressed="false"><span class="lg-txt"><span class="n-q">C)</span> É para as dores nos músculos.</span></button><button type="button" class="lg-it lg-d" data-id="4" data-cor="4" aria-pressed="false"><span class="lg-txt"><span class="n-q">D)</span> Durante cinco dias.</span></button><button type="button" class="lg-it lg-d" data-id="5" data-cor="5" aria-pressed="false"><span class="lg-txt"><span class="n-q">E)</span> Que idade tem a criança?</span></button></div></div><p class="lg-aria sr-only" aria-live="polite"></p><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
-<section class="bloco exercicio" id="ex-4" data-tipo="construir"><div class="ex-cab"><h2 class="ex-t">Exercício 4</h2></div><p class="instrucao">Construa a conversa. Toque na fala que vem a seguir.</p><div class="glossario"><div class="gl-topo"><h3>Vocabulário</h3><button type="button" class="ver-ingles" aria-expanded="false" data-abrir="Mostrar inglês" data-fechar="Esconder inglês">Mostrar inglês</button></div><p class="gl-nota">Para ver o significado: clique em «Mostrar inglês» ou procure num dicionário. <a href="https://www.infopedia.pt/dicionarios/portugues-ingles" target="_blank" rel="noopener">Infopédia</a> · <a href="https://www.linguee.pt/portugues-ingles/" target="_blank" rel="noopener">Linguee</a></p><div class="gl-lista"><span class="gl"><span class="gl-w"><b>de infravermelhos</b><span class="gl-en" hidden><i lang="en">infrared</i></span></span></span></div></div><div class="cv-conversa"></div><div class="cv-zona"><p class="cv-pergunta">O que vem a seguir?</p><div class="cv-opcoes"></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
+<section class="bloco exercicio" id="ex-3" data-tipo="ligar"><div class="ex-cab"><h2 class="ex-t">Exercício 4</h2></div><p class="instrucao">Ligue cada pergunta à resposta correta.</p><div class="ligar" data-multi="0"><svg class="lg-svg" aria-hidden="true" focusable="false"></svg><div class="lg-col lg-esq"><button type="button" class="lg-it lg-e" data-r="2" aria-pressed="false"><span class="lg-txt"><span class="n-q">1.</span> Tem alguma coisa para as dores de cabeça?</span></button><button type="button" class="lg-it lg-e" data-r="4" aria-pressed="false"><span class="lg-txt"><span class="n-q">2.</span> Quanto tempo devo tomar o xarope?</span></button><button type="button" class="lg-it lg-e" data-r="5" aria-pressed="false"><span class="lg-txt"><span class="n-q">3.</span> O meu filho tem febre. O que é que posso dar?</span></button><button type="button" class="lg-it lg-e" data-r="1" aria-pressed="false"><span class="lg-txt"><span class="n-q">4.</span> Tem este medicamento em genérico?</span></button><button type="button" class="lg-it lg-e" data-r="3" aria-pressed="false"><span class="lg-txt"><span class="n-q">5.</span> Esta pomada é para quê?</span></button></div><div class="lg-col lg-dir"><button type="button" class="lg-it lg-d" data-id="1" data-cor="1" aria-pressed="false"><span class="lg-txt"><span class="n-q">A)</span> Tenho, sim. É igual e custa menos.</span></button><button type="button" class="lg-it lg-d" data-id="2" data-cor="2" aria-pressed="false"><span class="lg-txt"><span class="n-q">B)</span> Estes comprimidos são muito bons. Tome um de oito em oito horas.</span></button><button type="button" class="lg-it lg-d" data-id="3" data-cor="3" aria-pressed="false"><span class="lg-txt"><span class="n-q">C)</span> É para as dores nos músculos.</span></button><button type="button" class="lg-it lg-d" data-id="4" data-cor="4" aria-pressed="false"><span class="lg-txt"><span class="n-q">D)</span> Durante cinco dias.</span></button><button type="button" class="lg-it lg-d" data-id="5" data-cor="5" aria-pressed="false"><span class="lg-txt"><span class="n-q">E)</span> Que idade tem a criança?</span></button></div></div><p class="lg-aria sr-only" aria-live="polite"></p><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
+<section class="bloco exercicio" id="ex-4" data-tipo="construir"><div class="ex-cab"><h2 class="ex-t">Exercício 5</h2></div><p class="instrucao">Construa a conversa. Toque na fala que vem a seguir.</p><div class="glossario"><div class="gl-topo"><h3>Vocabulário</h3><button type="button" class="ver-ingles" aria-expanded="false" data-abrir="Mostrar inglês" data-fechar="Esconder inglês">Mostrar inglês</button></div><p class="gl-nota">Para ver o significado: clique em «Mostrar inglês» ou procure num dicionário. <a href="https://www.infopedia.pt/dicionarios/portugues-ingles" target="_blank" rel="noopener">Infopédia</a> · <a href="https://www.linguee.pt/portugues-ingles/" target="_blank" rel="noopener">Linguee</a></p><div class="gl-lista"><span class="gl"><span class="gl-w"><b>de infravermelhos</b><span class="gl-en" hidden><i lang="en">infrared</i></span></span></span></div></div><div class="cv-conversa"></div><div class="cv-zona"><p class="cv-pergunta">O que vem a seguir?</p><div class="cv-opcoes"></div></div><div class="botoes"><button type="button" class="verificar">Verificar</button><button type="button" class="secundario mostrar">Mostrar soluções</button><button type="button" class="secundario limpar">Limpar</button></div><div class="resultado" role="status" aria-live="polite"></div><div class="progresso"><span class="prog"><span class="prog-fill"></span></span><span class="contagem">0 / 0</span></div></section>
 </div>
 
 <div class="tab-panel" id="painel-sit" role="tabpanel" aria-labelledby="tab-sit">
@@ -1910,11 +1919,244 @@ function iniciarConstruir(sec) {
     comecar();
   }
 
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  /* ---------- Ordenar palavras (arrastar ou tocar) — motor do «O corpo e os sintomas» ----------
+     Cada frase é um .grupo-banco: as peças só entram nos espaços da própria frase. Vale 1 ponto por frase.
+     A frase está certa se as peças, pela ordem dos espaços, forem uma das ordens de data-validas. */
+  function iniciarOrdenar(sec) {
+    var itens = $$('.grupo-banco', sec);
+    var slots = $$('.slot', sec);
+    var chips = $$('.chip', sec);
+    var total = itens.length;
+    var elRes = $('.resultado', sec), elProg = $('.prog-fill', sec), elCont = $('.contagem', sec);
+    var bV = $('.verificar', sec), bM = $('.mostrar', sec), bL = $('.limpar', sec);
+    var selecionado = null, bloqueado = false, ignorarClique = false, drag = null;
+
+    function grupoDe(el) { return el.closest('.grupo-banco'); }
+    function bancoDe(el) { return $('.banco', grupoDe(el)); }
+    function mesmoGrupo(chip, slot) { return grupoDe(chip) === grupoDe(slot); }
+    function texto(chip, slot) {
+      var v = chip.getAttribute('data-v');
+      if (slot && slot.hasAttribute('data-cap')) v = cap(v);
+      chip.textContent = v;
+    }
+    function refrescar() { slots.forEach(function (s) { if (s._chip) texto(s._chip, s); }); }
+    function slotsDe(it) { return $$('.linha-ord:not(.sol) .slot', it); }
+    function completo(it) { return slotsDe(it).every(function (s) { return s._chip; }); }
+    function validas(it) { try { return JSON.parse(it.getAttribute('data-validas') || '[]'); } catch (e) { return []; } }
+    function atualizar() {
+      var n = itens.filter(completo).length;
+      elProg.style.width = (100 * n / total) + '%';
+      elCont.textContent = n + ' / ' + total;
+    }
+    function limparMarcas() {
+      slots.forEach(function (s) { s.classList.remove('certa', 'errada', 'vazia-verif'); });
+      $$('.linha-ord', sec).forEach(function (l) { l.classList.remove('certa', 'errada'); });
+      elRes.textContent = ''; elRes.className = 'resultado';
+    }
+    function desselecionar() { if (selecionado) { selecionado.classList.remove('sel'); selecionado = null; } }
+    function devolver(chip) {
+      if (chip._slot) { chip._slot._chip = null; chip._slot = null; }
+      chip.classList.remove('sel');
+      (chip._banco || bancoDe(chip)).appendChild(chip);
+      texto(chip, null);
+    }
+    function colocar(chip, slot) {
+      if (!mesmoGrupo(chip, slot)) { desselecionar(); return false; }
+      if (slot._chip && slot._chip !== chip) devolver(slot._chip);
+      if (chip._slot && chip._slot !== slot) { chip._slot._chip = null; chip._slot = null; }
+      slot.appendChild(chip);
+      slot._chip = chip; chip._slot = slot;
+      texto(chip, slot);
+      chip.classList.remove('sel');
+      if (selecionado === chip) selecionado = null;
+      return true;
+    }
+    function aoMudar() { refrescar(); limparMarcas(); atualizar(); }
+
+    function clicarChip(chip) {
+      if (bloqueado) return;
+      if (selecionado && selecionado !== chip) {
+        if (chip._slot) { var s = chip._slot; var sel = selecionado; colocar(sel, s); }
+        else { desselecionar(); chip.classList.add('sel'); selecionado = chip; }
+      } else if (selecionado === chip) {
+        desselecionar();
+      } else if (chip._slot) {
+        devolver(chip);
+      } else {
+        chip.classList.add('sel'); selecionado = chip;
+      }
+      aoMudar();
+    }
+    function clicarSlot(slot) {
+      if (bloqueado) return;
+      if (selecionado) { colocar(selecionado, slot); }
+      else if (slot._chip) { devolver(slot._chip); }
+      else return;
+      aoMudar();
+    }
+
+    chips.forEach(function (c) { c._banco = bancoDe(c); });
+
+    sec.addEventListener('click', function (e) {
+      if (ignorarClique) { ignorarClique = false; return; }
+      var c = e.target.closest('.chip');
+      if (c && sec.contains(c)) { e.stopPropagation(); clicarChip(c); return; }
+      var s = e.target.closest('.slot');
+      if (s && sec.contains(s)) clicarSlot(s);
+    });
+    sec.addEventListener('keydown', function (e) {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('slot')) { e.preventDefault(); clicarSlot(e.target); }
+    });
+
+    /* arrastar com o rato, o dedo ou a caneta */
+    function pontoSob(x, y) {
+      var el = document.elementFromPoint(x, y);
+      return el ? { slot: el.closest('.slot'), banco: el.closest('.banco') } : { slot: null, banco: null };
+    }
+    function destacar(x, y) {
+      slots.forEach(function (s) { s.classList.remove('sobre'); });
+      var p = pontoSob(x, y);
+      if (p.slot && sec.contains(p.slot) && drag && mesmoGrupo(drag.chip, p.slot)) p.slot.classList.add('sobre');
+    }
+    function mover(e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var dx = e.clientX - drag.x0, dy = e.clientY - drag.y0;
+      if (!drag.ativo && Math.sqrt(dx * dx + dy * dy) > 8) {
+        drag.ativo = true;
+        var r = drag.chip.getBoundingClientRect();
+        var g = drag.chip.cloneNode(true);
+        g.className = 'chip fantasma'; g.style.width = r.width + 'px'; g.style.height = r.height + 'px';
+        g.removeAttribute('data-v'); g.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(g); drag.ghost = g; drag.w = r.width; drag.h = r.height;
+        drag.chip.classList.add('arrastando');
+      }
+      if (drag.ativo) {
+        drag.ghost.style.left = (e.clientX - drag.w / 2) + 'px';
+        drag.ghost.style.top = (e.clientY - drag.h / 2) + 'px';
+        destacar(e.clientX, e.clientY);
+        e.preventDefault();
+      }
+    }
+    function largar(e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      document.removeEventListener('pointermove', mover);
+      document.removeEventListener('pointerup', largar);
+      document.removeEventListener('pointercancel', largar);
+      var d = drag; drag = null;
+      if (!d.ativo) return;
+      d.ghost.parentNode.removeChild(d.ghost);
+      d.chip.classList.remove('arrastando');
+      slots.forEach(function (s) { s.classList.remove('sobre'); });
+      if (e.type === 'pointerup') {
+        var p = pontoSob(e.clientX, e.clientY);
+        if (p.slot && sec.contains(p.slot)) { if (colocar(d.chip, p.slot)) aoMudar(); }
+        else if (p.banco && sec.contains(p.banco)) { devolver(d.chip); aoMudar(); }
+      }
+      ignorarClique = true;
+      setTimeout(function () { ignorarClique = false; }, 50);
+    }
+    sec.addEventListener('pointerdown', function (e) {
+      var c = e.target.closest('.chip');
+      if (!c || !sec.contains(c) || bloqueado || (e.button !== undefined && e.button > 0)) return;
+      drag = { chip: c, id: e.pointerId, x0: e.clientX, y0: e.clientY, ativo: false };
+      document.addEventListener('pointermove', mover, { passive: false });
+      document.addEventListener('pointerup', largar);
+      document.addEventListener('pointercancel', largar);
+    });
+
+    bV.addEventListener('click', function () {
+      if (bloqueado) return;
+      var certas = 0;
+      desselecionar();
+      limparMarcas();
+      itens.forEach(function (it) {
+        var ss = slotsDe(it), linha = $('.linha-ord', it);
+        var vazios = ss.filter(function (s) { return !s._chip; });
+        if (vazios.length) { vazios.forEach(function (s) { s.classList.add('vazia-verif'); }); return; }   /* frase por acabar: não conta */
+        var seq = ss.map(function (s) { return s._chip.getAttribute('data-v'); });
+        var ok = validas(it).some(function (v) {
+          return v.length === seq.length && v.every(function (p, i) { return p === seq[i]; });
+        });
+        ss.forEach(function (s) { s.classList.add(ok ? 'certa' : 'errada'); });
+        linha.classList.add(ok ? 'certa' : 'errada');
+        if (ok) certas++;
+      });
+      var m = mensagemResultado(certas, total);
+      if (semRespostas(elCont)) m = AVISO_VAZIO;
+      elRes.textContent = m.texto; elRes.className = 'resultado ' + m.nivel;
+    });
+    /* quando há mais do que uma ordem correta, mostram-se todas, com o mesmo ✓: nenhuma é «alternativa» */
+    function mostrarTodas(it, vs) {
+      var cx = document.createElement('div'); cx.className = 'solucoes';
+      var nota = document.createElement('p'); nota.className = 'sol-nota';
+      nota.textContent = vs.length === 2 ? 'As duas frases estão corretas.' : vs.length === 3 ? 'As três frases estão corretas.' : 'Todas estas frases estão corretas.';
+      cx.appendChild(nota);
+      vs.forEach(function (v) {
+        var linha = document.createElement('div'); linha.className = 'linha-ord l3 certa sol';
+        var fim = document.createElement('span'); fim.className = 'fim';
+        v.forEach(function (p, i) {
+          var ult = i === v.length - 1;
+          var s = document.createElement('span'); s.className = 'slot certa';
+          var c = document.createElement('span'); c.className = 'chip';
+          c.textContent = i === 0 ? cap(p) : p;
+          s.appendChild(c);
+          if (ult) {
+            fim.appendChild(s);
+            var pt = document.createElement('span'); pt.className = 'ponto'; var pf = $('.linha-ord .ponto', it); pt.textContent = pf ? pf.textContent : '.'; fim.appendChild(pt);
+            var m = document.createElement('span'); m.className = 'marca'; m.setAttribute('aria-hidden', 'true'); fim.appendChild(m);
+            linha.appendChild(fim);
+          } else linha.appendChild(s);
+        });
+        cx.appendChild(linha);
+      });
+      it.classList.add('com-sol');
+      var ref = $('.linha-ord', it);
+      ref.parentNode.insertBefore(cx, ref.nextSibling);
+    }
+    bM.addEventListener('click', function () {
+      desselecionar();
+      limparMarcas();
+      chips.forEach(function (c) { devolver(c); });
+      itens.forEach(function (it) {
+        var certa = validas(it)[0] || [];
+        slotsDe(it).forEach(function (s, i) {
+          var peca = $$('.chip', $('.banco', it)).filter(function (c) { return c.getAttribute('data-v') === certa[i]; })[0];
+          if (peca) colocar(peca, s);
+          s.classList.add('certa');
+        });
+        $('.linha-ord', it).classList.add('certa');
+        if (validas(it).length > 1) mostrarTodas(it, validas(it));
+      });
+      refrescar();
+      bloqueado = true; sec.classList.add('bloqueado');
+      chips.forEach(function (c) { c.disabled = true; });
+      bV.disabled = true; bM.disabled = true;
+      atualizar();
+      elRes.textContent = MOSTRADAS; elRes.className = 'resultado';
+    });
+    bL.addEventListener('click', function () {
+      desselecionar();
+      itens.forEach(function (it) { it.classList.remove('com-sol'); var sx = $('.solucoes', it); if (sx) sx.parentNode.removeChild(sx); });
+      chips.forEach(function (c) { devolver(c); c.disabled = false; });
+      itens.forEach(function (it) {
+        var banco = $('.banco', it);
+        $$('.chip', banco).sort(function (a, b) { return Number(a.getAttribute('data-ordem')) - Number(b.getAttribute('data-ordem')); })
+          .forEach(function (c) { banco.appendChild(c); });
+      });
+      bloqueado = false; sec.classList.remove('bloqueado');
+      bV.disabled = false; bM.disabled = false;
+      limparMarcas(); atualizar();
+    });
+    atualizar();
+  }
+
   $$('.exercicio').forEach(function (sec) {
     var t = sec.getAttribute('data-tipo');
     if (t === 'fotos') iniciarEscolha(sec);
     else if (t === 'ligar') iniciarLigar(sec);
     else if (t === 'construir') iniciarConstruir(sec);
+    else if (t === 'ordenar') iniciarOrdenar(sec);
   });
 
   /* ---------- Situações: ver um exemplo ---------- */
