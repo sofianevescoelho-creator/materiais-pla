@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" translate="no">
 <head>
+<meta name="google" content="notranslate">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Sofia Coelho">
@@ -830,9 +831,10 @@
   .esc-es .dica[hidden]{display:none;}
   .exemplo-es{background:#fbf6f9;}
   .exemplo-es .resp-ex{flex:0 0 100%;margin:2px 0 0;padding:9px 12px;border:2px solid var(--border);border-radius:10px;background:#fff;color:var(--accent-dark);font-size:1.05rem;font-weight:700;line-height:1.35;}
+.slot.alvo{background:#f9ecf3;border-color:var(--accent);border-style:solid;box-shadow:0 0 0 3px rgba(56,53,130,.15);}
 </style>
 </head>
-<body>
+<body class="notranslate">
 <div class="wrap">
 <header>
   <h1>Falar do futuro</h1>
@@ -1503,27 +1505,59 @@ window.IMG = {"b10_visita": "data:image/webp;base64,UklGRmKwAABXRUJQVlA4IFawAABw
     }
     function aoMudar() { refrescar(); limparMarcas(); atualizar(); }
 
-    function clicarChip(chip) {
+    function clicarChip(chip) {   /* um toque (21 nov. 2026) */
       if (bloqueado) return;
-      if (selecionado && selecionado !== chip) {
-        if (chip._slot) { var s = chip._slot; var sel = selecionado; colocar(sel, s); }
-        else { desselecionar(); chip.classList.add('sel'); selecionado = chip; }
-      } else if (selecionado === chip) {
-        desselecionar();
-      } else if (chip._slot) {
-        devolver(chip);
+      desselecionar();
+      if (chip._slot) {
+        var s0 = chip._slot; devolver(chip);
+        if (MODO1 === 'completar') alvo = s0;
       } else {
-        chip.classList.add('sel'); selecionado = chip;
+        if (MODO1 === 'numerar') return;
+        var g = grupoT(chip), destino;
+        if (MODO1 === 'completar' && alvo && !alvo._chip && sec.contains(alvo) && grupoT(alvo) === g) destino = alvo;
+        else destino = vaziasT(g)[0];
+        if (!destino) return;
+        if (colocar(chip, destino) === false) return;
+        if (MODO1 === 'completar') alvo = seguinteT(destino);
       }
-      aoMudar();
+      aoMudar(); marcarAlvo();
     }
     function clicarSlot(slot) {
       if (bloqueado) return;
-      if (selecionado) { colocar(selecionado, slot); }
-      else if (slot._chip) { devolver(slot._chip); }
-      else return;
-      aoMudar();
+      if (slot._chip) {
+        devolver(slot._chip);
+        if (MODO1 === 'completar') alvo = slot;
+        aoMudar(); marcarAlvo(); return;
+      }
+      if (MODO1 === 'completar') { alvo = slot; marcarAlvo(); }
+      else if (MODO1 === 'numerar') {
+        var livre = $$('.chip', banco).sort(function (a, b) { return +a.getAttribute('data-v') - +b.getAttribute('data-v'); })[0];
+        if (livre) { colocar(livre, slot); aoMudar(); }
+      }
     }
+    var MODO1 = 'ordenar', alvo = null;
+    function grupoT(el) { return el.closest('.grupo-banco') || sec; }
+    function slotsT(g) { return slots.filter(function (s) { return g.contains(s) && !s.hasAttribute('data-exemplo'); }); }
+    function vaziasT(g) { return slotsT(g).filter(function (s) { return !s._chip; }); }
+    function seguinteT(slot) {
+      var v = slotsT(grupoT(slot)), i = v.indexOf(slot);
+      return v.slice(i + 1).concat(v.slice(0, i)).filter(function (s) { return !s._chip; })[0] || null;
+    }
+    function marcarAlvo() {
+      $$('.slot.alvo', sec).forEach(function (s) { s.classList.remove('alvo'); });
+      if (MODO1 !== 'completar' || bloqueado) return;
+      if (!alvo || alvo._chip || !sec.contains(alvo)) alvo = vaziasT(sec)[0] || null;
+      if (alvo) alvo.classList.add('alvo');
+    }
+    if (bL) bL.addEventListener('click', function () { alvo = null; setTimeout(marcarAlvo, 0); });
+    sec.addEventListener('click', function (e) {
+      if (MODO1 === 'numerar' && !bloqueado && !e.target.closest('.chip') && !e.target.closest('.slot')) {
+        var ln = e.target.closest('.ord-linha'), sl = ln && $('.slot', ln);
+        if (sl) clicarSlot(sl);
+      }
+      setTimeout(marcarAlvo, 0);
+    });
+    setTimeout(marcarAlvo, 0);
 
     chips.forEach(function (c) { c._banco = bancoDe(c); });
 
