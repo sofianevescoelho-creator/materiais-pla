@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" translate="no">
 <head>
+<meta name="google" content="notranslate">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Sofia Ribeiro Coelho">
@@ -102,13 +103,13 @@
   /* ===== banco de palavras e lacunas ===== */
   .banco{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:60px;padding:8px;margin:0 0 16px;border:2px dashed var(--border);border-radius:12px;background:var(--bank-bg);}
   .chip{font-family:inherit;font-size:1.05rem;font-weight:700;line-height:1.2;min-height:44px;min-width:44px;padding:6px 14px;border-radius:22px;border:2px solid var(--accent);background:var(--paper);color:var(--accent-dark);cursor:grab;touch-action:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;max-width:100%;display:inline-flex;align-items:center;justify-content:center;}
-  @media(hover:hover){.chip:hover{background:#faf3f7;}}
+  @media(hover:hover){.chip:hover{background:#f2f4ed;}}
   .chip.sel{background:var(--accent);color:#fff;}
   .chip.arrastando{opacity:.35;}
   .chip.fantasma{position:fixed;z-index:2000;pointer-events:none;opacity:.95;box-shadow:0 6px 16px rgba(0,0,0,.25);transform:scale(1.06);background:var(--accent);color:#fff;}
-  .slot{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;min-width:76px;min-height:46px;margin:2px 3px;border:2px dashed #c48fb0;border-radius:24px;background:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+  .slot{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;min-width:76px;min-height:46px;margin:2px 3px;border:2px dashed #abb78f;border-radius:24px;background:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent;}
   .slot.largo{min-width:120px;}
-  .slot.sobre{background:#f9ecf3;border-color:var(--accent);}
+  .slot.sobre{background:#ebefe0;border-color:var(--accent);}
   .slot .chip{border-width:0;background:transparent;min-height:42px;padding:6px 12px;cursor:pointer;color:var(--ink);}
   .slot:has(.chip){border-style:solid;border-color:var(--accent);}
   .slot .chip.sel{background:var(--accent);color:#fff;}
@@ -409,7 +410,7 @@
   .n-q{color:var(--accent);font-weight:700;}
   .opcoes.vf{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:320px;}
   .btn-op{font-family:inherit;font-size:1rem;font-weight:700;line-height:1.2;min-height:44px;min-width:48px;padding:6px 10px;border-radius:22px;border:2px solid var(--accent);background:var(--paper);color:var(--accent-dark);cursor:pointer;-webkit-tap-highlight-color:transparent;}
-  @media(hover:hover){.btn-op:not(:disabled):hover{background:#faf3f7;}}
+  @media(hover:hover){.btn-op:not(:disabled):hover{background:#f2f4ed;}}
   .btn-op.selecionada{background:var(--accent);color:#fff;}
   .btn-op.certa{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);}
   .btn-op.errada{background:var(--bad-bg);border-color:var(--bad);color:var(--bad);}
@@ -440,7 +441,7 @@
   .jg-barra .prog{height:10px;}
   .jg-barra .prog-fill{background:var(--jg);transition:width .35s ease;}
   #jg-instr{margin:0 0 12px;font-weight:700;color:var(--ink);}
-  .jg-cartao{margin:0 0 16px;padding:14px 10px 12px;border:1px solid var(--border);border-radius:12px;background:#fdfbfc;}
+  .jg-cartao{margin:0 0 16px;padding:14px 10px 12px;border:1px solid var(--border);border-radius:12px;background:#fcfdfa;}
   /* imagens da pergunta: nível 1 (e preços e pesos do nível 3) uma por cima da outra no telemóvel, para as etiquetas se lerem */
   .jg-imgs{display:grid;gap:10px;margin:0 auto 12px;align-items:start;}
   .jg-imgs.pilha{grid-template-columns:1fr;max-width:440px;}
@@ -823,7 +824,7 @@
   .esc-es .resp:disabled{opacity:1;-webkit-text-fill-color:currentColor;}
   .esc-es .dica{flex:0 0 100%;margin:0;font-size:.95rem;font-weight:700;color:#7a5610;}
   .esc-es .dica[hidden]{display:none;}
-  .exemplo-es{background:#fbf6f9;}
+  .exemplo-es{background:#f7f9f2;}
   .exemplo-es .resp-ex{flex:0 0 100%;margin:2px 0 0;padding:9px 12px;border:2px solid var(--border);border-radius:10px;background:#fff;color:var(--accent-dark);font-size:1.05rem;font-weight:700;line-height:1.35;}
 
 
@@ -1117,7 +1118,7 @@
 .glossario:not(.aberto) .gl + .gl::before{content:"\00a0· ";}
 </style>
 </head>
-<body>
+<body class="notranslate">
 <div class="wrap">
 <header>
 <h1>Nos correios</h1>
