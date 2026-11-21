@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -287,7 +287,7 @@
   .resultado.nivel-vazio{background:#f8f0dd;border-color:#a8791f;color:#7a5610;}
 </style>
 </head>
-<body>
+<body class="notranslate">
 <div class="wrap">
 
   <header>
@@ -607,7 +607,7 @@
 
     <h2 class="ex-t">Exercício 4</h2>
 
-    <p class="instrucao">Arrastar as palavras para o lugar correto (ou clicar na palavra e depois no espaço).<span class="ic">👆</span></p>
+    <p class="instrucao">Ordenar as palavras para formar frases.<span class="ic">👆</span></p>
 
     <div class="lista-cartoes">
 
@@ -1136,13 +1136,20 @@ function largarArrastoEx4(ev){
 
   var foiToque = Math.abs(ev.clientX - ex4Arrasto.x0) < 8 && Math.abs(ev.clientY - ex4Arrasto.y0) < 8;
   if(foiToque){
-    // toque simples: seleciona (ou desseleciona) a palavra, sem a mover
-    var jaSelecionada = chip.classList.contains('selecionada');
+    // um toque (21 nov. 2026): do banco para o primeiro espaço vazio; do espaço de volta ao banco
     cartao.querySelectorAll('.palavra.selecionada').forEach(function(c){ c.classList.remove('selecionada'); });
-    if(!jaSelecionada) chip.classList.add('selecionada');
     chip.classList.remove('arrastando-origem');
     ex4Arrasto.ghost.remove();
     ex4Arrasto = null;
+    var bancoT = cartao.querySelector('.banco-palavras');
+    if(chip.parentElement === bancoT){
+      var vazio = Array.prototype.filter.call(cartao.querySelectorAll('.slot'), function(s){ return !s.firstChild; })[0];
+      if(vazio) vazio.appendChild(chip);
+    } else {
+      bancoT.appendChild(chip);
+    }
+    chip.classList.remove('correta','errada');
+    cartao.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('correta','errada'); });
     return;
   }
   cartao.querySelectorAll('.palavra.selecionada').forEach(function(c){ c.classList.remove('selecionada'); });
